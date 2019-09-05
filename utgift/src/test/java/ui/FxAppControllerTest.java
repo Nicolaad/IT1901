@@ -16,4 +16,5 @@ public class FxAppControllerTest {
     public void getUtgifterText() {
         assertEquals(fxC.getUtgifterText(),"hei");
     }
+
 }

@@ -15,7 +15,7 @@ import java.util.List;
 
 public class FxAppController {
     private String utgifterText;
-    private UtgiftList utgiftList = new UtgiftList();
+    public UtgiftList utgiftList = new UtgiftList();
     @FXML
     TextField utgifter;
     @FXML
@@ -44,7 +44,5 @@ public class FxAppController {
         clearText();
         ObservableList<String> fiks = FXCollections.observableList(utgiftList.getUtgifter());
          listViewUtgift.setItems(fiks);
-         System.out.println("hei");
-         System.out.println(listViewUtgift.getItems());
     }
 }
