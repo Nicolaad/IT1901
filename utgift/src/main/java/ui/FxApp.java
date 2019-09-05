@@ -12,7 +12,6 @@ public class FxApp extends Application{
         primaryStage.setTitle("Utgift");
         primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("FxApp.fxml"))));
         primaryStage.show();
-
     }
     public static void main(final String[] args) {
         Application.launch(args);
