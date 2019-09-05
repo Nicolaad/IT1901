@@ -10,6 +10,7 @@ public class UtgiftList {
         public void addUtgift(Utgift utgift){
             utgifter.add(utgift);
         }
+        public void removeUtgift(Utgift utgift){utgifter.remove(utgift);}
         public List<String> getUtgifter(){
             return utgifter.stream().map(c -> c.toString()).collect(Collectors.toList());
         }
