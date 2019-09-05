@@ -1,15 +1,50 @@
 plugins {
     id 'java'
+    id 'application'
+    // use javafx modules
+    id 'org.openjfx.javafxplugin' version '0.0.8'
+
+
 }
 
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
 
+
 repositories {
-    mavenCentral()
+    jcenter()
+    maven {
+        url "https://plugins.gradle.org/m2/"
+    }
+    flatDir {
+        dirs 'libs'
+    }
 }
+
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
+application {
+    mainClassName ="ui.FxApp"
+}
+javafx {
+    version = '11'
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+    // run with --debug-jvm flag and
+    // launch debugger using Remote Java Application debug launch configuration
+}
+
+dependencies {
+    // persistens
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.8'
+    // brukergrensesnitt
+
+    testImplementation 'junit:junit:4.12'
+
+
+}
+
+
+
