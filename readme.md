@@ -4,8 +4,8 @@
 
 ## Organisering av koden
 
-##Domenelaget
+## Domenelaget
 
-##Brukergrensesnittlaget
+## Brukergrensesnittlaget
 
-##Persistentlaget
+## Persistentlaget
