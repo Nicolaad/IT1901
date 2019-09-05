@@ -7,6 +7,8 @@ Skisse av forsiden av appen:
 ![Forside](sketches/Forside skisse.png)
 
 Skisse av når man skal legge inn en ny utgift:
+
+![Ny utgift](sketches/ny utgift skisse.png)
  
 Brukerhistorie:
 
