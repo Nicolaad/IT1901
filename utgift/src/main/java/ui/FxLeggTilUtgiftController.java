@@ -2,7 +2,9 @@ package ui;
 
 import core.UtgiftList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class FxLeggTilUtgiftController {
     @FXML
@@ -13,7 +15,8 @@ public class FxLeggTilUtgiftController {
     TextField textFieldPris;
     @FXML
     TextField textFieldKategori;
-
+    @FXML
+    Button btnBack;
     @FXML
     public UtgiftList utgiftList = new UtgiftList();
 
@@ -40,5 +43,9 @@ public class FxLeggTilUtgiftController {
     public void tilbake(){
         //gå tilbake til FxApp uten å legge til nytt utgifts element,
         // feedback til user om at ingenting ble gjort.
+        Stage stage = (Stage) btnBack.getScene().getWindow();
+
+        stage.close();
+
     }
 }
