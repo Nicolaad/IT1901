@@ -43,7 +43,7 @@ public class FxAppController {
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initStyle(StageStyle.UNDECORATED);
-            stage.setTitle("ABC");
+            stage.setTitle("Legg til utgift");
             stage.setScene(new Scene(root1));
             stage.show();
         } catch (IOException e) {
