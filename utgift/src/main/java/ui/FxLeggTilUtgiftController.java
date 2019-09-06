@@ -19,6 +19,8 @@ public class FxLeggTilUtgiftController {
     Button btnBack;
     @FXML
     public UtgiftList utgiftList = new UtgiftList();
+    @FXML
+    Button btnFerdig;
 
     @FXML
     public void leggTilUtgift(){
@@ -38,6 +40,8 @@ public class FxLeggTilUtgiftController {
     public void ferdigUtgift(){
         //gå tilbake til FxApp og legg til nytt utgift element til listview.
         //feedback til user om at nytt utgifts element ble lagt til.
+        Stage stage = (Stage) btnBack.getScene().getWindow();
+        stage.close();
     }
     @FXML
     public void tilbake(){
