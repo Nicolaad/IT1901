@@ -14,6 +14,6 @@
         <Label layoutX="243.0" layoutY="73.0" text="Pris" />
         <Label layoutX="389.0" layoutY="73.0" prefHeight="18.0" prefWidth="114.0" text="Kategori" />
       <Button layoutX="228.0" layoutY="177.0" mnemonicParsing="false" onAction="#ferdigUtgift" text="btnFerdig" />
-      <Button layoutX="350.0" layoutY="177.0" mnemonicParsing="false" onAction="#tilbake" text="btnBack" />
+      <Button fx:id="btnBack" layoutX="350.0" layoutY="177.0" mnemonicParsing="false" onAction="#tilbake" text="btnBack" />
     </children>
 </AnchorPane>
