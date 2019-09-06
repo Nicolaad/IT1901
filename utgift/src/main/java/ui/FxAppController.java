@@ -15,13 +15,7 @@ import java.util.List;
 
 public class FxAppController {
     private String utgifterText;
-    public UtgiftList utgiftList = new UtgiftList();
-    @FXML
-    TextField utgifter;
-    @FXML
-    TextField textFieldNavn;
-    @FXML
-    TextField textFieldPris;
+
     @FXML
     TextField textFieldKategori;
     @FXML
@@ -29,20 +23,13 @@ public class FxAppController {
     @FXML
     ListView<String> listViewUtgift;
 
-    public void clearText(){
-        textFieldNavn.setText("");
-        textFieldPris.setText("");
-        textFieldKategori.setText("");
-    }
+
     public String getUtgifterText(){
         return "hei";
     }
-
     @FXML
     public void leggTilUtgift(){
-       utgiftList.addUtgift(new Utgift(textFieldNavn.getText(),textFieldPris.getText(),textFieldKategori.getText()));
-        clearText();
-        ObservableList<String> fiks = FXCollections.observableList(utgiftList.getUtgifter());
-         listViewUtgift.setItems(fiks);
+        //åpne opp FxAppLeggTilUtgift.fxml.
     }
+
 }
