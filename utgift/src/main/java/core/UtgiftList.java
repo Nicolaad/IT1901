@@ -25,10 +25,10 @@ public class UtgiftList {
         }
 
         public boolean getUtgiftNavn(String navn){
-
+            return true;
         }
 
         public boolean getUtgiftKategori(String kategori){
-
+            return true;
         }
 }
