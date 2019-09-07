@@ -12,3 +12,4 @@ Skisse av når man skal legge inn en ny utgift:
  
 Brukerhistorie:
 
+Som en forbruker, ønsker jeg å kunne registrere mine utgifter, slik at jeg kan få oversikt, og se hva jeg bruker penger på.
