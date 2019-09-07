@@ -1,10 +1,17 @@
 package ui;
 
+import core.Utgift;
 import core.UtgiftList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class FxLeggTilUtgiftController {
     @FXML
@@ -18,18 +25,14 @@ public class FxLeggTilUtgiftController {
     @FXML
     Button btnBack;
     @FXML
-    public UtgiftList utgiftList = new UtgiftList();
-    @FXML
     Button btnFerdig;
+
+
 
     @FXML
     public void leggTilUtgift(){
-     /*   utgiftList.addUtgift(new Utgift(textFieldNavn.getText(),textFieldPris.getText(),textFieldKategori.getText()));
+        UtgiftList.add(new Utgift(textFieldNavn.getText(),textFieldPris.getText(),textFieldKategori.getText()));
         clearText();
-        ObservableList<String> fiks = FXCollections.observableList(utgiftList.getUtgifter());
-        listViewUtgift.setItems(fiks);
-        */
-      //logikken her må endres.
     }
     public void clearText(){
         textFieldNavn.setText("");
@@ -41,6 +44,7 @@ public class FxLeggTilUtgiftController {
         //gå tilbake til FxApp og legg til nytt utgift element til listview.
         //feedback til user om at nytt utgifts element ble lagt til.
         Stage stage = (Stage) btnBack.getScene().getWindow();
+        leggTilUtgift();
         stage.close();
     }
     @FXML

@@ -24,11 +24,14 @@ public class FxAppController {
     private String utgifterText;
 
     @FXML
-    TextField textFieldKategori;
+    private TextField textFieldKategori;
     @FXML
-    Button btnNyUtgift;
+    private Button btnNyUtgift;
     @FXML
-    ListView<String> listViewUtgift;
+    private ListView<String> listViewUtgift = new ListView<>();
+
+
+    private UtgiftList utgiftList = new UtgiftList();
 
 
     public String getUtgifterText(){
@@ -38,6 +41,7 @@ public class FxAppController {
     public void leggTilUtgift(){
         //åpne opp FxAppLeggTilUtgift.fxml.
         try {
+            listViewUtgift.setItems(utgiftList.getUtgifter());
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FxAppLeggTilUtgift.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
@@ -45,10 +49,18 @@ public class FxAppController {
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle("Legg til utgift");
             stage.setScene(new Scene(root1));
-            stage.show();
+            stage.showAndWait();
+
         } catch (IOException e) {
 
         }
+
+    }
+    public String toString(){
+        return "hei";
+    }
+    public void add(Utgift utgift){
+        utgiftList.add(utgift);
     }
 
 }
