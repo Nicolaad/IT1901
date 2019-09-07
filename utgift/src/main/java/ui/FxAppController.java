@@ -27,6 +27,7 @@ public class FxAppController {
     private TextField textFieldKategori;
     @FXML
     private Button btnNyUtgift;
+
     @FXML
     private ListView<String> listViewUtgift = new ListView<>();
 

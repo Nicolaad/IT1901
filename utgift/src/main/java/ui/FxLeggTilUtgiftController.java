@@ -8,10 +8,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class FxLeggTilUtgiftController {
     @FXML
@@ -21,23 +26,29 @@ public class FxLeggTilUtgiftController {
     @FXML
     TextField textFieldPris;
     @FXML
-    TextField textFieldKategori;
-    @FXML
     Button btnBack;
     @FXML
     Button btnFerdig;
+    @FXML
+    ComboBox<String> comboBoxKategori;
 
+    private ObservableList<String> kategorier = FXCollections.observableArrayList();
+    private List<String> kat = new ArrayList<String>(Arrays.asList("Mat","Skole","Helse"));
 
-
+    public void initialize(){
+        kategorier.addAll(kat);
+        comboBoxKategori.setItems(kategorier);
+        comboBoxKategori.setValue("Mat");
+    }
     @FXML
     public void leggTilUtgift(){
-        UtgiftList.add(new Utgift(textFieldNavn.getText(),textFieldPris.getText(),textFieldKategori.getText()));
+        UtgiftList.add(new Utgift(textFieldNavn.getText(),textFieldPris.getText(),comboBoxKategori.getValue()));
         clearText();
     }
     public void clearText(){
         textFieldNavn.setText("");
         textFieldPris.setText("");
-        textFieldKategori.setText("");
+
     }
     @FXML
     public void ferdigUtgift(){
