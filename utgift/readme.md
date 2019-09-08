@@ -9,6 +9,14 @@ Skisse av forsiden av appen:
 Skisse av når man skal legge inn en ny utgift:
 
 ![Ny utgift](sketches/ny utgift skisse.png)
+
+Skjermbilde av forsiden:
+
+![Forside](sketches/Skjermbilde forside.JPG)
+
+Skjermbilde av ny utgift:
+
+![Ny utgift](sketches/Skjermbilde ny utgift.JPG)
  
 Brukerhistorie:
 
