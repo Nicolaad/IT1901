@@ -4,14 +4,17 @@
 
 Dette prosjektet er en trelagsapplikasjon med et domenelag, brukergrensesnitt (UI) og persistens (lagring). Prosjektet inneholder tester for Utgift-klassen. Prosjektet er konfigurert med gradle som byggesystem.
 
+**utgift/readme.md** inneholder brukerhistorie og beskrivelse av hva appen handler om og er ment å gjøre samt skjermbilder og skisser.
+
+
 ## Organisering av koden
 
 Prosjektet er organisert med 2 * 2 = 4 kildekodemapper, kode og ressurser for henholdsvis applikasjonen selv og testene:
 
-- **src/main/java** for koden til applikasjonen
-- **src/main/resources** for tilhørende ressurser, f.eks. data-filer og FXML-filer, som brukes av applikasjonen.
-- **src/test/java** for testkoden
-- **src/test/resources** for tilhørende ressurser, f.eks. data-filer og FXML-filer, som brukes av testene.
+- **utgift/src/main/java** for koden til applikasjonen
+- **utgift/src/main/resources** for tilhørende ressurser, f.eks. data-filer og FXML-filer, som brukes av applikasjonen.
+- **utgift/src/test/java** for testkoden
+- **utgift/src/test/resources** for tilhørende ressurser, f.eks. data-filer og FXML-filer, som brukes / skal brukes av av testene.
 
 ## Domenelaget
 
