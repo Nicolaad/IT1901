@@ -52,11 +52,7 @@ public class FxAppController {
     @FXML
     public void save(){
         try {
-
             Save.save(utgiftList.getUtgifter(), new File("src/main/resources/json/save.txt"));
-            //PrintWriter k = new PrintWriter(new File("src/main/resources/json/save.txt"));
-            //k.write("k");
-            //k.close();
         }
         catch(Exception e){
 
@@ -68,8 +64,6 @@ public class FxAppController {
         ObservableList<String> temp = utgiftList.getUtgifter();
         temp.clear();
         temp.addAll(Load.retrieve(new File("src/main/resources/json/save.txt")));
-       // temp = FXCollections.observableArrayList(Load.retrieve(new File("src/main/resources/json/save.txt")));
-
     }
 
 

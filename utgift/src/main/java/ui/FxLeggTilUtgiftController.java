@@ -45,6 +45,7 @@ public class FxLeggTilUtgiftController {
         UtgiftList.add(new Utgift(textFieldNavn.getText(),textFieldPris.getText(),comboBoxKategori.getValue()));
         clearText();
     }
+
     public void clearText(){
         textFieldNavn.setText("");
         textFieldPris.setText("");
