@@ -14,6 +14,9 @@ public class UtgiftList {
         public void addUtgift(Utgift utgift){
             utgifter.add(utgift.toString());
         }
+        public static void clear(){
+            utgifter.clear();
+        }
         public void removeUtgift(Utgift utgift){utgifter.remove(utgift);}
 
         public ObservableList<String> getUtgifter(){

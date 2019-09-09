@@ -14,11 +14,18 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import json.Load;
+import json.Save;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class FxAppController {
     private String utgifterText;
@@ -42,6 +49,29 @@ public class FxAppController {
     public void initialize(){
         listViewUtgift.setItems(utgiftList.getUtgifter());
     }
+    @FXML
+    public void save(){
+        try {
+
+            Save.save(utgiftList.getUtgifter(), new File("src/main/resources/json/save.txt"));
+            //PrintWriter k = new PrintWriter(new File("src/main/resources/json/save.txt"));
+            //k.write("k");
+            //k.close();
+        }
+        catch(Exception e){
+
+        }
+
+    }
+    @FXML
+   public void load(){
+        ObservableList<String> temp = utgiftList.getUtgifter();
+        temp.clear();
+        temp.addAll(Load.retrieve(new File("src/main/resources/json/save.txt")));
+       // temp = FXCollections.observableArrayList(Load.retrieve(new File("src/main/resources/json/save.txt")));
+
+    }
+
 
     @FXML
     public void leggTilUtgift(){
