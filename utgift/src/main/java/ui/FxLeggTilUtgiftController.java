@@ -42,8 +42,13 @@ public class FxLeggTilUtgiftController {
     }
     @FXML
     public void leggTilUtgift(){
-        UtgiftList.add(new Utgift(textFieldNavn.getText(),textFieldPris.getText(),comboBoxKategori.getValue()));
-        clearText();
+        if (textFieldPris.getText().matches("[0-9]+") && textFieldPris.getText().length() > 0) {
+            UtgiftList.add(new Utgift(textFieldNavn.getText(), textFieldPris.getText(), comboBoxKategori.getValue()));
+            clearText();
+        }
+        else {
+            textFieldPris.setText("");
+        }
     }
 
     public void clearText(){

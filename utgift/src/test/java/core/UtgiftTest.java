@@ -1,5 +1,6 @@
 package core;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -8,11 +9,32 @@ import static org.junit.Assert.*;
 public class UtgiftTest {
     Utgift utgift1;
     Utgift utgift2;
+
     @Before
     public void init(){
         utgift1 = new Utgift("Mat","200.0","matvarer");
         utgift2 = new Utgift("Bok","300.0","skole");
     }
+
+    @Test
+    public void checkPrice() {
+        int low = 0;
+        assertTrue("Error, price is negative or zero", low <= utgift1.getPris());
+        System.out.println("Test passed, " + utgift1.getPris() + " is a positive number");
+    }
+
+    @Test
+    public void checkPriceLength() {
+        assertTrue("Error, no price was entered.", utgift1.getPrisString().length() > 0);
+        System.out.println("Price length test passed");
+    }
+
+    @Test
+    public void checktoStringMethod() {
+        String u1 = utgift1.toString();
+        Assert.assertEquals("Mat" + ";" + "200.0" + ";" + "matvarer", u1);
+    }
+
     @Test
     public void getNavn() {
         assertEquals("Mat",utgift1.getNavn());
