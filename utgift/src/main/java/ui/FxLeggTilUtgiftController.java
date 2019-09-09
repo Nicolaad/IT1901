@@ -63,7 +63,7 @@ public class FxLeggTilUtgiftController {
         //gå tilbake til FxApp uten å legge til nytt utgifts element,
         // feedback til user om at ingenting ble gjort.
         Stage stage = (Stage) btnBack.getScene().getWindow();
-
+        clearText();
         stage.close();
 
     }
