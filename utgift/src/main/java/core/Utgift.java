@@ -30,4 +30,9 @@ public class Utgift {
     public String toString(){
         return navn+";"+pris+";"+kategori;
     }
+
+    public static Utgift getUtgift(String toString){
+        String[] s = toString.split(";");
+        return new Utgift(s[0],s[1],s[2]);
+    }
 }

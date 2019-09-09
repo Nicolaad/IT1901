@@ -26,7 +26,7 @@ public class UtgiftList {
         public static void add(Utgift utgift){
             utgifter.add(utgift.toString());
         }
-        public boolean getUtgift(Utgift utgift){
+       /* public boolean getUtgift(Utgift utgift){
             return utgifter.contains(utgift.toString());
         }
 
@@ -35,6 +35,8 @@ public class UtgiftList {
             return true;
         }
 
+
+
         public boolean getUtgiftNavn(String navn){
             return true;
         }
@@ -42,4 +44,6 @@ public class UtgiftList {
         public boolean getUtgiftKategori(String kategori){
             return true;
         }
+
+        */
 }
