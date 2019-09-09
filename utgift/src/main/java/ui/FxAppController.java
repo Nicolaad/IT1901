@@ -38,11 +38,15 @@ public class FxAppController {
     public String getUtgifterText(){
         return "hei";
     }
+
+    public void initialize(){
+        listViewUtgift.setItems(utgiftList.getUtgifter());
+    }
+
     @FXML
     public void leggTilUtgift(){
         //åpne opp FxAppLeggTilUtgift.fxml.
         try {
-            listViewUtgift.setItems(utgiftList.getUtgifter());
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FxAppLeggTilUtgift.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
