@@ -52,7 +52,7 @@ public class FxAppController {
     @FXML
     public void save(){
         try {
-            Save.save(utgiftList.getUtgifter(), new File("src/main/resources/json/save.txt"));
+            Save.save(utgiftList.getUtgifter(), new File("src/main/resources/json/save.json"));
         }
         catch(Exception e){
 
