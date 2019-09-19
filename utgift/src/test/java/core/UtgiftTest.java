@@ -61,4 +61,12 @@ public class UtgiftTest {
     public void testToString() {
         assertEquals(utgift1.toString(),"Mat;200.0;matvarer");
     }
+
+    @Test
+    public void testGetUtgift(){
+        Utgift temp = Utgift.getUtgift("Mat;200.0;matvarer");
+        assertEquals(utgift1.getNavn(), temp.getNavn());
+        assertEquals(utgift1.getPris(), temp.getPris(),0.1);
+        assertEquals(utgift1.getKategori(), temp.getKategori());
+    }
 }
