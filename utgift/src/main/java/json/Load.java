@@ -2,29 +2,29 @@ package json;
 
 import core.Utgift;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Scanner;
+import java.util.Observable;
+
+import com.google.gson.Gson;
 
 public class Load {
     //retrieves stored utgift objects from a file and returns an arrayList
-    public static Collection<String> retrieve(File file){
-        Collection<String> retrievedList = new ArrayList<>();
-        try{
-            Scanner scanner = new Scanner(file);
-            while(scanner.hasNextLine()){
-                String temp =scanner.nextLine();
-                retrievedList.add(temp);
-            }
-        }
-        //bedre exception -- todo
-        catch(Exception e){
+    public static Collection<Utgift> retrieve(File file){
+        Collection<Utgift> utgifter = new ArrayList();
 
+        try {
+            Gson gson = new Gson();
+            Reader reader = new FileReader(file);
+            utgifter = gson.fromJson(reader, ArrayList.class);
+            reader.close();
         }
-        return retrievedList;
+        catch(IOException e){
+            System.out.println(e);
+        }
+
+        return(utgifter);
     }
+
 }

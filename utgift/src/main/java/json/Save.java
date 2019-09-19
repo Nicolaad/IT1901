@@ -13,15 +13,12 @@ import com.google.gson.GsonBuilder;
 public class Save {
 
     //writes all objects in an array list to a file
-    public static void save(Collection<String> utgifterString, File file){
-        Collection<Utgift> temp = new ArrayList<>();
-        for(String s : utgifterString ){
-            temp.add(Utgift.getUtgift(s));
-        }
+    public static void save(Collection<Utgift> utgifter, File file){
+
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         try{
             FileWriter writer = new FileWriter(file);
-            gson.toJson(temp, writer);
+            gson.toJson(utgifter, writer);
             writer.close();
         }catch(IOException e){
             System.out.println(e);

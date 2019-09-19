@@ -1,12 +1,22 @@
 [
   {
-    "navn": "Ostekake",
-    "pris": "232",
+    "navn": "kebab",
+    "pris": "2",
     "kategori": "Mat"
   },
   {
-    "navn": "hei",
-    "pris": "321",
-    "kategori": "Skole"
+    "navn": "Hei",
+    "pris": "312",
+    "kategori": "Mat"
+  },
+  {
+    "navn": "ost",
+    "pris": "3",
+    "kategori": "Mat"
+  },
+  {
+    "navn": "test",
+    "pris": "32",
+    "kategori": "Mat"
   }
 ]
