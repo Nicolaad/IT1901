@@ -10,18 +10,19 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class UtgiftList {
-    private static ObservableList<String> utgifter = FXCollections.observableArrayList();
+
+    private static ObservableList<Utgift> utgifter = FXCollections.observableArrayList();
     private static ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
 
         public void addUtgift(Utgift utgift){
-            utgifter.add(utgift.toString());
+            utgifter.add(utgift);
         }
         public static void clear(){
             utgifter.clear();
         }
         public void removeUtgift(Utgift utgift){utgifter.remove(utgift);}
 
-        public ObservableList<String> getUtgifter(){
+        public ObservableList<Utgift> getUtgifter(){
            // return utgifter.stream().map(c -> c.toString()).collect(Collectors.toList());
             return utgifter;
         }
@@ -29,7 +30,7 @@ public class UtgiftList {
             return pieChartData;
         }
         public static void add(Utgift utgift){
-            utgifter.add(utgift.toString());
+            utgifter.add(utgift);
             pieChartData.add(new PieChart.Data(utgift.getKategori(),200));
         }
        /* public boolean getUtgift(Utgift utgift){

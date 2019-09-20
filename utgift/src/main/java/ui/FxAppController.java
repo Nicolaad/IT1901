@@ -37,7 +37,7 @@ public class FxAppController {
     private Button btnNyUtgift;
 
     @FXML
-    private ListView<String> listViewUtgift = new ListView<>();
+    private ListView<Utgift> listViewUtgift = new ListView<>();
 
     @FXML
     private PieChart pieChart;
@@ -57,7 +57,7 @@ public class FxAppController {
     @FXML
     public void save(){
         try {
-            Save.save(utgiftList.getUtgifter(), new File("src/main/resources/json/save.txt"));
+            Save.save(utgiftList.getUtgifter(), new File("src/main/resources/json/save.json"));
         }
         catch(Exception e){
 
@@ -66,9 +66,9 @@ public class FxAppController {
     }
     @FXML
    public void load(){
-        ObservableList<String> temp = utgiftList.getUtgifter();
+        ObservableList<Utgift> temp = utgiftList.getUtgifter();
         temp.clear();
-        temp.addAll(Load.retrieve(new File("src/main/resources/json/save.txt")));
+        temp.addAll(Load.retrieve(new File("src/main/resources/json/save.json")));
     }
 
 

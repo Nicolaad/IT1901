@@ -1,30 +1,24 @@
 package json;
 
 import core.Utgift;
-import java.io.File;
-import java.util.ArrayList;
-import java.io.PrintWriter;
-import java.io.IOException;
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.*;
 import java.util.Collection;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
-//allows saving and retrieving - will be superseded by json at a later point
+//allows saving to json files.
 public class Save {
-    //writes all objects in an array list to a file
-    public static void save(Collection objects, File file){
+
+    //writes a utgift collection as a json object to a file.
+    public static void save(Collection<Utgift> utgifter, File file){
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
         try{
-            PrintWriter writer = new PrintWriter(file);
-
-        for(Object o : objects){
-            writer.write(o.toString()+"\n");
-        }
-
-        writer.close();
+            FileWriter writer = new FileWriter(file);
+            gson.toJson(utgifter, writer);
+            writer.close();
         }catch(IOException e){
-
+            System.out.println(e);
         }
     }
-
-
 }

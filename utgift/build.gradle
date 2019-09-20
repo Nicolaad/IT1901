@@ -66,6 +66,9 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.8'
     // brukergrensesnitt
     testImplementation 'junit:junit:4.12'
+    //json
+    implementation 'com.google.code.gson:gson:2.8.5'
+
 
     testImplementation 'org.testfx:testfx-core:4.0.16-alpha'
     testImplementation 'org.testfx:testfx-junit:4.0.16-alpha'
