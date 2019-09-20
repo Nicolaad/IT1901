@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -38,6 +39,8 @@ public class FxAppController {
     @FXML
     private ListView<Utgift> listViewUtgift = new ListView<>();
 
+    @FXML
+    private PieChart pieChart;
 
     private UtgiftList utgiftList = new UtgiftList();
 
@@ -48,7 +51,9 @@ public class FxAppController {
 
     public void initialize(){
         listViewUtgift.setItems(utgiftList.getUtgifter());
+        pieChart.setData(utgiftList.getNoob());
     }
+
     @FXML
     public void save(){
         try {
@@ -90,6 +95,7 @@ public class FxAppController {
     }
     public void add(Utgift utgift){
         utgiftList.add(utgift);
+        //pieChartData.add(new PieChart.Data(utgift.getNavn(),200));
     }
 
 }
