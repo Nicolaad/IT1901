@@ -63,8 +63,8 @@ public class UtgiftTest {
     }
 
     @Test
-    public void testGetUtgift(){
-        Utgift temp = Utgift.getUtgift("Mat;200.0;matvarer");
+    public void testcreateUtgiftObject(){
+        Utgift temp = Utgift.createUtgiftObject("Mat;200.0;matvarer");
         assertEquals(utgift1.getNavn(), temp.getNavn());
         assertEquals(utgift1.getPris(), temp.getPris(),0.1);
         assertEquals(utgift1.getKategori(), temp.getKategori());

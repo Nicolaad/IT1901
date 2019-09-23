@@ -42,7 +42,7 @@ public class FxAppTest extends ApplicationTest {
     @Test
     public void voidTestUtgiftListView(){
         //henter foorst utgiftListView deretter sjekker om man kan legge til items til utgiftList og de vises i listview.
-        final ListView<String> utgiftListView = lookup("#listViewUtgift").query();
+        final ListView<Utgift> utgiftListView = lookup("#listViewUtgift").query();
         UtgiftList utgiftL = new UtgiftList();
         utgiftListView.setItems(utgiftL.getUtgifter());
         assertEquals(utgiftL.getUtgifter(),utgiftListView.getItems());

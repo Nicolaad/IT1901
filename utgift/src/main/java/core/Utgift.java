@@ -1,5 +1,6 @@
 package core;
 
+
 public class Utgift {
     private String navn;
     private String pris;
@@ -31,7 +32,7 @@ public class Utgift {
         return navn+";"+pris+";"+kategori;
     }
 
-    public static Utgift getUtgift(String toString){
+    public static Utgift createUtgiftObject(String toString){
         String[] s = toString.split(";");
         return new Utgift(s[0],s[1],s[2]);
     }
