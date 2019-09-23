@@ -1,0 +1,12 @@
+[
+  {
+    "navn": "Ost",
+    "pris": "503",
+    "kategori": "Mat"
+  },
+  {
+    "navn": "Flytogbusstogfly",
+    "pris": "200000",
+    "kategori": "Skole"
+  }
+]
