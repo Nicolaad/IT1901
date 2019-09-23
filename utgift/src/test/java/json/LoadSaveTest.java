@@ -13,8 +13,17 @@ import static junit.framework.Assert.fail;
 import static junit.framework.TestCase.assertEquals;
 
 public class LoadSaveTest {
-    private Collection<String> utgifter = new ArrayList<>();
+    private Collection<Utgift> utgifter = new ArrayList<>();
     private File file;
+
+    //initialises some base cases
+    @Before
+    public void init() {
+        utgifter.add(new Utgift("Ost", "503", "Mat"));
+        utgifter.add(new Utgift("Flytogbusstogfly", "200000", "Skole"));
+        file = new File("test.json");
+
+    /*
     @Before
     public void init(){
         utgifter.add(new Utgift("hei","hei","heilo").toString());
@@ -22,16 +31,17 @@ public class LoadSaveTest {
         file = new File("test.txt");
 
     }
-
-    @Test
-    public void saveTest(){
-        Save.save(utgifter,file);
-        List<String> temp = (List)Load.retrieve(file);
-        List<String> k = (List) utgifter;
-            for(int i =0; i<k.size();i++){
-                if(!temp.get(i).equals(k.get(i)))
-                    fail("feil");
+    */
+        @Test
+        public void saveTest() {
+            //test that it can store and retrieve proper objects
+            json.Save.save(utgifter,file);
+            Collection<Utgift> retrievedUtgifter = json.Load.retrieve(file);
+            assertTrue(trueutgifter.equals(retrievedUtgifter))){
+                assertTrue();
             }
-    }
+        }
 
+
+    }
 }
