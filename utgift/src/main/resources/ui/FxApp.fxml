@@ -11,8 +11,8 @@
       <Button id="b1" fx:id="btnNyutgift" layoutX="124.0" layoutY="120.0" mnemonicParsing="false" onAction="#leggTilUtgift" text="legg til utgift" />
       <ListView fx:id="listViewUtgift" editable="true" layoutX="362.0" layoutY="148.0" prefHeight="200.0" prefWidth="200.0" />
       <Label layoutX="235.0" layoutY="32.0" prefHeight="18.0" prefWidth="94.0" text="Utgifter" />
-      <Button layoutX="32.0" layoutY="20.0" mnemonicParsing="false" onAction="#save" text="Save" />
-      <Button layoutX="103.0" layoutY="20.0" mnemonicParsing="false" onAction="#load" text="Load" />
+      <Button id="b4" fx:id="saveButton" layoutX="19.0" layoutY="20.0" mnemonicParsing="false" onAction="#save" text="Save" />
+      <Button id="b5" layoutX="73.0" layoutY="20.0" mnemonicParsing="false" onAction="#load" text="Load" />
 
       <PieChart fx:id="pieChart" layoutX="73.0" layoutY="186.0" prefHeight="200.0" prefWidth="222.0" title="Pie" />
       <Label fx:id="labelMat" layoutX="59.0" layoutY="165.0" text="Label" />
@@ -23,6 +23,5 @@
       <Label layoutX="18.0" layoutY="248.0" text="Skole" />
       <Label fx:id="labelTotal" layoutX="59.0" layoutY="286.0" text="Label" />
       <Label layoutX="18.0" layoutY="286.0" text="Total" />
-
    </children>
 </AnchorPane>
