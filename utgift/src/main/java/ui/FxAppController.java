@@ -101,32 +101,37 @@ public class FxAppController {
             stage.setTitle("Legg til utgift");
             stage.setScene(new Scene(confirmation));
             stage.showAndWait();
-            double mat = 0.0;
-            double helse = 0.0;
-            double skole = 0.0;
-            for(PieChart.Data t: utgiftList.getNoob()){
-
-                System.out.println(t.getName());
-                if(t.getName().equals("Mat")){
-                    mat+=t.getPieValue();
-                }
-                if(t.getName().equals("Skole")){
-                    skole+=t.getPieValue();
-                }
-                if(t.getName().equals("Helse")){
-                    helse+=t.getPieValue();
-                }
-            }
-            labelMat.setText(""+mat);
-            labelHelse.setText(""+helse);
-            labelSkole.setText(""+skole);
-            labelTotal.setText(mat+helse+skole+"");
+            labelsSetUp();
 
         } catch (IOException e) {
 
         }
 
     }
+
+    private void labelsSetUp() {
+        double mat = 0.0;
+        double helse = 0.0;
+        double skole = 0.0;
+        for(PieChart.Data t: utgiftList.getNoob()){
+
+            System.out.println(t.getName());
+            if(t.getName().equals("Mat")){
+                mat+=t.getPieValue();
+            }
+            if(t.getName().equals("Skole")){
+                skole+=t.getPieValue();
+            }
+            if(t.getName().equals("Helse")){
+                helse+=t.getPieValue();
+            }
+        }
+        labelMat.setText(""+mat);
+        labelHelse.setText(""+helse);
+        labelSkole.setText(""+skole);
+        labelTotal.setText(mat+helse+skole+"");
+    }
+
     public String toString(){
         return "hei";
     }
