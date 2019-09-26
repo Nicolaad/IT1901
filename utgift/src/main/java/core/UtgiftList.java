@@ -8,8 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -24,15 +23,36 @@ public class UtgiftList {
 
         public static void clear(){
             utgifter.clear();
+            pieChartData.clear();
         }
-
+        public List<PieChart.Data> setPieChartData(Collection<Utgift> ut){
+            return updatePieChart(ut);
+        }
         public void removeUtgift(Utgift utgift){utgifter.remove(utgift);}
 
         public ObservableList<Utgift> getUtgifter(){
             return utgifter;
         }
-        public ObservableList<PieChart.Data> getNoob() {
+        public ObservableList<PieChart.Data> getPieChart() {
             return pieChartData;
+        }
+
+        private List<PieChart.Data> updatePieChart(Collection<Utgift> ut){
+            Map<String,Double> pieChartData = new HashMap<>();
+            List<PieChart.Data> pie = new ArrayList<>();
+            for(Utgift utgift: ut){
+                if(!pieChartData.containsKey(utgift.getKategori())){
+                    pieChartData.put(utgift.getKategori(), utgift.getPris());
+                }
+                else{
+                    Double d = pieChartData.get(utgift.getKategori());
+                    pieChartData.replace(utgift.getKategori(), d+utgift.getPris());
+                }
+            }
+            for(String k: pieChartData.keySet()){
+                pie.add(new PieChart.Data(k, pieChartData.get(k)));
+            }
+            return pie;
         }
 
         public static void add(Utgift utgift){
