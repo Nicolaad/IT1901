@@ -8,11 +8,17 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.FxAppController">
    <children>
-      <Button fx:id="btnNyutgift" layoutX="133.0" layoutY="148.0" mnemonicParsing="false" onAction="#leggTilUtgift" text="legg til utgift" />
+      <Button fx:id="btnNyutgift" layoutX="124.0" layoutY="85.0" mnemonicParsing="false" onAction="#leggTilUtgift" text="legg til utgift" />
       <ListView fx:id="listViewUtgift" editable="true" layoutX="362.0" layoutY="148.0" prefHeight="200.0" prefWidth="200.0" />
       <Label layoutX="235.0" layoutY="32.0" prefHeight="18.0" prefWidth="94.0" text="Utgifter" />
       <Button layoutX="32.0" layoutY="20.0" mnemonicParsing="false" onAction="#save" text="Save" />
       <Button layoutX="103.0" layoutY="20.0" mnemonicParsing="false" onAction="#load" text="Load" />
-      <PieChart fx:id="pieChart" layoutX="73.0" layoutY="186.0" prefHeight="200.0" prefWidth="222.0" title="Pie" />
+      <PieChart fx:id="pieChart" layoutX="67.0" layoutY="111.0" opacity="0.69" prefHeight="200.0" prefWidth="222.0" title="Utgifter" />
+      <Label layoutX="11.0" layoutY="159.0" prefHeight="18.0" prefWidth="42.0" text="Skole" />
+      <Label layoutX="17.0" layoutY="191.0" text="Helse" />
+      <Label layoutX="16.0" layoutY="129.0" prefHeight="18.0" prefWidth="61.0" text="Mat" />
+      <Label fx:id="labelMat" layoutX="18.0" layoutY="229.0" prefHeight="26.0" prefWidth="62.0" text="Label" />
+      <Label fx:id="labelSkole" layoutX="18.0" layoutY="264.0" text="Label" />
+      <Label fx:id="labelHelse" layoutX="18.0" layoutY="302.0" text="Label" />
    </children>
 </AnchorPane>
