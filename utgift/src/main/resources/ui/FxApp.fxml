@@ -14,5 +14,11 @@
       <Button layoutX="32.0" layoutY="20.0" mnemonicParsing="false" onAction="#save" text="Save" />
       <Button layoutX="103.0" layoutY="20.0" mnemonicParsing="false" onAction="#load" text="Load" />
       <PieChart fx:id="pieChart" layoutX="73.0" layoutY="186.0" prefHeight="200.0" prefWidth="222.0" title="Pie" />
+      <Label fx:id="labelMat" layoutX="59.0" layoutY="165.0" text="Label" />
+      <Label fx:id="labelHelse" layoutX="52.0" layoutY="207.0" text="Label" />
+      <Label fx:id="labelSkole" layoutX="59.0" layoutY="248.0" text="Label" />
+      <Label layoutX="18.0" layoutY="165.0" text="Mat" />
+      <Label layoutX="17.0" layoutY="207.0" text="Helse" />
+      <Label layoutX="18.0" layoutY="248.0" text="Skole" />
    </children>
 </AnchorPane>
