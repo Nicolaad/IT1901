@@ -21,6 +21,8 @@
       <Label layoutX="18.0" layoutY="165.0" text="Mat" />
       <Label layoutX="17.0" layoutY="207.0" text="Helse" />
       <Label layoutX="18.0" layoutY="248.0" text="Skole" />
+      <Label fx:id="labelTotal" layoutX="59.0" layoutY="286.0" text="Label" />
+      <Label layoutX="18.0" layoutY="286.0" text="Total" />
 
    </children>
 </AnchorPane>
