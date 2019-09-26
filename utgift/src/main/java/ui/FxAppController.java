@@ -63,7 +63,7 @@ public class FxAppController {
 
     public void initialize(){
         listViewUtgift.setItems(utgiftList.getUtgifter());
-        pieChart.setData(utgiftList.getNoob());
+        pieChart.setData(utgiftList.getPieChart());
 
     }
 
@@ -81,8 +81,14 @@ public class FxAppController {
     @FXML
    public void load(){
         ObservableList<Utgift> temp = utgiftList.getUtgifter();
+        ObservableList<PieChart.Data> temp2 = utgiftList.getPieChart();
         temp.clear();
-        temp.addAll(Load.retrieve(new File("src/main/resources/json/save.json")));
+        temp2.clear();
+        Collection<Utgift> ut = Load.retrieve(new File("src/main/resources/json/save.json"));
+        temp.addAll(ut);
+        temp2.addAll(utgiftList.setPieChartData(ut));
+        labelsSetUp();
+
     }
 
 
@@ -113,7 +119,7 @@ public class FxAppController {
         double mat = 0.0;
         double helse = 0.0;
         double skole = 0.0;
-        for(PieChart.Data t: utgiftList.getNoob()){
+        for(PieChart.Data t: utgiftList.getPieChart()){
 
             System.out.println(t.getName());
             if(t.getName().equals("Mat")){

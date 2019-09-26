@@ -1,7 +1,22 @@
 [
   {
-    "navn": "Ost",
-    "pris": "32",
+    "navn": "Fisk",
+    "pris": "100",
     "kategori": "Mat"
+  },
+  {
+    "navn": "Rotte",
+    "pris": "200",
+    "kategori": "Mat"
+  },
+  {
+    "navn": "Penn",
+    "pris": "150",
+    "kategori": "Skole"
+  },
+  {
+    "navn": "Legetim",
+    "pris": "200",
+    "kategori": "Helse"
   }
 ]
