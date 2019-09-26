@@ -6,10 +6,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Side;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
@@ -42,8 +45,12 @@ public class FxAppController {
     @FXML
     private PieChart pieChart;
 
+    @FXML
+    private Label labelHelse;private Label labelMat;private Label labelSkole;
+
     private UtgiftList utgiftList = new UtgiftList();
 
+    private int fisk = 200;
 
     public String getUtgifterText(){
         return "hei";
@@ -52,7 +59,9 @@ public class FxAppController {
     public void initialize(){
         listViewUtgift.setItems(utgiftList.getUtgifter());
         pieChart.setData(utgiftList.getNoob());
+
     }
+
 
     @FXML
     public void save(){
@@ -84,6 +93,14 @@ public class FxAppController {
             stage.setTitle("Legg til utgift");
             stage.setScene(new Scene(root1));
             stage.showAndWait();
+            double mat = 0.0;
+            double helse = 0.0;
+            double skole = 0.0;
+            for(PieChart.Data t: utgiftList.getNoob()){
+                if(t.getName().equals("Mat")){
+                    mat+=t.getPieValue();
+                }
+            }
 
         } catch (IOException e) {
 
@@ -95,7 +112,6 @@ public class FxAppController {
     }
     public void add(Utgift utgift){
         utgiftList.add(utgift);
-        //pieChartData.add(new PieChart.Data(utgift.getNavn(),200));
     }
 
 }
