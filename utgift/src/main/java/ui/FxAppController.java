@@ -54,6 +54,7 @@ public class FxAppController {
 
     private UtgiftList utgiftList = new UtgiftList();
 
+
     public String getUtgifterText(){
         return "hei";
     }
@@ -61,6 +62,7 @@ public class FxAppController {
     public void initialize(){
         listViewUtgift.setItems(utgiftList.getUtgifter());
         pieChart.setData(utgiftList.getNoob());
+
     }
 
 
@@ -101,6 +103,7 @@ public class FxAppController {
             double helse = 0.0;
             double skole = 0.0;
             for(PieChart.Data t: utgiftList.getNoob()){
+
                 System.out.println(t.getName());
                 if(t.getName().equals("Mat")){
                     mat+=t.getPieValue();
@@ -115,6 +118,7 @@ public class FxAppController {
             labelMat.setText(""+mat);
             labelHelse.setText(""+helse);
             labelSkole.setText(""+skole);
+
 
         } catch (IOException e) {
 
