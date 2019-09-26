@@ -1,0 +1,32 @@
+#b1 {
+    -fx-text-fill:white;
+    -fx-padding: 7.5 15 7.5 15;
+    -fx-font-family: "Helvetica";
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+
+    -fx-background-color:
+            linear-gradient(#56ab2f 0%, #a8e063 51%, #56ab2f 100%);
+}
+
+#b2 {
+    -fx-text-fill:white;
+    -fx-padding: 7.5 15 7.5 15;
+    -fx-font-family: "Helvetica";
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+
+    -fx-background-color:
+            linear-gradient(#56ab2f 0%, #a8e063 51%, #56ab2f 100%);
+}
+
+#b3 {
+    -fx-text-fill:white;
+    -fx-padding: 7.5 15 7.5 15;
+    -fx-font-family: "Helvetica";
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+
+    -fx-background-color:
+            linear-gradient(#e53935 0%, #e35d5b 51%, #e53935 100);
+}
