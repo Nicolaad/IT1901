@@ -29,7 +29,7 @@ public class Utgift {
     }
 
     public String toString(){
-        return navn+";"+pris+";"+kategori;
+        return ""+navn+"        "+pris+"        "+kategori;
     }
 
     public static Utgift createUtgiftObject(String toString){

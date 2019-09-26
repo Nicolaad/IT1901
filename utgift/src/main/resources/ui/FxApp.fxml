@@ -23,6 +23,9 @@
       <Label layoutX="18.0" layoutY="248.0" text="Skole" />
       <Label fx:id="labelTotal" layoutX="59.0" layoutY="286.0" text="Label" />
       <Label layoutX="18.0" layoutY="286.0" text="Total" />
+      <Label layoutX="358.0" layoutY="120.0" prefHeight="18.0" prefWidth="76.0" text="Beskrivelse" />
+      <Label layoutX="442.0" layoutY="120.0" text="Pris" />
+      <Label layoutX="508.0" layoutY="120.0" prefHeight="18.0" prefWidth="50.0" text="Kategori" />
 
    </children>
 </AnchorPane>
