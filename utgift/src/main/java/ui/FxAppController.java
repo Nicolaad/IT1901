@@ -46,11 +46,14 @@ public class FxAppController {
     private PieChart pieChart;
 
     @FXML
-    private Label labelHelse;private Label labelMat;private Label labelSkole;
+    private Label labelHelse;
+    @FXML
+    private Label labelMat;
+    @FXML
+    private Label labelSkole;
 
     private UtgiftList utgiftList = new UtgiftList();
 
-    private int fisk = 200;
 
     public String getUtgifterText(){
         return "hei";
@@ -86,21 +89,36 @@ public class FxAppController {
         //åpne opp FxAppLeggTilUtgift.fxml.
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FxAppLeggTilUtgift.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
+            Parent confirmation;
+            confirmation = fxmlLoader.load();
+            FxLeggTilUtgiftController controller = (FxLeggTilUtgiftController) fxmlLoader.getController();
+
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle("Legg til utgift");
-            stage.setScene(new Scene(root1));
+            stage.setScene(new Scene(confirmation));
             stage.showAndWait();
             double mat = 0.0;
             double helse = 0.0;
             double skole = 0.0;
             for(PieChart.Data t: utgiftList.getNoob()){
+
+                System.out.println(t.getName());
                 if(t.getName().equals("Mat")){
                     mat+=t.getPieValue();
                 }
+                if(t.getName().equals("Skole")){
+                    skole+=t.getPieValue();
+                }
+                if(t.getName().equals("Helse")){
+                    helse+=t.getPieValue();
+                }
             }
+            labelMat.setText(""+mat);
+            labelHelse.setText(""+helse);
+            labelSkole.setText(""+skole);
+
 
         } catch (IOException e) {
 
