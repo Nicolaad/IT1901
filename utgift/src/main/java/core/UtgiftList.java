@@ -38,7 +38,6 @@ public class UtgiftList {
         public static void add(Utgift utgift){
             utgifter.add(utgift);
             List<String> yes = new ArrayList<>();
-
             //lager forst en liste av strenger av all data som ligger i piechart allerede
             for(PieChart.Data op: pieChartData){
                 if(!yes.contains(op.getName())){

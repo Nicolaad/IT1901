@@ -51,6 +51,8 @@ public class FxAppController {
     private Label labelMat;
     @FXML
     private Label labelSkole;
+    @FXML
+    private Label labelTotal;
 
     private UtgiftList utgiftList = new UtgiftList();
 
@@ -118,7 +120,7 @@ public class FxAppController {
             labelMat.setText(""+mat);
             labelHelse.setText(""+helse);
             labelSkole.setText(""+skole);
-
+            labelTotal.setText(mat+helse+skole+"");
 
         } catch (IOException e) {
 
