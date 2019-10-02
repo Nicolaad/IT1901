@@ -1,10 +1,13 @@
 package json;
 
-import core.Utgift;
-import java.io.*;
-import java.util.Collection;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import core.Utgift;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Collection;
 
 //allows saving to json files.
 public class Save {

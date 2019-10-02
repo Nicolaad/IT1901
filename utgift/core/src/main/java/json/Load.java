@@ -1,10 +1,14 @@
 package json;
 
+import com.google.gson.Gson;
 import core.Utgift;
-import java.io.*;
+
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Collection;
-import com.google.gson.Gson;
 
 public class Load {
     //retrieves stored utgift objects from a json array in a json file.
