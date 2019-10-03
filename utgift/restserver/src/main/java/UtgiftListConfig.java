@@ -1,6 +1,6 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
 import core.UtgiftList;
-
+import org.glassfish.jersey.server.ResourceConfig;
 
 import java.io.IOException;
 
@@ -13,7 +13,6 @@ import java.io.IOException;
         private static UtgiftList readValue(final String json) {
             try {
                 final UtgiftList utgiftList = new UtgiftListObjectMapperProvider().getContext(ObjectMapper.class).readValue(json, UtgiftList.class);
-                //new UtgiftListObjectMapperProvider().getContext(ObjectMapper.class).readValue(json, UtgiftList.class);
                 System.out.println("Read " + json + " as " + utgiftList);
                 return utgiftList;
             } catch (final Exception e) {

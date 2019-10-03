@@ -1,4 +1,4 @@
-import com.sun.net.httpserver.HttpServer;
+import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 
@@ -9,7 +9,7 @@ public class UtgiftListGrizzlyApp{
     // Base URI the Grizzly HTTP server will listen on
     public static final String BASE_URI = "http://localhost:8080/myapp/";
 
-    public static HttpServer startServer() {
+    public static org.glassfish.grizzly.http.server.HttpServer startServer() {
         // create a resource config that scans for JAX-RS resources and providers
         // in com.example.rest package
         final ResourceConfig rc = new ResourceConfig().packages("com.example.rest");
