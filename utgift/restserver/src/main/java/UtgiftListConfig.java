@@ -1,6 +1,6 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
 import core.UtgiftList;
-import org.glassfish.jersey.server.ResourceConfig;
+
 
 import java.io.IOException;
 
