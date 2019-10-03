@@ -28,12 +28,12 @@ public class UtgiftTest {
         assertTrue("Error, no price was entered.", utgift1.getPrisString().length() > 0);
         System.out.println("Price length test passed");
     }
-
+/*
     @Test
     public void checktoStringMethod() {
         String u1 = utgift1.toString();
         Assert.assertEquals("Mat" + ";" + "200.0" + ";" + "matvarer", u1);
-    }
+    } */
 
     @Test
     public void getNavn() {
@@ -56,11 +56,11 @@ public class UtgiftTest {
     public void getPris() {
         assertEquals(200.0,utgift1.getPris(),0.1);
     }
-
+/*
     @Test
     public void testToString() {
         assertEquals(utgift1.toString(),"Mat;200.0;matvarer");
-    }
+    } */
 
     @Test
     public void testcreateUtgiftObject(){
