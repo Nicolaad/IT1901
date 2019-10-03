@@ -7,7 +7,6 @@ import javax.ws.rs.core.MediaType;
 
 @Path(UtgiftListService.UTGIFT_LIST_SERVICE_PATH)
 public class UtgiftListService {
-
     public static final String UTGIFT_LIST_SERVICE_PATH = "utgiftlist";
 
     @Inject

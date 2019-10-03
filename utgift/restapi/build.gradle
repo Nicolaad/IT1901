@@ -14,6 +14,7 @@ dependencies {
     compile "com.fasterxml.jackson.core:jackson-core:${depVersions.jackson}"
     compile "com.fasterxml.jackson.core:jackson-databind:${depVersions.jackson}"
     compile "com.fasterxml.jackson.core:jackson-annotations:${depVersions.jackson}"
-   /* compile "javax.ws.rs:javax.ws.rs-api:2.1.1"
-    compile "javax.inject:javax.inject:1"*/
+    compile "javax.ws.rs:javax.ws.rs-api:2.1.1"
+    compile "javax.inject:javax.inject:1"
 }
+

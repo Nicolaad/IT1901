@@ -1,29 +1,60 @@
+
+
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 
 import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.URI;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class UtgiftListGrizzlyApp{
-    // Base URI the Grizzly HTTP server will listen on
-    public static final String BASE_URI = "http://localhost:8080/myapp/";
+public class UtgiftListGrizzlyApp {
 
-    public static org.glassfish.grizzly.http.server.HttpServer startServer() {
-        // create a resource config that scans for JAX-RS resources and providers
-        // in com.example.rest package
-        final ResourceConfig rc = new ResourceConfig().packages("com.example.rest");
+    private static URI BASE_URI = URI.create("http://localhost:8080/");
 
-        // create and start a new instance of grizzly http server
-        // exposing the Jersey application at BASE_URI
-        return GrizzlyHttpServerFactory.createHttpServer(URI.create(BASE_URI), rc);
+    public static HttpServer startServer(final String[] args, int waitSecondsForServer) throws IOException {
+        final URI baseUri = (args.length >= 1 ? URI.create(args[0]) : BASE_URI);
+        final ResourceConfig resourceConfig = (args.length >= 2 ? new UtgiftListConfig(args[1]) : new UtgiftListConfig());
+        final HttpServer httpServer = GrizzlyHttpServerFactory.createHttpServer(baseUri, resourceConfig);
+        if (waitSecondsForServer < 0) {
+            return httpServer;
+        }
+        while (waitSecondsForServer > 0) {
+            try {
+                final URL clientUrl = new URL(baseUri + UtgiftListService.UTGIFT_LIST_SERVICE_PATH);
+                final HttpURLConnection connection = (HttpURLConnection) clientUrl.openConnection();
+                final int responseCode = connection.getResponseCode();
+                System.out.println("Trying " + clientUrl + ": " + responseCode);
+                connection.disconnect();
+                if (responseCode == 200) {
+                    return httpServer;
+                }
+            } catch (final Exception e) {
+            }
+            try {
+                Thread.sleep(1000);
+                waitSecondsForServer -= 1;
+            } catch (final InterruptedException e) {
+                return null;
+            }
+        }
+        return null;
     }
 
-    public static void main(String[] args) throws IOException {
-        final HttpServer server = startServer();
-        System.out.println(String.format("Jersey app started with WADL available at "
-                + "%sapplication.wadl\nHit enter to stop it...", BASE_URI));
-        System.in.read();
+    public static void stopServer(final HttpServer server) throws IOException {
+        server.shutdown();
+    }
 
+    public static void main(final String[] args) throws IOException {
+        try {
+            final HttpServer server = startServer(args, -1);
+            Runtime.getRuntime().addShutdownHook(new Thread(server::shutdownNow));
+            Thread.currentThread().join();
+        } catch (final InterruptedException ex) {
+            Logger.getLogger(UtgiftListGrizzlyApp.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

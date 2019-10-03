@@ -1,5 +1,7 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
 import core.UtgiftList;
+import org.glassfish.jersey.internal.inject.AbstractBinder;
+import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 
 import java.io.IOException;
@@ -27,17 +29,17 @@ import java.io.IOException;
 
         public UtgiftListConfig(final UtgiftList utgiftList) {
             System.out.println("Serving " + utgiftList.toList());
-        /*    register(LatLongsService.class);
-            register(LatLongObjectMapperProvider.class);
+            register(UtgiftListService.class);
+            register(UtgiftListObjectMapperProvider.class);
             register(JacksonFeature.class);
 
             register(new AbstractBinder() {
                 @Override
                 protected void configure() {
-                    bind(latLongs);
+                    bind(utgiftList);
                 }
             });
-            */
+
         }
     }
 
