@@ -2,11 +2,11 @@ plugins {
     id 'java'
     id 'application'
     // use javafx modules
-    id 'org.openjfx.javafxplugin' version '0.0.8'
+    id 'org.openjfx.javafxplugin'
     // test coverage
     id 'jacoco'
     // code quality with SpotBugs
-    id 'com.github.spotbugs' version '2.0.0'
+    id 'com.github.spotbugs'
     // code quality with checkstyle
 //    id 'checkstyle'
 }
