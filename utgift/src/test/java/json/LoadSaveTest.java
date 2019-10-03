@@ -36,18 +36,21 @@ public class LoadSaveTest {
         }
 
     //sjekker om koden greier å handle at feil fil er spesifisert
+
+    /* Kommentert ut 2 siste tester pga markert som dodgy
     @Test()
     public void nonexistingFileLoadHandled() {
         Collection<Utgift> retrievedUtgifter = json.Load.retrieve(new File("nonexistingFile.onenote"));
         assert (true);
     }
+
     //sjekker om koden greier å handle at feil fil er spesifisert
     @Test()
     public void nonexistingFileSaveHandeled(){
         Collection<Utgift> retrievedUtgifter = json.Load.retrieve(new File("nonexistingFile2.onenote"));
         assert(true);
 
-    }
+    } */
 
 }
 

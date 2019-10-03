@@ -23,7 +23,8 @@ public class FxAppTest extends ApplicationTest {
     }
 
     private FxAppController controller;
-    private UtgiftList utgiftList;
+    // field is not used
+//    private UtgiftList utgiftList;
     @Override
     public void start(final Stage stage) throws Exception{
         final FXMLLoader loader = new FXMLLoader(getClass().getResource("FxApp.fxml"));
