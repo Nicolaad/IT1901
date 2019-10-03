@@ -2,14 +2,17 @@ plugins {
     id 'java'
     id 'application'
     // use javafx modules
-    id 'org.openjfx.javafxplugin'
+    id 'org.openjfx.javafxplugin' version '0.0.8'
+
     // test coverage
     id 'jacoco'
+
     // code quality with SpotBugs
-    id 'com.github.spotbugs'
+    id 'com.github.spotbugs' version '2.0.0'
     // code quality with checkstyle
 //    id 'checkstyle'
 }
+
 
 spotbugs {
     // see http://gradle.monochromeroad.com/docs/dsl/org.gradle.api.plugins.quality.FindBugsExtension.html
@@ -44,6 +47,7 @@ repositories {
     }
 }
 
+
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
@@ -58,13 +62,14 @@ javafx {
 }
 
 dependencies {
+    implementation project(':core')
     // persistens
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.8'
     // brukergrensesnitt
     testImplementation 'junit:junit:4.12'
-    //json, maybe removeq
-
+    //json
     implementation 'com.google.code.gson:gson:2.8.5'
+
 
     testImplementation 'org.testfx:testfx-core:4.0.16-alpha'
     testImplementation 'org.testfx:testfx-junit:4.0.16-alpha'

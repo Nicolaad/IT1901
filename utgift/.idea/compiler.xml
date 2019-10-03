@@ -12,7 +12,8 @@
       <module name="core.restserver.main" target="1.8" />
       <module name="core.restserver.test" target="1.8" />
       <module name="core.test" target="1.8" />
-      <module name="Utgift.fxui.test" target="1.8" />
+      <module name="utgift.Utgift.main" target="1.8" />
+      <module name="utgift.Utgift.test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
