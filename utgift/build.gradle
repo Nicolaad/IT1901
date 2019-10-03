@@ -7,6 +7,9 @@ allprojects {
     }
 }
 
+subprojects {
+    ext.depVersions = ['jackson': '2.9.8']
+}
 
 
 
