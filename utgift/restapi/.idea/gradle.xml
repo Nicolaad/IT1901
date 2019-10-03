@@ -9,13 +9,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/core" />
-            <option value="$PROJECT_DIR$/fxui" />
-            <option value="$PROJECT_DIR$/restapi" />
-            <option value="$PROJECT_DIR$/restserver" />
           </set>
         </option>
-        <option name="useAutoImport" value="true" />
         <option name="useQualifiedModuleNames" value="true" />
       </GradleProjectSettings>
     </option>
