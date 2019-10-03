@@ -1,7 +1,6 @@
 rootProject.name = 'Utgift'
-include 'fxui'
 include 'core'
 include 'fxui'
-include 'restserver'
 include 'restapi'
+include 'restserver'
 
