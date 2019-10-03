@@ -32,41 +32,21 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class FxAppController {
+    @FXML private TextField textFieldKategori;
+    @FXML private Button btnNyUtgift;
+    @FXML private ListView<Utgift> listViewUtgift = new ListView<>();
+    @FXML private PieChart pieChart;
+    @FXML private Label labelHelse,labelMat,labelSkole,labelTotal;
+
     private String utgifterText;
-
-    @FXML
-    private TextField textFieldKategori;
-    @FXML
-    private Button btnNyUtgift;
-
-    @FXML
-    private ListView<Utgift> listViewUtgift = new ListView<>();
-
-    @FXML
-    private PieChart pieChart;
-
-    @FXML
-    private Label labelHelse;
-    @FXML
-    private Label labelMat;
-    @FXML
-    private Label labelSkole;
-    @FXML
-    private Label labelTotal;
-
     private UtgiftList utgiftList = new UtgiftList();
 
-
-    public String getUtgifterText(){
-        return "hei";
-    }
 
     public void initialize(){
         listViewUtgift.setItems(utgiftList.getUtgifter());
         pieChart.setData(utgiftList.getPieChart());
 
     }
-
 
     @FXML
     public void save(){
@@ -78,23 +58,34 @@ public class FxAppController {
         }
 
     }
+
+    /**
+     * loads data from save.json to the listview, piechart and sets up the labels properly.
+     */
     @FXML
    public void load(){
-        ObservableList<Utgift> temp = utgiftList.getUtgifter();
-        ObservableList<PieChart.Data> temp2 = utgiftList.getPieChart();
-        temp.clear();
-        temp2.clear();
+        // henter først de to observable arraylistene, den ene som er koblet til listview, den andre til piechart.
+        ObservableList<Utgift> utgifterListView = utgiftList.getUtgifter();
+        ObservableList<PieChart.Data> utgifterPieChart = utgiftList.getPieChart();
+        //fjerner alt som ligger i dem fra før
+        utgifterListView.clear();
+        utgifterPieChart.clear();
+        //henter fra fil, save.json via statisk retrieve metode til Load klassen.
         Collection<Utgift> ut = Load.retrieve(new File("src/main/resources/json/save.json"));
-        temp.addAll(ut);
-        temp2.addAll(utgiftList.setPieChartData(ut));
+        //legger deretter til alle utgiftene. Listview er straightforward men for piechart bruker vi en metode i UtgiftList
+        //set piechartdata som tar inn en collection av utgifter.
+        utgifterListView.addAll(ut);
+        utgifterPieChart.addAll(utgiftList.setPieChartData(ut));
         labelsSetUp();
 
     }
 
 
+    /**
+     * @leggTilUtgift() opens up FxAppLeggTilUtgift
+     */
     @FXML
     public void leggTilUtgift(){
-        //åpne opp FxAppLeggTilUtgift.fxml.
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FxAppLeggTilUtgift.fxml"));
             Parent confirmation;
@@ -115,6 +106,9 @@ public class FxAppController {
 
     }
 
+    /**
+     * traveres the piechart and sets up the kategori labels with the responding values.
+     */
     private void labelsSetUp() {
         double mat = 0.0;
         double helse = 0.0;
@@ -138,9 +132,6 @@ public class FxAppController {
         labelTotal.setText(mat+helse+skole+"");
     }
 
-    public String toString(){
-        return "hei";
-    }
     public void add(Utgift utgift){
         utgiftList.add(utgift);
     }
