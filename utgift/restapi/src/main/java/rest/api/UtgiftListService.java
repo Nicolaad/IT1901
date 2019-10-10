@@ -30,7 +30,6 @@ public class UtgiftListService {
         throw new IllegalArgumentException("index out of bounds");
     }
 
-
     @DELETE
     @Path("/{num}")
     @Produces(MediaType.APPLICATION_JSON)
