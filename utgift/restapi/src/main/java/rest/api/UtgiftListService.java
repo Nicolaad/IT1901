@@ -1,3 +1,5 @@
+package rest.api;
+
 import core.Utgift;
 import core.UtgiftList;
 

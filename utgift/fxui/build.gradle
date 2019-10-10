@@ -63,6 +63,8 @@ javafx {
 
 dependencies {
     implementation project(':core')
+    implementation project(':restserver')
+
     // persistens
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.8'
     // brukergrensesnitt
