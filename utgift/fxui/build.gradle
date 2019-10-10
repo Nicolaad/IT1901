@@ -14,10 +14,12 @@ plugins {
 }
 
 
+/*
 spotbugs {
     // see http://gradle.monochromeroad.com/docs/dsl/org.gradle.api.plugins.quality.FindBugsExtension.html
     ignoreFailures = true
 }
+
 
 // To generate an HTML report instead of XML
 tasks.withType(com.github.spotbugs.SpotBugsTask) {
@@ -26,7 +28,7 @@ tasks.withType(com.github.spotbugs.SpotBugsTask) {
         html.enabled = true
     }
 }
-
+*/
 /*
 checkstyle {
     configFile = project.file("config/checkstyle/google_checks.xml")
@@ -63,6 +65,8 @@ javafx {
 
 dependencies {
     implementation project(':core')
+    implementation project(':restserver')
+
     // persistens
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.8'
     // brukergrensesnitt

@@ -7,9 +7,17 @@ ext {
     jerseyVersion = '2.28'
 }
 
-sourceCompatibility = JavaVersion.VERSION_1_10
-targetCompatibility = JavaVersion.VERSION_1_10
+sourceCompatibility = 1.8
 
+repositories {
+    jcenter()
+    maven {
+        url "https://plugins.gradle.org/m2/"
+    }
+    flatDir {
+        dirs 'libs'
+    }
+}
 //application {
 //	sourceCompatibility = JavaVersion.VERSION_1_10
 //	targetCompatibility = JavaVersion.VERSION_1_10

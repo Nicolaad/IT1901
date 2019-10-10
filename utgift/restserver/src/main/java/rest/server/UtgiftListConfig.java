@@ -1,8 +1,12 @@
+package rest.server;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import core.UtgiftList;
 import org.glassfish.jersey.internal.inject.AbstractBinder;
 import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
+import rest.api.UtgiftListObjectMapperProvider;
+import rest.api.UtgiftListService;
 
 import java.io.IOException;
 
@@ -32,6 +36,7 @@ import java.io.IOException;
             register(UtgiftListService.class);
             register(UtgiftListObjectMapperProvider.class);
             register(JacksonFeature.class);
+
 
             register(new AbstractBinder() {
                 @Override
