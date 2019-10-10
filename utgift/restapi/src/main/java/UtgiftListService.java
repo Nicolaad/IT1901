@@ -4,6 +4,8 @@ import core.UtgiftList;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Path(UtgiftListService.UTGIFT_LIST_SERVICE_PATH)
 public class UtgiftListService {
@@ -37,6 +39,13 @@ public class UtgiftListService {
             return utgiftList.toList().remove(num);
         }
         throw new IllegalArgumentException("index out of bounds");
+    }
+
+    @GET
+    @Path("/{Kategori}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Utgift> getKategoriUtgift(@PathParam("Kategori") String kategori) {
+        return utgiftList.toList().stream().filter(u -> u.getKategori().equals(kategori)).collect(Collectors.toList());
     }
 
 
