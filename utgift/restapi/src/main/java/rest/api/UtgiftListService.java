@@ -45,9 +45,15 @@ public class UtgiftListService {
     @GET
     @Path("/{kategori}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Utgift> getKategoriUtgift(@PathParam("kategori") String kategori) {
+    public List<Utgift> getKategoriUtgiftList(@PathParam("kategori") String kategori) {
         return utgiftList.toList().stream().filter(u -> u.getKategori().equals(kategori)).collect(Collectors.toList());
     }
 
+    @GET
+    @Path("/{kategori}/{num}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Utgift getKategoriUtgift(@PathParam("kategori") String kategori, @PathParam("num") int num) {
+        return getKategoriUtgiftList(kategori).get(num);
+    }
 
 }
