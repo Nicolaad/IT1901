@@ -2,15 +2,9 @@ package core;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.scene.chart.PieChart;
-import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 
 import java.util.*;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 public class UtgiftList {
 
@@ -30,7 +24,9 @@ public class UtgiftList {
         public void addUtgift(Utgift utgift){
             utgifter.add(utgift);
         }
-
+        public List<Utgift> toList(){
+            return utgifter;
+        }
         public static void clear(){
             utgifter.clear();
             pieChartData.clear();
