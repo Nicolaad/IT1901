@@ -42,6 +42,7 @@ public class UtgiftListService {
         throw new IllegalArgumentException("index out of bounds");
     }
 
+    // Sorterer utgiftlist på Kategori
     @GET
     @Path("/{kategori}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -49,6 +50,7 @@ public class UtgiftListService {
         return utgiftList.toList().stream().filter(u -> u.getKategori().equals(kategori)).collect(Collectors.toList());
     }
 
+    // Sorterer ut utgift objekt på først kategori og så på index
     @GET
     @Path("/{kategori}/{num}")
     @Produces(MediaType.APPLICATION_JSON)
