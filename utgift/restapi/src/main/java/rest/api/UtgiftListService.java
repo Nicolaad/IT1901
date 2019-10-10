@@ -22,7 +22,7 @@ public class UtgiftListService {
         return utgiftList;
     }
 
-    @GET
+/*    @GET
     @Path("/{num}")
     @Produces(MediaType.APPLICATION_JSON)
     public Utgift getUtgift(@PathParam("num") int num) {
@@ -30,7 +30,7 @@ public class UtgiftListService {
             return utgiftList.toList().get(num);
         }
         throw new IllegalArgumentException("index out of bounds");
-    }
+    } */
 
     @DELETE
     @Path("/{num}")
@@ -43,9 +43,9 @@ public class UtgiftListService {
     }
 
     @GET
-    @Path("/{Kategori}")
+    @Path("/{kategori}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Utgift> getKategoriUtgift(@PathParam("Kategori") String kategori) {
+    public List<Utgift> getKategoriUtgift(@PathParam("kategori") String kategori) {
         return utgiftList.toList().stream().filter(u -> u.getKategori().equals(kategori)).collect(Collectors.toList());
     }
 
