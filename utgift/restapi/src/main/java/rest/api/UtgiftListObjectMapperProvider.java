@@ -1,4 +1,4 @@
-
+package rest.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import json.UtgiftListModule;

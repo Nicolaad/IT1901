@@ -1,3 +1,5 @@
+package rest.api;
+
 import core.Utgift;
 import core.UtgiftList;
 
@@ -29,7 +31,6 @@ public class UtgiftListService {
         }
         throw new IllegalArgumentException("index out of bounds");
     }
-
 
     @DELETE
     @Path("/{num}")
