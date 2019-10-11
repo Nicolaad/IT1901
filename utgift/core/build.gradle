@@ -9,15 +9,16 @@ plugins {
     // code quality with SpotBugs
     id 'com.github.spotbugs' version '2.0.0'
     // code quality with checkstyle
-//    id 'checkstyle'
+   id 'checkstyle'
 }
 
 
 spotbugs {
-    // see http://gradle.monochromeroad.com/docs/dsl/org.gradle.api.plugins.quality.FindBugsExtension.html
     ignoreFailures = true
 }
-
+checkstyle {
+    configFile = project.file("../core/config/checkstyle/google_checks.xml")
+}
 // To generate an HTML report instead of XML
 tasks.withType(com.github.spotbugs.SpotBugsTask) {
     reports {
