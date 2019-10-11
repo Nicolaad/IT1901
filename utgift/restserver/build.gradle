@@ -1,6 +1,30 @@
 plugins {
     id 'java-library'
     id 'jacoco'
+    // code quality with SpotBugs
+    id 'com.github.spotbugs' version '2.0.0'
+    // code quality with checkstyle
+    id 'checkstyle'
+}
+
+sourceCompatibility = 1.8
+
+spotbugs {
+    ignoreFailures = true
+}
+
+
+// To generate an HTML report instead of XML
+tasks.withType(com.github.spotbugs.SpotBugsTask) {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
+
+checkstyle {
+    configFile = project.file("../core/config/checkstyle/google_checks.xml")
 }
 
 ext {
