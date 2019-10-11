@@ -149,8 +149,8 @@ public class UtgiftList {
                 pieChartData.replace(utgift.getKategori(), d + utgift.getPris());
             }
         }
-        for (String k: pieChartData.keySet()) {
-            pie.add(new PieChart.Data(k, pieChartData.get(k)));
+        for (Map.Entry<String,Double> k: pieChartData.entrySet()) {
+            pie.add(new PieChart.Data(k.getKey(), k.getValue()));
         }
         return pie;
     }

@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -20,7 +21,7 @@ public class Load {
         Collection utgifter = new ArrayList<Utgift>();
         try {
             Gson gson = new Gson();
-            Reader reader = new FileReader(file);
+            Reader reader = new FileReader(file, Charset.defaultCharset());
 
             Utgift[] array = gson.fromJson(reader, Utgift[].class);
             reader.close();

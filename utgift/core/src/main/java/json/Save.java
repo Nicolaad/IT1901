@@ -7,6 +7,7 @@ import core.Utgift;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.Collection;
 
 //allows saving to json files.
@@ -21,7 +22,7 @@ public class Save {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         try {
-            FileWriter writer = new FileWriter(file);
+            FileWriter writer = new FileWriter(file, Charset.defaultCharset());
             gson.toJson(utgifter, writer);
             writer.close();
         } catch (IOException e) {
