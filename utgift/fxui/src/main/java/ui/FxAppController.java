@@ -2,12 +2,9 @@ package ui;
 
 import core.Utgift;
 import core.UtgiftList;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Side;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
@@ -22,14 +19,8 @@ import json.Load;
 import json.Save;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class FxAppController {
     @FXML private TextField textFieldKategori;
@@ -45,7 +36,6 @@ public class FxAppController {
     public void initialize(){
         listViewUtgift.setItems(utgiftList.getUtgifter());
         pieChart.setData(utgiftList.getPieChart());
-
     }
 
     @FXML

@@ -2,23 +2,21 @@ plugins {
     id 'java-library'
     // use javafx modules
     id 'org.openjfx.javafxplugin' version '0.0.8'
-
-    // test coverage
     id 'jacoco'
-
+    id 'de.aaschmid.cpd' version '2.0'
     // code quality with SpotBugs
     id 'com.github.spotbugs' version '2.0.0'
     // code quality with checkstyle
-   id 'checkstyle'
+    id 'checkstyle'
 }
 
+sourceCompatibility = 1.8
 
 spotbugs {
     ignoreFailures = true
 }
-checkstyle {
-    configFile = project.file("../core/config/checkstyle/google_checks.xml")
-}
+
+
 // To generate an HTML report instead of XML
 tasks.withType(com.github.spotbugs.SpotBugsTask) {
     reports {
@@ -27,34 +25,31 @@ tasks.withType(com.github.spotbugs.SpotBugsTask) {
     }
 }
 
-/*
-checkstyle {
-    configFile = project.file("config/checkstyle/google_checks.xml")
-} */
 
-version '1.0-SNAPSHOT'
-
-sourceCompatibility = 1.8
+    checkstyle {
+        configFile = project.file("config/checkstyle/google_checks.xml")
+    }
+    version '1.0-SNAPSHOT'
 
 
-javafx {
-    version = '11'
-    modules = [ 'javafx.controls', 'javafx.fxml' ]
-    // run with --debug-jvm flag and
-    // launch debugger using Remote Java Application debug launch configuration
-}
+    javafx {
+        version = '11'
+        modules = ['javafx.controls', 'javafx.fxml']
+        // run with --debug-jvm flag and
+        // launch debugger using Remote Java Application debug launch configuration
+    }
 
-dependencies {
-    // persistens
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.8'
-    // brukergrensesnitt
-    testImplementation 'junit:junit:4.12'
-    //json
-    implementation 'com.google.code.gson:gson:2.8.5'
-
-
-    testImplementation 'org.testfx:testfx-core:4.0.16-alpha'
-    testImplementation 'org.testfx:testfx-junit:4.0.16-alpha'
+    dependencies {
+        // persistens
+        implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.8'
+        // brukergrensesnitt
+        testImplementation 'junit:junit:4.12'
+        //json
+        implementation 'com.google.code.gson:gson:2.8.5'
 
 
-}
+        testImplementation 'org.testfx:testfx-core:4.0.16-alpha'
+        testImplementation 'org.testfx:testfx-junit:4.0.16-alpha'
+
+
+    }

@@ -8,8 +8,7 @@ import core.UtgiftList;
 
 
 /**
- * A Module for LatLongs serialization/deserialization.
- * @author hal
+ * A Module for UtgiftList serialization and deserializiation.
  *
  */
 public class UtgiftListModule extends Module {
@@ -28,7 +27,7 @@ public class UtgiftListModule extends Module {
     private final SimpleDeserializers deserializers = new SimpleDeserializers();
 
     /**
-     * Initializes the LatLongsModule with appropriate serializers.
+     * Initializes the UtgiftListModule with appropriate serializers.
      */
 
     public UtgiftListModule() {

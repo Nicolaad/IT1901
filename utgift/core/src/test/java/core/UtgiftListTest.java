@@ -39,19 +39,7 @@ public class UtgiftListTest {
         ul.addUtgift(utgift1);
         List<PieChart.Data> pie = new ArrayList<>();
         pie.add(new PieChart.Data(utgift1.getKategori(), utgift1.getPris()));
-        ul.setPieChartData(Arrays.asList(utgift1));
-        pie.add(new PieChart.Data(utgift2.getKategori(),utgift2.getPris()));
-        ul.setPieChartData(Arrays.asList(utgift2));
-    }
-    @Test
-    public void testSetPieChartDataNewKategori(){
-        UtgiftList ul = new UtgiftList();
-        ul.clear();
-        ul.addUtgift(utgift1);
-        List<PieChart.Data> pie = new ArrayList<>();
-        pie.add(new PieChart.Data(utgift1.getKategori(), utgift1.getPris()));
-        List<PieChart.Data> op =  ul.setPieChartData(Arrays.asList(utgift1));
-
+        List<PieChart.Data> op = ul.setPieChartData(Arrays.asList(utgift1));
         try {
             for (int i = 0; i < pie.size(); i++) {
                 assertEquals(pie.get(i).getName(), op.get(i).getName());
@@ -61,8 +49,10 @@ public class UtgiftListTest {
         catch(Exception e){
             fail("The piechart did not work properly");
         }
-
+        pie.add(new PieChart.Data(utgift2.getKategori(),utgift2.getPris()));
+        ul.setPieChartData(Arrays.asList(utgift2));
     }
+
     @Test
     public void testSetPieChartDataSameKategori(){
         UtgiftList ul = new UtgiftList();
@@ -82,22 +72,7 @@ public class UtgiftListTest {
         }
 
     }
-    @Test
-    public void testSetPieChartDataSameKategori2(){
-        UtgiftList ul = new UtgiftList();
-        ul.clear();
-        ul.addUtgift(utgift1);
-        ul.addUtgift(utgift2);
-        List<PieChart.Data> pie = new ArrayList<>();
-        pie.add(new PieChart.Data(utgift1.getKategori(), utgift1.getPris()+utgift2.getPris()));
-        List<PieChart.Data> op= ul.setPieChartData(ul.getUtgifter());
 
-        //assertEquals(op.size(), pie.size());
-
-        assertEquals(pie.get(0).getName(), op.get(0).getName());
-        assertEquals(pie.get(0).getPieValue(), op.get(0).getPieValue(), 0.01);
-
-    }
 
     @Test
     public void utgiftListAddTest(){

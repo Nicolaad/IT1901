@@ -11,12 +11,12 @@ import java.io.IOException;
 public class UtgiftListSerializer extends JsonSerializer<UtgiftList> {
 
     @Override
-    public void serialize(final UtgiftList utgiftList, final JsonGenerator jsonGen, final SerializerProvider provider) throws IOException{
-    jsonGen.writeStartArray(utgiftList.getUtgifter().size());
-    for(final Utgift utgift : utgiftList.getUtgifter()){
-        jsonGen.writeObject(utgift);
-    }
-    jsonGen.writeEndArray();
+    public void serialize(final UtgiftList utgiftList, final JsonGenerator jsonGen, final SerializerProvider provider) throws IOException {
+        jsonGen.writeStartArray(utgiftList.getUtgifter().size());
+        for (final Utgift utgift : utgiftList.getUtgifter()) {
+            jsonGen.writeObject(utgift);
+        }
+        jsonGen.writeEndArray();
     }
 
 }

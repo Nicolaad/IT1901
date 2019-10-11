@@ -1,3 +1,8 @@
+plugins{
+
+
+    id "name.remal.sonarlint" version "1.0.156"
+}
 allprojects {
     repositories {
         jcenter()
@@ -5,10 +10,16 @@ allprojects {
             url "https://plugins.gradle.org/m2/"
         }
     }
+
 }
 
 subprojects {
     ext.depVersions = ['jackson': '2.9.8']
+   // check.dependsOn(cpdCheck)
+   // apply plugins:'com.github.spotbugs'
+    // code quality with checkstyle
+    //apply plugins: 'checkstyle'
+
 }
 
 
