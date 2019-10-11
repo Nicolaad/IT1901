@@ -19,15 +19,16 @@ public class UtgiftListDeserializer extends JsonDeserializer<UtgiftList> {
     @Override
     public UtgiftList deserialize(final JsonParser jsonParser, final DeserializationContext deserializationContext) throws IOException {
         final JsonNode jsonNode = jsonParser.getCodec().readTree(jsonParser);
-        if(jsonNode instanceof ArrayNode) {
+        if (jsonNode instanceof ArrayNode) {
             final ArrayNode utgiftArray = (ArrayNode) jsonNode;
-            final Collection<Utgift> utgifter= new ArrayList<>(utgiftArray.size());
-            for(final JsonNode utgiftNode : utgiftArray){
+            final Collection<Utgift> utgifter = new ArrayList<>(utgiftArray.size());
+            for (final JsonNode utgiftNode : utgiftArray) {
                 final Utgift utgift = utgiftDeserializer.deserialize(utgiftNode);
                 utgifter.add(utgift);
             }
             return new UtgiftList(utgifter);
-        }return null;
+        }
+        return null;
     }
 
 }
