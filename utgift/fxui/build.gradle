@@ -3,8 +3,10 @@ plugins {
     id 'application'
     // use javafx modules
     id 'org.openjfx.javafxplugin' version '0.0.8'
+    id 'de.aaschmid.cpd' version '2.0'
     id 'jacoco'
-
+    id 'com.github.spotbugs' version '2.0.0'
+    id 'checkstyle'
 }
 
 version '1.0-SNAPSHOT'
@@ -23,6 +25,19 @@ repositories {
 }
 
 
+spotbugs {
+    ignoreFailures = true
+}
+checkstyle {
+    configFile = project.file("../core/config/checkstyle/google_checks.xml")
+}
+// To generate an HTML report instead of XML
+tasks.withType(com.github.spotbugs.SpotBugsTask) {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
@@ -44,14 +59,17 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.8'
     // brukergrensesnitt
     testImplementation 'junit:junit:4.12'
+    implementation 'org.testfx:testfx-core:4.0.16-alpha'
+    testCompile(group: "org.testfx", name: "testfx-core", version: "4.0.13-alpha")
+    testCompile(group: "org.testfx", name: "testfx-junit", version: "4.0.13-alpha")
+    testCompile(group: 'junit', name: 'junit', version: '4.12')
+   // testCompile 'org.junit.jupiter:junit-jupiter-api:5.5.1'
+    //testCompile group: 'org.assertj', name: 'assertj-core', version: '3.13.2'
     //json
-    implementation 'com.google.code.gson:gson:2.8.5'
+   // implementation 'com.google.code.gson:gson:2.8.5'
 
-
-    testImplementation 'org.testfx:testfx-core:4.0.16-alpha'
-    testImplementation 'org.testfx:testfx-junit:4.0.16-alpha'
-
-
+    /*implementation 'loadui:testFx:3.1.2'
+    implementation 'guava:14.0.1'*/
 }
 
 
