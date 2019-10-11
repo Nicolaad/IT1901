@@ -6,33 +6,59 @@ public class Utgift {
     private String pris;
     private String kategori;
 
-    public Utgift(String navn, String pris, String kategori){
+
+    /**
+     * @param navn
+     * @param pris
+     * @param kategori
+     * //Lager et utgifts objekt som inneholder tre strenger: navn, pris og kategori.
+     */
+    public Utgift(String navn, String pris, String kategori) {
         this.navn = navn;
         this.pris = pris;
         this.kategori = kategori;
     }
 
-    public String getNavn(){
+    /**
+     * @return En string med navnet til utgiften.
+     */
+    public String getNavn() {
         return navn;
     }
 
-    public String getKategori(){
+    /**
+     * @return En string med navnet paa kategorien til utgiften.
+     */
+    public String getKategori() {
         return kategori;
     }
 
-    public String getPrisString(){
+    /**
+     * @return En string med pris til utgiften.
+     */
+    public String getPrisString() {
         return pris;
     }
 
-    public double getPris(){
+    /**
+     * @return En double med pris til utgiften.
+     */
+    public double getPris() {
         return Double.parseDouble(pris);
     }
 
-    public String toString(){
-        return ""+navn+"        "+pris+"        "+kategori;
+    /**
+     * @return En string bestaaende av navn;pris;kategori
+     */
+    public String toString() {
+        return "" + navn + ";" + pris + ";" + kategori;
     }
 
-    public static Utgift createUtgiftObject(String toString){
+    /**
+     * @param toString  en string paa formen navn;pris;kategori
+     * @return returnerer et utgifts objekt av strengen.
+     */
+    public static Utgift createUtgiftObject(String toString) {
         String[] s = toString.split(";");
         return new Utgift(s[0],s[1],s[2]);
     }

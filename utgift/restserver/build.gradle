@@ -25,6 +25,7 @@ tasks.withType(com.github.spotbugs.SpotBugsTask) {
 
 checkstyle {
     configFile = project.file("../core/config/checkstyle/google_checks.xml")
+    
 }
 
 ext {
