@@ -17,15 +17,18 @@ public class UtgiftList {
     }
     public UtgiftList(Collection<Utgift> utgifter){
         utgifter.clear();
+        addUtgifter(utgifter);
+
+    }
+    private void addUtgifter(Collection<Utgift> utgifter){
         for(Utgift u :utgifter){
             UtgiftList.add(u);
         }
-
     }
-
         public void addUtgift(Utgift utgift){
             utgifter.add(utgift);
         }
+
         public List<Utgift> toList(){
             return utgifter;
         }
