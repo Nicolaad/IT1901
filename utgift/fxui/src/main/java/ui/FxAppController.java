@@ -8,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -23,65 +22,59 @@ import java.io.IOException;
 import java.util.Collection;
 
 public class FxAppController {
-    @FXML private TextField textFieldKategori;
-    @FXML private Button btnNyUtgift;
     @FXML private ListView<Utgift> listViewUtgift = new ListView<>();
     @FXML private PieChart pieChart;
-    @FXML private Label labelHelse,labelMat,labelSkole,labelTotal;
+    @FXML private Label labelHelse;
+    @FXML private Label labelMat;
+    @FXML private Label labelSkole;
+    @FXML private Label labelTotal;
+    @FXML TextField inputField;
 
-    private String utgifterText;
     private UtgiftList utgiftList = new UtgiftList();
 
-
-    public void initialize(){
+    /**
+     * Sets up the listview and piechart to initial data.
+     */
+    public void initialize() {
         listViewUtgift.setItems(utgiftList.getUtgifter());
         pieChart.setData(utgiftList.getPieChart());
     }
 
+    /**
+     * Saves the data to save.json using a static method in the calss Save
+     */
     @FXML
-    public void save(){
-        try {
-            Save.save(utgiftList.getUtgifter(), new File("src/main/resources/json/save.json"));
-        }
-        catch(Exception e){
-
-        }
-
+    public void save() {
+        Save.save(utgiftList.getUtgifter(), new File("src/main/resources/json/save.json"));
     }
 
     /**
      * loads data from save.json to the listview, piechart and sets up the labels properly.
      */
     @FXML
-   public void load(){
-        // henter først de to observable arraylistene, den ene som er koblet til listview, den andre til piechart.
+    public void load() {
+
         ObservableList<Utgift> utgifterListView = utgiftList.getUtgifter();
         ObservableList<PieChart.Data> utgifterPieChart = utgiftList.getPieChart();
-        //fjerner alt som ligger i dem fra før
         utgifterListView.clear();
         utgifterPieChart.clear();
-        //henter fra fil, save.json via statisk retrieve metode til Load klassen.
         Collection<Utgift> ut = Load.retrieve(new File("src/main/resources/json/save.json"));
-        //legger deretter til alle utgiftene. Listview er straightforward men for piechart bruker vi en metode i UtgiftList
-        //set piechartdata som tar inn en collection av utgifter.
         utgifterListView.addAll(ut);
         utgifterPieChart.addAll(utgiftList.setPieChartData(ut));
         labelsSetUp();
-
     }
 
 
     /**
-     * @leggTilUtgift() opens up FxAppLeggTilUtgift
+     * metoden aapner fxappleggtilutgift.fxml, altsaa faar vi en slags popup og kan ikke
+     * endre paa de forrige elementene lenger.
      */
     @FXML
-    public void leggTilUtgift(){
+    public void leggTilUtgift() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FxAppLeggTilUtgift.fxml"));
             Parent confirmation;
             confirmation = fxmlLoader.load();
-            FxLeggTilUtgiftController controller = (FxLeggTilUtgiftController) fxmlLoader.getController();
-
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initStyle(StageStyle.UNDECORATED);
@@ -91,7 +84,7 @@ public class FxAppController {
             labelsSetUp();
 
         } catch (IOException e) {
-
+            System.out.println(e);
         }
 
     }
@@ -103,27 +96,19 @@ public class FxAppController {
         double mat = 0.0;
         double helse = 0.0;
         double skole = 0.0;
-        for(PieChart.Data t: utgiftList.getPieChart()){
-
-            System.out.println(t.getName());
-            if(t.getName().equals("Mat")){
-                mat+=t.getPieValue();
-            }
-            if(t.getName().equals("Skole")){
-                skole+=t.getPieValue();
-            }
-            if(t.getName().equals("Helse")){
-                helse+=t.getPieValue();
+        for (PieChart.Data data: utgiftList.getPieChart()) {
+            System.out.println(data.getName());
+            if (data.getName().equals("Mat")) {
+                mat += data.getPieValue();
+            } else if (data.getName().equals("Skole")) {
+                skole += data.getPieValue();
+            } else if (data.getName().equals("Helse")) {
+                helse += data.getPieValue();
             }
         }
-        labelMat.setText(""+mat);
-        labelHelse.setText(""+helse);
-        labelSkole.setText(""+skole);
-        labelTotal.setText(mat+helse+skole+"");
+        labelMat.setText("" + mat);
+        labelHelse.setText("" + helse);
+        labelSkole.setText("" + skole);
+        labelTotal.setText(mat + helse + skole + "");
     }
-
-    public void add(Utgift utgift){
-        utgiftList.add(utgift);
-    }
-
 }
