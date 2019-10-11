@@ -11,6 +11,7 @@ public class UtgiftList {
     private static ObservableList<Utgift> utgifter = FXCollections.observableArrayList();
     private static ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
 
+
     public UtgiftList(){
 
     }
@@ -21,6 +22,7 @@ public class UtgiftList {
         }
 
     }
+
         public void addUtgift(Utgift utgift){
             utgifter.add(utgift);
         }
