@@ -8,10 +8,10 @@ public class Utgift {
 
 
     /**
-     * @param navn
-     * @param pris
-     * @param kategori
-     * //Lager et utgifts objekt som inneholder tre strenger: navn, pris og kategori.
+     * Lager et Utgift objekt med navn, pris og kategori.
+     * @param navn navn til utgiften
+     * @param pris prisen til utgiften
+     * @param kategori navn paa kategori til utgiften
      */
     public Utgift(String navn, String pris, String kategori) {
         this.navn = navn;
@@ -41,6 +41,7 @@ public class Utgift {
     }
 
     /**
+     *
      * @return En double med pris til utgiften.
      */
     public double getPris() {
