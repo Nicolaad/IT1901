@@ -1,3 +1,12 @@
+plugins{
+    // code quality with SpotBugs
+    id 'com.github.spotbugs' version '2.0.0'
+    // code quality with checkstyle
+    id 'checkstyle'
+
+    id 'de.aaschmid.cpd' version '2.0'
+
+}
 allprojects {
     repositories {
         jcenter()
@@ -9,6 +18,10 @@ allprojects {
 
 subprojects {
     ext.depVersions = ['jackson': '2.9.8']
+   // apply plugins:'com.github.spotbugs'
+    // code quality with checkstyle
+    //apply plugins: 'checkstyle'
+
 }
 
 

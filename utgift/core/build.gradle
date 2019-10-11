@@ -7,30 +7,20 @@ plugins {
     id 'jacoco'
 
     // code quality with SpotBugs
-    id 'com.github.spotbugs' version '2.0.0'
+    id 'com.github.spotbugs'
     // code quality with checkstyle
    id 'checkstyle'
+        //id 'de.aaschmid.cpd'
 }
 
 
 spotbugs {
     ignoreFailures = true
 }
-checkstyle {
-    configFile = project.file("../core/config/checkstyle/google_checks.xml")
-}
-// To generate an HTML report instead of XML
-tasks.withType(com.github.spotbugs.SpotBugsTask) {
-    reports {
-        xml.enabled = false
-        html.enabled = true
-    }
-}
 
-/*
 checkstyle {
     configFile = project.file("config/checkstyle/google_checks.xml")
-} */
+}
 
 version '1.0-SNAPSHOT'
 
