@@ -1,12 +1,12 @@
 [
   {
-    "navn": "YO",
-    "pris": "43",
+    "navn": "fisk",
+    "pris": "200",
     "kategori": "Mat"
   },
   {
-    "navn": "ost",
-    "pris": "32",
-    "kategori": "Skole"
+    "navn": "fisk",
+    "pris": "2000",
+    "kategori": "Mat"
   }
 ]
