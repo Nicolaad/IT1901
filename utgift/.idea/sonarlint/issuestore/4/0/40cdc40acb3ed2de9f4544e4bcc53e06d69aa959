@@ -1,0 +1,8 @@
+
+osquid:S3008"SRename this field "BASE_URI" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£Êß’ÿÿÿÿÿ
+O
+squid:S106"9Replace this use of System.out or System.err by a logger.(•œÎ
+@squid:S00108$")Either remove or fill this block of code.(Í´ˆ#
+bsquid:S2142)"FEither re-interrupt this method or rethrow the "InterruptedException".(Ñ‘Åüÿÿÿÿ
+%squid:RedundantThrowsDeclarationCheck0"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(ÓÌÕÉ
+bsquid:S21429"FEither re-interrupt this method or rethrow the "InterruptedException".(€—Àûÿÿÿÿ
