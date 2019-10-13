@@ -22,7 +22,7 @@ import static junit.framework.TestCase.assertNotNull;
 
 public class FxAppTest extends ApplicationTest {
     private FxAppController controller;
-
+    private Thread thread;
 
     @Override
     public void start(final Stage stage) throws Exception {
@@ -68,17 +68,10 @@ public class FxAppTest extends ApplicationTest {
         Utgift u3 = new Utgift("Penn","10.0","Skole");
         Utgift u4 = new Utgift("Medisin","100.0","Helse");
         List<Utgift> temp = new ArrayList<>(Arrays.asList(u1,u2,u3,u4));
-      // controller.labelsSetUp();
-        Platform.setImplicitExit(false);
-        Platform.runLater(() -> UtgiftList.add(u1));
-
-        for(Utgift u: temp){
-
+        for(Utgift u:temp){
+           Platform.runLater(() -> UtgiftList.add(u));
         }
-
-
-        //Platform.runLater(() -> controller.labelsSetUp());
-
+        Platform.runLater(() -> controller.labelsSetUp());
 
 }
 

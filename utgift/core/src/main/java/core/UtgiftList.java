@@ -36,7 +36,9 @@ public class UtgiftList {
         addUtgifter(utgifter);
 
     }
-
+    public Utgift getUtgift(int num){
+        return utgifter.get(num);
+    }
     /**
      * toommer utgifter og pieChartData.
      */
@@ -98,7 +100,7 @@ public class UtgiftList {
      *
      * @return en peker til utgifter.
      */
-    public static List<Utgift> toList() {
+    public List<Utgift> toList() {
         return utgifter;
     }
 
