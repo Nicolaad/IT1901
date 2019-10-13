@@ -19,6 +19,7 @@ public class FxLeggTilUtgiftController {
     @FXML TextField textFieldPris;
     @FXML Button btnBack;
     @FXML ComboBox<String> comboBoxKategori;
+    @FXML Button btnFerdigUtgift;
 
     private ObservableList<String> kategorier = FXCollections.observableArrayList();
     private List<String> presetKategori = new ArrayList<>(Arrays.asList("Mat","Skole","Helse"));
@@ -37,7 +38,6 @@ public class FxLeggTilUtgiftController {
      * textFieldPris og kategori fra comboBoxKategori i javafx. Denne bruker statisk metode i Utgiflist til aa legge dem til saa de vises
      * paa den forrige fxml siden.
      */
-    @FXML
     public void leggTilUtgift() {
         if (textFieldPris.getText().matches("[0-9]+") && textFieldPris.getText().length() > 0) {
             UtgiftList.add(new Utgift(textFieldNavn.getText(), textFieldPris.getText(), comboBoxKategori.getValue()));

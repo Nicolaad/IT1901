@@ -39,7 +39,9 @@ public class FxAppController {
         listViewUtgift.setItems(utgiftList.getUtgifter());
         pieChart.setData(utgiftList.getPieChart());
     }
-
+    public UtgiftList getUtgiftList(){
+        return utgiftList;
+    }
     /**
      * Saves the data to save.json using a static method in the calss Save
      */
@@ -92,7 +94,7 @@ public class FxAppController {
     /**
      * traveres the piechart and sets up the kategori labels with the responding values.
      */
-    private void labelsSetUp() {
+    public void labelsSetUp() {
         double mat = 0.0;
         double helse = 0.0;
         double skole = 0.0;

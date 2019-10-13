@@ -98,7 +98,7 @@ public class UtgiftList {
      *
      * @return en peker til utgifter.
      */
-    public List<Utgift> toList() {
+    public static List<Utgift> toList() {
         return utgifter;
     }
 
