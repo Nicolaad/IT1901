@@ -15,8 +15,8 @@ import java.util.*;
  */
 public class UtgiftList {
 
-    private static ObservableList<Utgift> utgifter = FXCollections.observableArrayList();
-    private static ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
+    private ObservableList<Utgift> utgifter = FXCollections.observableArrayList();
+    private ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
     private String mat;
 
     /**
@@ -37,7 +37,7 @@ public class UtgiftList {
      */
     public UtgiftList(Collection<Utgift> utgifter) {
         //this.utgifter.addAll(utgifter);
-        this.utgifter.clear();
+        clear();
         addUtgifter(utgifter);
     }
 
@@ -50,7 +50,7 @@ public class UtgiftList {
     /**
      * toommer utgifter og pieChartData.
      */
-    public static void clear() {
+    public void clear() {
         utgifter.clear();
         pieChartData.clear();
     }
@@ -63,7 +63,7 @@ public class UtgiftList {
      * utgift objekt til eksisterende pris. ellers blir kategorien lagt til og prisen blir satt.
      * @param utgift tar inn utgift element som skal legges til
      */
-    public static void add(Utgift utgift) {
+    public void add(Utgift utgift) {
         utgifter.add(utgift);
         List<String> yes = new ArrayList<>();
         //lager forst en liste av strenger av all data som ligger i piechart allerede
@@ -92,7 +92,7 @@ public class UtgiftList {
      */
     private void addUtgifter(Collection<Utgift> utgifter) {
         for (Utgift u :utgifter) {
-            UtgiftList.add(u);
+            this.add(u);
         }
     }
 

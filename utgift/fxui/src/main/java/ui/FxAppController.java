@@ -30,7 +30,7 @@ public class FxAppController {
     @FXML private Label labelTotal;
     @FXML TextField inputField;
 
-    private UtgiftList utgiftList = new UtgiftList();
+    private UtgiftList utgiftList;
     private UtgiftListDataAccess dataAccess;
 
     protected UtgiftListDataAccess getDataAccess() {
@@ -58,6 +58,12 @@ public class FxAppController {
         listViewUtgift.setItems(dataAccess.getUtgifter());
         pieChart.setData(dataAccess.getPieChart());
     }
+
+    public void init2(){
+        listViewUtgift.setItems(dataAccess.getUtgifter());
+        pieChart.setData(dataAccess.getPieChart());
+    }
+
     public UtgiftList getUtgiftList(){
         return utgiftList;
     }
@@ -113,6 +119,7 @@ public class FxAppController {
      * traveres the piechart and sets up the kategori labels with the responding values.
      */
     public void labelsSetUp() {
+        //getUtgiftList().clear();
         double mat = 0.0;
         double helse = 0.0;
         double skole = 0.0;

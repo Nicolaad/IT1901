@@ -8,8 +8,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import org.testfx.framework.junit.ApplicationTest;
 
 import java.net.URL;
@@ -18,7 +21,7 @@ import java.util.Arrays;
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertNotNull;
 
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class FxAppTest extends ApplicationTest {
     private FxAppController controller;
     private Thread thread;
@@ -36,18 +39,19 @@ public class FxAppTest extends ApplicationTest {
                                 new Utgift("Rotter","50.0","Mat"),
                                 new Utgift("Penn","20.0","Skole"),
                                 new Utgift("Medisin","100.0","Helse"))));
+        controller.init2();
         controller.labelsSetUp();
         final Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
-
-
     @Test
-    public void testController(){
-        assertNotNull(this.controller);
+    public void aTestController(){
+       assertNotNull(this.controller);
     }
+
+
 
     /* @Test
     public void testUtgiftListView(){
@@ -64,7 +68,7 @@ public class FxAppTest extends ApplicationTest {
 }*/
 
     @Test
-    public void testLabelsSetup(){
+    public void cTestLabelsSetup22(){
         final Label mat = lookup("#labelMat").query();
         final Label helse = lookup("#labelHelse").query();
         final Label skole = lookup("#labelSkole").query();
@@ -80,16 +84,28 @@ public class FxAppTest extends ApplicationTest {
       //  Platform.runLater(() -> controller.labelsSetUp());
 }
 
+    /**
+     * SJekker at piechart har riktig data. Det betyr at etter at den har blitt initializert
+     * Den skal ikke ha flere data med Mat, hver kategori tilsvarer et data field og med summen av alle utgiftene sin pris.
+     * som value. og navnet på kategori som name.
+     */
     @Test
-    public void testPieChart(){
+    public void bTestPieChart(){
         final PieChart pieChart = lookup("#pieChart").query();
         ObservableList<PieChart.Data> temp = pieChart.getData();
         ObservableList<PieChart.Data> temp2 = controller.getDataAccess().getPieChart();
-        System.out.println("fitte");
-
         for (int i = 0;i<pieChart.getData().size();i++){
             System.out.println(temp.get(i));
             System.out.println(temp2.get(i));
+            assertEquals(temp.get(i),temp2.get(i));
+        }
+    }
+    @Test
+    public void dTestListView(){
+        final ListView listView = lookup("listViewUtgift").query();
+        ObservableList<Utgift> temp  = listView.getItems();
+        ObservableList<Utgift> temp2 = controller.getDataAccess().getUtgifter();
+        for(int i =0;i<temp.size();i++){
             assertEquals(temp.get(i),temp2.get(i));
         }
     }

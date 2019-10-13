@@ -16,7 +16,6 @@ public class LocalUtgiftListDataAccess implements UtgiftListDataAccess {
     private UtgiftList utgiftList;
     public LocalUtgiftListDataAccess(UtgiftList utgiftList){
         this.utgiftList = utgiftList;
-        utgiftList.setMat("Fisk");
     }
 
     public LocalUtgiftListDataAccess(){

@@ -1,7 +1,5 @@
 package ui;
 
-import core.Utgift;
-import core.UtgiftList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -40,7 +38,7 @@ public class FxLeggTilUtgiftController {
      */
     public void leggTilUtgift() {
         if (textFieldPris.getText().matches("[0-9]+") && textFieldPris.getText().length() > 0) {
-            UtgiftList.add(new Utgift(textFieldNavn.getText(), textFieldPris.getText(), comboBoxKategori.getValue()));
+            //UtgiftList.add(new Utgift(textFieldNavn.getText(), textFieldPris.getText(), comboBoxKategori.getValue()));
             clearText();
         } else {
             textFieldPris.setText("");
