@@ -18,8 +18,6 @@ public interface UtgiftListDataAccess {
      * @return the (internal) LatLong objects
      */
     Collection<Utgift> getAllUtgifter();
-    String getMat();
-    void setMat(String nei);
     ObservableList<PieChart.Data> getPieChart();
     /**
      * Gets a specific LatLong object by index.

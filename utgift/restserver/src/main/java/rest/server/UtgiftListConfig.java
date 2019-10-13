@@ -36,8 +36,6 @@ import java.io.IOException;
             register(UtgiftListService.class);
             register(UtgiftListObjectMapperProvider.class);
             register(JacksonFeature.class);
-
-
             register(new AbstractBinder() {
                 @Override
                 protected void configure() {

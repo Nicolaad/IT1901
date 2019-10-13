@@ -1,5 +1,6 @@
 package ui;
 
+import core.Utgift;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -21,6 +22,13 @@ public class FxLeggTilUtgiftController {
 
     private ObservableList<String> kategorier = FXCollections.observableArrayList();
     private List<String> presetKategori = new ArrayList<>(Arrays.asList("Mat","Skole","Helse"));
+    private FxLeggTilUtgiftController controller;
+    private FxAppController controller2;
+    private UtgiftListDataAccess dataAccess;
+
+    public void setDataAccess(UtgiftListDataAccess dataAccess) {
+        this.dataAccess = dataAccess;
+    }
 
     /**
      * Fyller opp combobox med presetta kategorier og setter verdien til aa starte paa Mat.
@@ -38,7 +46,7 @@ public class FxLeggTilUtgiftController {
      */
     public void leggTilUtgift() {
         if (textFieldPris.getText().matches("[0-9]+") && textFieldPris.getText().length() > 0) {
-            //UtgiftList.add(new Utgift(textFieldNavn.getText(), textFieldPris.getText(), comboBoxKategori.getValue()));
+            dataAccess.addUtgift(new Utgift(textFieldNavn.getText(), textFieldPris.getText(), comboBoxKategori.getValue()));
             clearText();
         } else {
             textFieldPris.setText("");

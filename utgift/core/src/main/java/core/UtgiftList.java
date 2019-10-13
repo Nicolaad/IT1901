@@ -101,7 +101,8 @@ public class UtgiftList {
      * @param utgift tar inn et utgift objekt.
      */
     public void addUtgift(Utgift utgift) {
-        utgifter.add(utgift);
+
+        this.add(utgift);
     }
 
     /**

@@ -37,13 +37,6 @@ public class LocalUtgiftListDataAccess implements UtgiftListDataAccess {
       return getUtgiftList().getPieChart();
     }
 
-    public String getMat(){
-        return getUtgiftList().getMat();
-    }
-
-    public void setMat(String mat){
-        getUtgiftList().setMat(mat);
-    }
     /**
      * Gets a specific LatLong object by index.
      * @param num the index of the LatLong object to get

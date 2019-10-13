@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.util.Collection;
 
 public class FxAppController {
-    @FXML private ListView<Utgift> listViewUtgift = new ListView<>();
+    @FXML private ListView<Utgift> listViewUtgift;
     @FXML private PieChart pieChart;
     @FXML private Label labelHelse;
     @FXML private Label labelMat;
@@ -32,13 +32,10 @@ public class FxAppController {
 
     private UtgiftList utgiftList;
     private UtgiftListDataAccess dataAccess;
+    private FxAppController controller;
 
     protected UtgiftListDataAccess getDataAccess() {
         return dataAccess;
-    }
-    @FXML
-    public void testing(){
-        getDataAccess().setMat("nei");
     }
 
     public void setUtgiftList(UtgiftList utgiftList){
@@ -101,6 +98,8 @@ public class FxAppController {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FxAppLeggTilUtgift.fxml"));
             Parent confirmation;
             confirmation = fxmlLoader.load();
+            FxLeggTilUtgiftController uc = fxmlLoader.getController();
+            uc.setDataAccess(this.getDataAccess());
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initStyle(StageStyle.UNDECORATED);
@@ -108,6 +107,7 @@ public class FxAppController {
             stage.setScene(new Scene(confirmation));
             stage.showAndWait();
             labelsSetUp();
+            //init2();
 
         } catch (IOException e) {
             System.out.println(e);
