@@ -65,6 +65,8 @@ public class FxApp extends Application {
             controller.setDataAccess(new RestUtgiftListDataAccess(baseUri + UtgiftListService.UTGIFT_LIST_SERVICE_PATH, controller.getObjectMapper()));
 
         }
+        String[]strings = {};
+        UtgiftListGrizzlyApp.startServer(strings,2);
         final Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();

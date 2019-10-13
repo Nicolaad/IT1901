@@ -17,8 +17,9 @@ public class UtgiftListGrizzlyApp {
     private static URI BASE_URI = URI.create("http://localhost:8080/");
 
     public static HttpServer startServer(final String[] args, int waitSecondsForServer) throws IOException {
-        final URI baseUri = (args.length >= 1 ? URI.create(args[0]) : BASE_URI);
-        final ResourceConfig resourceConfig = (args.length >= 2 ? new UtgiftListConfig(args[1]) : new UtgiftListConfig());
+        // used to be >=1
+        final URI baseUri = BASE_URI;//(args.length >= 1 ? URI.create(args[0]) : BASE_URI);
+        final ResourceConfig resourceConfig = new UtgiftListConfig();//(args.length >= 2 ? new UtgiftListConfig(args[1]) : new UtgiftListConfig());
         final HttpServer httpServer = GrizzlyHttpServerFactory.createHttpServer(baseUri, resourceConfig);
         if (waitSecondsForServer < 0) {
             return httpServer;
