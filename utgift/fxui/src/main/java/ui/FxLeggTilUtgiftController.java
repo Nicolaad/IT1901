@@ -70,6 +70,7 @@ public class FxLeggTilUtgiftController {
     public void ferdigUtgift() {
         Stage stage = (Stage) btnBack.getScene().getWindow();
         leggTilUtgift();
+        //Platform.runLater(() ->
         stage.close();
     }
 

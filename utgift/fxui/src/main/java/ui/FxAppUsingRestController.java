@@ -1,4 +1,7 @@
 package ui;
 
-public class FxAppUsingRestController {
+public class FxAppUsingRestController extends AbstractFxAppController{
+    public FxAppUsingRestController(){
+
+    }
 }

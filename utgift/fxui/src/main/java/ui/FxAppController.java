@@ -105,7 +105,7 @@ public class FxAppController {
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle("Legg til utgift");
             stage.setScene(new Scene(confirmation));
-            stage.showAndWait();
+            stage.show();
             labelsSetUp();
             //init2();
 

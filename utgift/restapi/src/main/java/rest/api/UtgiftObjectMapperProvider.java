@@ -13,11 +13,11 @@ import javax.ws.rs.ext.Provider;
 @Provider
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class UtgiftListObjectMapperProvider implements ContextResolver<ObjectMapper> {
+public class UtgiftObjectMapperProvider implements ContextResolver<ObjectMapper> {
 
     private final ObjectMapper objectMapper;
 
-    public UtgiftListObjectMapperProvider() {
+    public UtgiftObjectMapperProvider() {
         objectMapper = new ObjectMapper().registerModule(new UtgiftListModule());
     }
 

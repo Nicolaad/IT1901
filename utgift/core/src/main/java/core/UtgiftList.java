@@ -40,7 +40,6 @@ public class UtgiftList {
         clear();
         addUtgifter(utgifter);
     }
-
     public void setMat(String mat){
         this.mat = mat;
     }
@@ -90,7 +89,7 @@ public class UtgiftList {
      * soorger for at begge listene fylles opp.
      * @param utgifter collection av utgifter. brukes av konstruktoren.
      */
-    private void addUtgifter(Collection<Utgift> utgifter) {
+    public void addUtgifter(Collection<Utgift> utgifter) {
         for (Utgift u :utgifter) {
             this.add(u);
         }
