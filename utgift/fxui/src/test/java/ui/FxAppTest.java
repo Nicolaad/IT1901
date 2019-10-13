@@ -102,7 +102,7 @@ public class FxAppTest extends ApplicationTest {
     }
     @Test
     public void dTestListView(){
-        final ListView listView = lookup("listViewUtgift").query();
+        final ListView listView = lookup("#listViewUtgift").query();
         ObservableList<Utgift> temp  = listView.getItems();
         ObservableList<Utgift> temp2 = controller.getDataAccess().getUtgifter();
         for(int i =0;i<temp.size();i++){
