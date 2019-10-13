@@ -17,7 +17,7 @@ public class UtgiftList {
 
     private static ObservableList<Utgift> utgifter = FXCollections.observableArrayList();
     private static ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
-
+    private String mat;
 
     /**
      * Tom konstruktoor
@@ -25,6 +25,10 @@ public class UtgiftList {
     public UtgiftList() {
 
     }
+    public String getMat(){
+        return mat;
+    }
+
 
     /**
      * konstruktoren fjerner foorst det som finnes it utgifter for aa ikke legge til dobbelt.
@@ -32,9 +36,13 @@ public class UtgiftList {
      * @param utgifter tar inn en collection av utgifter.
      */
     public UtgiftList(Collection<Utgift> utgifter) {
-        utgifter.clear();
+        //this.utgifter.addAll(utgifter);
+        this.utgifter.clear();
         addUtgifter(utgifter);
+    }
 
+    public void setMat(String mat){
+        this.mat = mat;
     }
     public Utgift getUtgift(int num){
         return utgifter.get(num);

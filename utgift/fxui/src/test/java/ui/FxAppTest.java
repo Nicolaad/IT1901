@@ -2,7 +2,7 @@ package ui;
 
 import core.Utgift;
 import core.UtgiftList;
-import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,10 +13,9 @@ import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
+import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertNotNull;
 
 
@@ -30,6 +29,14 @@ public class FxAppTest extends ApplicationTest {
         final FXMLLoader loader = new FXMLLoader(f);
         final Parent root = loader.load();
         this.controller = loader.getController();
+        controller.setUtgiftList(
+                new UtgiftList(
+                        Arrays.asList(
+                                new Utgift("Fisk","200.0","Mat"),
+                                new Utgift("Rotter","50.0","Mat"),
+                                new Utgift("Penn","20.0","Skole"),
+                                new Utgift("Medisin","100.0","Helse"))));
+        controller.labelsSetUp();
         final Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -58,21 +65,33 @@ public class FxAppTest extends ApplicationTest {
 
     @Test
     public void testLabelsSetup(){
-        final PieChart pieChart = lookup("#pieChart").query();
         final Label mat = lookup("#labelMat").query();
         final Label helse = lookup("#labelHelse").query();
         final Label skole = lookup("#labelSkole").query();
         final Label total = lookup("#labelTotal").query();
-        Utgift u1 = new Utgift("Fisk","200.0","Mat");
-        Utgift u2 = new Utgift("Melk","20.0","Mat");
-        Utgift u3 = new Utgift("Penn","10.0","Skole");
-        Utgift u4 = new Utgift("Medisin","100.0","Helse");
-        List<Utgift> temp = new ArrayList<>(Arrays.asList(u1,u2,u3,u4));
-        for(Utgift u:temp){
-           Platform.runLater(() -> UtgiftList.add(u));
-        }
-        Platform.runLater(() -> controller.labelsSetUp());
-
+        assertEquals("250.0",mat.getText());
+        assertEquals("20.0",skole.getText());
+        assertEquals("100.0",helse.getText());
+        assertEquals("370.0",total.getText());
+     /*   for(Utgift u: temp){
+            controller.getDataAccess().addUtgift(u);
+        }*/
+        //controller.labelsSetUp();
+      //  Platform.runLater(() -> controller.labelsSetUp());
 }
+
+    @Test
+    public void testPieChart(){
+        final PieChart pieChart = lookup("#pieChart").query();
+        ObservableList<PieChart.Data> temp = pieChart.getData();
+        ObservableList<PieChart.Data> temp2 = controller.getDataAccess().getPieChart();
+        System.out.println("fitte");
+
+        for (int i = 0;i<pieChart.getData().size();i++){
+            System.out.println(temp.get(i));
+            System.out.println(temp2.get(i));
+            assertEquals(temp.get(i),temp2.get(i));
+        }
+    }
 
 }

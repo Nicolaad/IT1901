@@ -31,13 +31,32 @@ public class FxAppController {
     @FXML TextField inputField;
 
     private UtgiftList utgiftList = new UtgiftList();
+    private UtgiftListDataAccess dataAccess;
 
+    protected UtgiftListDataAccess getDataAccess() {
+        return dataAccess;
+    }
+    @FXML
+    public void testing(){
+        getDataAccess().setMat("nei");
+    }
+
+    public void setUtgiftList(UtgiftList utgiftList){
+        setDataAccess(new LocalUtgiftListDataAccess(utgiftList));
+    }
+    protected void setDataAccess(final UtgiftListDataAccess dataAccess) {
+        this.dataAccess = dataAccess;
+    }
+
+    public FxAppController(){
+        setDataAccess(new LocalUtgiftListDataAccess(new UtgiftList()));
+    }
     /**
      * Sets up the listview and piechart to initial data.
      */
     public void initialize() {
-        listViewUtgift.setItems(utgiftList.getUtgifter());
-        pieChart.setData(utgiftList.getPieChart());
+        listViewUtgift.setItems(dataAccess.getUtgifter());
+        pieChart.setData(dataAccess.getPieChart());
     }
     public UtgiftList getUtgiftList(){
         return utgiftList;
@@ -55,7 +74,6 @@ public class FxAppController {
      */
     @FXML
     public void load() {
-
         ObservableList<Utgift> utgifterListView = utgiftList.getUtgifter();
         ObservableList<PieChart.Data> utgifterPieChart = utgiftList.getPieChart();
         utgifterListView.clear();
@@ -98,14 +116,14 @@ public class FxAppController {
         double mat = 0.0;
         double helse = 0.0;
         double skole = 0.0;
-        for (PieChart.Data data: utgiftList.getPieChart()) {
-            System.out.println(data.getName());
-            if (data.getName().equals("Mat")) {
-                mat += data.getPieValue();
-            } else if (data.getName().equals("Skole")) {
-                skole += data.getPieValue();
-            } else if (data.getName().equals("Helse")) {
-                helse += data.getPieValue();
+        for (Utgift data: dataAccess.getAllUtgifter()) {
+            System.out.println(data.getKategori());
+            if (data.getKategori().equals("Mat")) {
+                mat += data.getPris();
+            } else if (data.getKategori().equals("Skole")) {
+                skole += data.getPris();
+            } else if (data.getKategori().equals("Helse")) {
+                helse += data.getPris();
             }
         }
         labelMat.setText("" + mat);

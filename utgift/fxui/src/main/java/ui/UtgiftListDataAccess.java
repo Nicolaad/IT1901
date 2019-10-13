@@ -1,6 +1,8 @@
 package ui;
 
 import core.Utgift;
+import javafx.collections.ObservableList;
+import javafx.scene.chart.PieChart;
 
 import java.util.Collection;
 
@@ -16,7 +18,9 @@ public interface UtgiftListDataAccess {
      * @return the (internal) LatLong objects
      */
     Collection<Utgift> getAllUtgifter();
-
+    String getMat();
+    void setMat(String nei);
+    ObservableList<PieChart.Data> getPieChart();
     /**
      * Gets a specific LatLong object by index.
      * @param num the index of the LatLong object to get
@@ -37,4 +41,6 @@ public interface UtgiftListDataAccess {
      * @return the index where the LatLong object was added
      */
     void addUtgift(Utgift utgift);
+
+    ObservableList<Utgift> getUtgifter();
 }

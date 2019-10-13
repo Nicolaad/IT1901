@@ -2,6 +2,8 @@ package ui;
 
 import core.Utgift;
 import core.UtgiftList;
+import javafx.collections.ObservableList;
+import javafx.scene.chart.PieChart;
 
 import java.util.Collection;
 
@@ -12,6 +14,14 @@ import java.util.Collection;
  */
 public class LocalUtgiftListDataAccess implements UtgiftListDataAccess {
     private UtgiftList utgiftList;
+    public LocalUtgiftListDataAccess(UtgiftList utgiftList){
+        this.utgiftList = utgiftList;
+        utgiftList.setMat("Fisk");
+    }
+
+    public LocalUtgiftListDataAccess(){
+        this(new UtgiftList());
+    }
 
     public UtgiftList getUtgiftList(){
         return utgiftList;
@@ -24,7 +34,17 @@ public class LocalUtgiftListDataAccess implements UtgiftListDataAccess {
     public Collection<Utgift> getAllUtgifter(){
         return getUtgiftList().toList();
     }
+    public ObservableList<PieChart.Data> getPieChart(){
+      return getUtgiftList().getPieChart();
+    }
 
+    public String getMat(){
+        return getUtgiftList().getMat();
+    }
+
+    public void setMat(String mat){
+        getUtgiftList().setMat(mat);
+    }
     /**
      * Gets a specific LatLong object by index.
      * @param num the index of the LatLong object to get
@@ -52,4 +72,11 @@ public class LocalUtgiftListDataAccess implements UtgiftListDataAccess {
     public void addUtgift(Utgift utgift){
         getUtgiftList().addUtgift(utgift);
     }
+
+    @Override
+    public ObservableList<Utgift> getUtgifter() {
+        return getUtgiftList().getUtgifter();
+    }
+
+
 }
