@@ -22,13 +22,13 @@ import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertNotNull;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class FxAppTest extends ApplicationTest {
-    private FxAppController controller;
+public class FxAppUsingRestControllerTest extends ApplicationTest {
+    private FxAppUsingRestController controller;
     private Thread thread;
 
     @Override
     public void start(final Stage stage) throws Exception {
-        URL f =getClass().getResource("FxApp.fxml");
+        URL f =getClass().getResource("FxAppUsingRest.fxml");
         final FXMLLoader loader = new FXMLLoader(f);
         final Parent root = loader.load();
         this.controller = loader.getController();
@@ -48,7 +48,7 @@ public class FxAppTest extends ApplicationTest {
 
     @Test
     public void aTestController(){
-       assertNotNull(this.controller);
+        assertNotNull(this.controller);
     }
 
 
@@ -81,8 +81,8 @@ public class FxAppTest extends ApplicationTest {
             controller.getDataAccess().addUtgift(u);
         }*/
         //controller.labelsSetUp();
-      //  Platform.runLater(() -> controller.labelsSetUp());
-}
+        //  Platform.runLater(() -> controller.labelsSetUp());
+    }
 
     /**
      * SJekker at piechart har riktig data. Det betyr at etter at den har blitt initializert

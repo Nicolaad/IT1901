@@ -15,9 +15,8 @@ import java.util.*;
  */
 public class UtgiftList {
 
-    private static ObservableList<Utgift> utgifter = FXCollections.observableArrayList();
-    private static ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
-
+    private ObservableList<Utgift> utgifter = FXCollections.observableArrayList();
+    private ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
 
     /**
      * Tom konstruktoor
@@ -26,10 +25,12 @@ public class UtgiftList {
 
     }
 
+
+
     /**
      * konstruktoren fjerner foorst det som finnes it utgifter for aa ikke legge til dobbelt.
      * deretter legger den til alle utgiftene gjennom private metoden addUtgift()
-     * @param utgift tar inn en array i form av utgift1, utgift2 ...
+     * @param ul tar inn en array i form av utgift1, utgift2 ...
      */
     public UtgiftList(Utgift... ul){
         utgifter.clear();
@@ -45,15 +46,17 @@ public class UtgiftList {
      * @param utgifter tar inn en collection av utgifter.
      */
     public UtgiftList(Collection<Utgift> utgifter) {
-        utgifter.clear();
+        //this.utgifter.addAll(utgifter);
+        clear();
         addUtgifter(utgifter);
-
     }
-
+    public Utgift getUtgift(int num){
+        return utgifter.get(num);
+    }
     /**
      * toommer utgifter og pieChartData.
      */
-    public static void clear() {
+    public void clear() {
         utgifter.clear();
         pieChartData.clear();
     }
@@ -66,7 +69,7 @@ public class UtgiftList {
      * utgift objekt til eksisterende pris. ellers blir kategorien lagt til og prisen blir satt.
      * @param utgift tar inn utgift element som skal legges til
      */
-    public static void add(Utgift utgift) {
+    public void add(Utgift utgift) {
         utgifter.add(utgift);
         List<String> yes = new ArrayList<>();
         //lager forst en liste av strenger av all data som ligger i piechart allerede
@@ -93,18 +96,22 @@ public class UtgiftList {
      * soorger for at begge listene fylles opp.
      * @param utgifter collection av utgifter. brukes av konstruktoren.
      */
-    private void addUtgifter(Collection<Utgift> utgifter) {
+    public int addUtgifter(Collection<Utgift> utgifter) {
+        final int pos = this.utgifter.size();
         for (Utgift u :utgifter) {
-            UtgiftList.add(u);
+            this.add(u);
         }
+        return pos;
     }
 
     /**
      * brukes for aa teste og for serializer / deserializer.
      * @param utgift tar inn et utgift objekt.
+     * @return
      */
-    public void addUtgift(Utgift utgift) {
-        utgifter.add(utgift);
+    public int addUtgift(Utgift utgift) {
+        this.add(utgift);
+        return 0;
     }
 
     /**

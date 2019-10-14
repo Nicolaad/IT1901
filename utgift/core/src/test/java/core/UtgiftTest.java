@@ -1,12 +1,13 @@
 package core;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertTrue;
 
 public class UtgiftTest {
+
     Utgift utgift1;
     Utgift utgift2;
 
@@ -25,7 +26,7 @@ public class UtgiftTest {
 
     @Test
     public void checkPriceLength() {
-        assertTrue("Error, no price was entered.", utgift1.getPrisString().length() > 0);
+        assertTrue("Error, no price was entered.", utgift1.prisString().length() > 0);
         System.out.println("Price length test passed");
     }
 /*
@@ -34,7 +35,7 @@ public class UtgiftTest {
         String u1 = utgift1.toString();
         Assert.assertEquals("Mat" + ";" + "200.0" + ";" + "matvarer", u1);
     } */
-
+/*
     @Test
     public void getNavn() {
         assertEquals("Mat",utgift1.getNavn());
@@ -49,7 +50,7 @@ public class UtgiftTest {
 
     @Test
     public void getPrisString() {
-        assertEquals("200.0",utgift1.getPrisString());
+        assertEquals("200.0",utgift1.prisString());
     }
 
     @Test
@@ -69,4 +70,5 @@ public class UtgiftTest {
         assertEquals(utgift1.getPris(), temp.getPris(),0.1);
         assertEquals(utgift1.getKategori(), temp.getKategori());
     }
+
 }

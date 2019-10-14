@@ -13,15 +13,16 @@ import javax.ws.rs.ext.Provider;
 @Provider
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class UtgiftListObjectMapperProvider implements ContextResolver<ObjectMapper> {
+public class UtgiftObjectMapperProvider implements ContextResolver<ObjectMapper> {
 
     private final ObjectMapper objectMapper;
+
 
     /**
      * Konstruktør som registerer en objekt mapper som er er linket til en UtgiftListModule,
      * som er knyttet til serializerne til Utgift og UtgiftList
      */
-    public UtgiftListObjectMapperProvider() {
+    public UtgiftObjectMapperProvider() {
         objectMapper = new ObjectMapper().registerModule(new UtgiftListModule());
     }
 

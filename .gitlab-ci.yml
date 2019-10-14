@@ -1,4 +1,9 @@
 image: gradle:jdk12
+build:
+  stage: build
+  script:
+    - ./utgift/gradlew -Pci=gitlab build
+
 
 job:
   script: echo 'Welcome to IT1901'

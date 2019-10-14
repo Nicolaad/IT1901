@@ -23,18 +23,30 @@ public class UtgiftListService {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public UtgiftList getUtgiftList() {
+        System.out.println("getAll");
         return utgiftList;
     }
-
-/*    @GET
+    /*
+    @GET
     @Path("/{num}")
     @Produces(MediaType.APPLICATION_JSON)
     public Utgift getUtgift(@PathParam("num") int num) {
+        System.out.println("get");
         if (num >= 0 && num <= utgiftList.toList().size())  {
             return utgiftList.toList().get(num);
         }
         throw new IllegalArgumentException("index out of bounds");
-    } */
+    }
+*/
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public int addUtgift(final List<Utgift> utgifter) {
+        System.out.println("POSTING");
+        utgiftList.toList().addAll(utgifter);
+        return 0;
+
+    }
 
     /**
      * Fjerner en utgift fra serveren basert på index
@@ -45,6 +57,7 @@ public class UtgiftListService {
     @Path("/{num}")
     @Produces(MediaType.APPLICATION_JSON)
     public Utgift deleteUtgift(@PathParam("num") int num) {
+        System.out.println("vi poster naa");
         if (num >= 0 && num <= utgiftList.toList().size()) {
             return utgiftList.toList().remove(num);
         }
