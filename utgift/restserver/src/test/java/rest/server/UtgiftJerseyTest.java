@@ -16,7 +16,7 @@ public abstract class UtgiftJerseyTest extends JerseyTest {
 
 	@Override
 	protected ResourceConfig configure() {
-		final LatLongConfig config = new LatLongConfig();
+		final UtgiftListConfig config = new UtgiftListConfig();
 		if (shouldLog()) {
 			enable(TestProperties.LOG_TRAFFIC);
 			enable(TestProperties.DUMP_ENTITY);
