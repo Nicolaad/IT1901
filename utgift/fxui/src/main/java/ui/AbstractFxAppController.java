@@ -70,10 +70,10 @@ public abstract class AbstractFxAppController {
      * @return the ObjectMapper used by this controller
      */
     public ObjectMapper getObjectMapper() {
-        if (objectMapper == null) {
+
             objectMapper = new ObjectMapper();
             objectMapper.registerModule(new UtgiftListModule());
-        }
+
         return objectMapper;
     }
 
@@ -115,7 +115,7 @@ public abstract class AbstractFxAppController {
             stage.setScene(new Scene(confirmation));
             stage.showAndWait();
             labelsSetUp();
-            //init2();
+            init2();
 
         } catch (IOException e) {
             System.out.println(e);

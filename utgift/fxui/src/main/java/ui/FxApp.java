@@ -45,6 +45,8 @@ public class FxApp extends Application {
             System.out.println("Hei");
             restServer = UtgiftListGrizzlyApp.startServer(serverArgs.toArray(new String[serverArgs.size()]), 5);
         }*/
+        String[]strings ={baseUri.toString()};
+        UtgiftListGrizzlyApp.startServer(strings,2);
         final String fxml = (baseUri != null ? "FxAppUsingRest.fxml" : "FxApp.fxml");
         final FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxml));
         final Parent root = fxmlLoader.load();
@@ -65,8 +67,7 @@ public class FxApp extends Application {
             controller.setDataAccess(new RestUtgiftListDataAccess(baseUri + UtgiftListService.UTGIFT_LIST_SERVICE_PATH, controller.getObjectMapper()));
 
         }
-        String[]strings ={baseUri.toString()};
-        UtgiftListGrizzlyApp.startServer(strings,2);
+
       //  new UtgiftListService().addUtgifter(Arrays.asList(new Utgift("fisk","200.0","Mat")));
         final Scene scene = new Scene(root);
         primaryStage.setScene(scene);

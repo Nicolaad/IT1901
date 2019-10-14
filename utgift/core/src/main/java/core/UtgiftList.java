@@ -89,19 +89,22 @@ public class UtgiftList {
      * soorger for at begge listene fylles opp.
      * @param utgifter collection av utgifter. brukes av konstruktoren.
      */
-    public void addUtgifter(Collection<Utgift> utgifter) {
+    public int addUtgifter(Collection<Utgift> utgifter) {
+        final int pos = this.utgifter.size();
         for (Utgift u :utgifter) {
             this.add(u);
         }
+        return pos;
     }
 
     /**
      * brukes for aa teste og for serializer / deserializer.
      * @param utgift tar inn et utgift objekt.
+     * @return
      */
-    public void addUtgift(Utgift utgift) {
-
+    public int addUtgift(Utgift utgift) {
         this.add(utgift);
+        return 0;
     }
 
     /**

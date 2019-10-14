@@ -45,7 +45,6 @@ public class UtgiftListConfig extends ResourceConfig {
                 bind(utgiftList);
             }
         });
-
     }
 }
 

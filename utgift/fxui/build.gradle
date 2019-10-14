@@ -50,6 +50,11 @@ javafx {
     // run with --debug-jvm flag and
     // launch debugger using Remote Java Application debug launch configuration
 }
+/*
+run {
+    args = ["http://localhost:8080/", "[[63.1, 11.2], [63.2, 11.0]]"]
+}
+*/
 
 dependencies {
     implementation project(':core')

@@ -18,6 +18,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -69,6 +70,7 @@ public class RestUtgiftListDataAccess implements UtgiftListDataAccess {
 
     @Override
     public Collection<Utgift> getAllUtgifter() {
+        System.out.println("getAllRestUtgift");
         final URI requestUri = getRequestUri("");
         final HttpRequest request = HttpRequest.newBuilder(requestUri)
                 .header("Accept", "application/json")
@@ -110,6 +112,7 @@ public class RestUtgiftListDataAccess implements UtgiftListDataAccess {
 
     @Override
     public Utgift getUtgift(final int num) {
+        System.out.println("get");
         final HttpRequest request = HttpRequest.newBuilder(getRequestUri("/" + num))
                 .header("Accept", "application/json")
                 .GET()
@@ -153,40 +156,25 @@ public class RestUtgiftListDataAccess implements UtgiftListDataAccess {
     @Override
     public void addUtgift(final Utgift utgift) {
         try {
-            System.out.println("fitte");
-            System.out.println("Fitte2");
-
-            final HttpRequest request = HttpRequest.newBuilder(getRequestUri(""))
+            UtgiftList ul = new UtgiftList(Arrays.asList(utgift));
+            URI url = new URI("http://localhost:8080/utgiftlist/Mat");
+            final HttpRequest request = HttpRequest.newBuilder(url)
                     .header("Content-Type", "application/json")
                     .header("Accept", "application/json")
-                    .POST(HttpRequest.BodyPublishers.ofString(getObjectMapper().writeValueAsString(utgift)))
-                   // .POST(BodyPublishers.ofString(getObjectMapper().writeValueAsString(utgiftList)))
+                    .POST(BodyPublishers.ofString(getObjectMapper().writeValueAsString(utgift)))
                     .build();
             final HttpResponse<InputStream> response = HttpClient.newBuilder()
                     .build()
                     .send(request, HttpResponse.BodyHandlers.ofInputStream());
-
-            String requestBody = "hei";
-
-            /*
-            String requestBody = getObjectMapper().writeValueAsString(utgift);
-            System.out.println(requestBody);
-            HttpClient client = HttpClient.newHttpClient();
-            HttpRequest request = HttpRequest.newBuilder().uri(getRequestUri("")).POST(HttpRequest.BodyPublishers
-            .ofString(requestBody)).build();
-            System.out.println(request);
-            HttpResponse<String> response = client.send(request,HttpResponse.BodyHandlers.ofString());
-*/
-            //final int realIndex = getObjectMapper().readValue(response.body(), Integer.class);
-            System.out.println("Fitte5");
-          /*  if (realIndex < 0) {
-                throw new IndexOutOfBoundsException("realIndex");
-            }*/
+            System.out.println(response.uri());
+            System.out.println(getObjectMapper().writeValueAsString(utgift));
         } catch (final JsonProcessingException e) {
             throw new RuntimeException(e);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
             e.printStackTrace();
         }
 
