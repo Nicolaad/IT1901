@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Path(UtgiftListService.UTGIFT_LIST_SERVICE_PATH)
 public class UtgiftListService {
@@ -21,6 +22,7 @@ public class UtgiftListService {
         System.out.println("getAll");
         return utgiftList;
     }
+    /*
     @GET
     @Path("/{num}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -31,7 +33,7 @@ public class UtgiftListService {
         }
         throw new IllegalArgumentException("index out of bounds");
     }
-
+*/
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -52,7 +54,7 @@ public class UtgiftListService {
         }
         throw new IllegalArgumentException("index out of bounds");
     }
-/*
+
     // Sorterer utgiftlist på Kategori
     @GET
     @Path("/{kategori}")
@@ -68,5 +70,5 @@ public class UtgiftListService {
     public Utgift getKategoriUtgift(@PathParam("kategori") String kategori, @PathParam("num") int num) {
         return getKategoriUtgiftList(kategori).get(num);
     }
-*/
+
 }
