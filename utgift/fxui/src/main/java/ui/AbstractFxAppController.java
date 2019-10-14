@@ -91,7 +91,7 @@ public abstract class AbstractFxAppController {
 
 
     public void save() {
-        Save.save(dataAccess.getAllUtgifter(), new File("save.json"));
+        Save.save(dataAccess.getAllUtgifter(), new File("../save.json"));
     }
 
     /**
@@ -163,6 +163,7 @@ public abstract class AbstractFxAppController {
     public void deleteUtgift(){
         try {
             dataAccess.deleteUtgift(0, "Mat");
+            save();
             init2();
             labelsSetUp();
         }
