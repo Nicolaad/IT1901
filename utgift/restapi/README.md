@@ -1,7 +1,7 @@
-#Modul for REST-api
+# Modul for REST-api
 Denne modulen inneholder REST-api for utgift prosjektet.
 
-##REST-api
+## REST-api
 Modulen består av logikken som benyttes på REST-tjeneste-objektet, og finnes i **UtgiftListService** klassen. Selve oppsettet av serveren ligger i en egen modul, som heter restserver.
 
 API-et følger JAX-RS-standaren. Tjenesten aktiveres ved å angi `utgiftlist` i URL stien, slik at URL'en blir seende slik ut:
@@ -14,6 +14,6 @@ API-et tilbyr følgende metoder:
 - Lese innholdet til et spesifikt utgiftobjekt i èn spesifikk kategori, angitt med posisjonenn **num**. **@GET** til tjeneste-URL/kategori/num. f.eks http://localhost:8080/utgiftlist/Mat/0/.
 
 
-##Bygging med Gradle 
+## Bygging med Gradle 
 API-et er prosjekt av typen **java-library**. Som nevnt er det benyttet JAX-RS-standaren, men vi har ingen implementasjon av denne standaren i denne modulen.
 Den finnes i **restserver** modulen sammen med implementasjon av bibloteket Jackson.
