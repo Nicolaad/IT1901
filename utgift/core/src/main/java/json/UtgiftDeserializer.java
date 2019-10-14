@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class UtgiftDeserializer extends JsonDeserializer {
 
-    private static final int ARRAY_NODE_SIZE
+    private static final int ARRAY_NODE_SIZE = 3;
     @Override
     public Utgift deserialize(final JsonParser jsonParser, final DeserializationContext deserializationContext) throws IOException {
         final JsonNode jsonNode = jsonParser.getCodec().readTree(jsonParser);
