@@ -48,7 +48,7 @@ public class UtgiftTest {
 
     @Test
     public void getPrisString() {
-        assertEquals("200.0",utgift1.getPris());
+        assertEquals("200.0",utgift1.prisString());
     }
 
     @Test

@@ -17,10 +17,10 @@ public class UtgiftListSerializingTest {
     }
     //hjelpemetoder
     private Utgift utgift1(){
-        return new Utgift("ost", "53", "mat");
+        return new Utgift("ost", "53.0", "mat");
     }
     private Utgift utgift2(){
-        return new Utgift("bok", "1621", "skole");
+        return new Utgift("bok", "1621.0", "skole");
     }
 
     /**
@@ -31,7 +31,7 @@ public class UtgiftListSerializingTest {
     public void testUtgiftListSerialization() throws JsonProcessingException {
 
         String inputJson = objectMapper.writeValueAsString(new UtgiftList(utgift1(),utgift2()));
-        String expectedJson = "[{\"navn\":\"ost\",\"pris\":\"53\",\"kategori\":\"mat\"},{\"navn\":\"bok\",\"pris\":\"1621\",\"kategori\":\"skole\"}]";
+        String expectedJson = "[{\"navn\":\"ost\",\"pris\":53.0,\"kategori\":\"mat\"},{\"navn\":\"bok\",\"pris\":1621.0,\"kategori\":\"skole\"}]";
         Assert.assertEquals("compared:"+ inputJson + " with:" + expectedJson,inputJson,expectedJson);
         }
 
@@ -41,7 +41,7 @@ public class UtgiftListSerializingTest {
      */
     @Test
     public void testUtgiftListDeserialization() throws IOException {
-        String json = "[{\"navn\":\"ost\",\"pris\":\"53\",\"kategori\":\"mat\"},{\"navn\":\"bok\",\"pris\":\"1621\",\"kategori\":\"skole\"}]";
+        String json = "[{\"navn\":\"ost\",\"pris\":53.0,\"kategori\":\"mat\"},{\"navn\":\"bok\",\"pris\":1621.0,\"kategori\":\"skole\"}]";
         Object[] ul = objectMapper.readValue(json, UtgiftList.class).getUtgifter().toArray();
         Assert.assertEquals(ul[0].toString(), utgift1().toString(), ul[0].toString());
         Assert.assertEquals(ul[1].toString(), utgift2().toString(), ul[1].toString());
@@ -56,7 +56,7 @@ public class UtgiftListSerializingTest {
     @Test //halvveis redundant pga testen over, men forblir atm:)
     public void testUtgiftSerialization() throws JsonProcessingException{
         String inputJson = objectMapper.writeValueAsString(new UtgiftList(utgift1()));
-        String expectedJson = "[{\"navn\":\"ost\",\"pris\":\"53\",\"kategori\":\"mat\"}]";
+        String expectedJson = "[{\"navn\":\"ost\",\"pris\":53.0,\"kategori\":\"mat\"}]";
         Assert.assertEquals("compared:"+ inputJson + " with:" + expectedJson,inputJson,expectedJson);
     }
     /*q

@@ -23,7 +23,7 @@ public class UtgiftListTest {
         utgifter.addAll(Arrays.asList(utgift1,utgift2,utgift3,utgift4));
         utgiftList = new UtgiftList(utgifter);
     }
-
+    /*
     @Test
     public void utgiftListConstructorTest(){
         UtgiftList ul = new UtgiftList();
@@ -32,6 +32,7 @@ public class UtgiftListTest {
         }
 
     }
+    */
     @Test
     public void testSetPieChartData(){
         UtgiftList ul = new UtgiftList();
