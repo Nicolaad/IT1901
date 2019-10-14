@@ -86,11 +86,11 @@ public class UtgiftList {
         }
         //hvis kategorien til utgift er ny så legges den til i piechart
         if (!yes.contains(utgift.getKategori())) {
-            pieChartData.add(new PieChart.Data(utgift.getKategori(),utgift.fetchPrisDoubleVersion()));
+            pieChartData.add(new PieChart.Data(utgift.getKategori(),utgift.getPris()));
         } else {  //hvis ikke travereserer vi dataen og gjor dataen storre med samme kategori.
             for (PieChart.Data t: pieChartData) {
                 if (t.getName().equals(utgift.getKategori())) {
-                    double tk = t.getPieValue() + utgift.fetchPrisDoubleVersion();
+                    double tk = t.getPieValue() + utgift.getPris();
                     t.setPieValue(tk);
                 }
             }
@@ -169,10 +169,10 @@ public class UtgiftList {
         List<PieChart.Data> pie = new ArrayList<>();
         for (Utgift utgift: ut) {
             if (!pieChartData.containsKey(utgift.getKategori())) {
-                pieChartData.put(utgift.getKategori(), utgift.fetchPrisDoubleVersion());
+                pieChartData.put(utgift.getKategori(), utgift.getPris());
             } else {
                 Double d = pieChartData.get(utgift.getKategori());
-                pieChartData.replace(utgift.getKategori(), d + utgift.fetchPrisDoubleVersion());
+                pieChartData.replace(utgift.getKategori(), d + utgift.getPris());
             }
         }
         for (Map.Entry<String,Double> k: pieChartData.entrySet()) {
