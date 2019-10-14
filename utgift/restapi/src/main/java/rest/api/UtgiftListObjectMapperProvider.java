@@ -17,10 +17,19 @@ public class UtgiftListObjectMapperProvider implements ContextResolver<ObjectMap
 
     private final ObjectMapper objectMapper;
 
+    /**
+     * Konstruktør som registerer en objekt mapper som er er linket til en UtgiftListModule,
+     * som er knyttet til serializerne til Utgift og UtgiftList
+     */
     public UtgiftListObjectMapperProvider() {
         objectMapper = new ObjectMapper().registerModule(new UtgiftListModule());
     }
 
+    /**
+     * returnerer objectmapperen.
+     * @param type
+     * @return
+     */
     @Override
     public ObjectMapper getContext(final Class<?> type) {
         return objectMapper;
