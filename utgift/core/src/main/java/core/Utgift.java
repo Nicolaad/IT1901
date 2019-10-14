@@ -36,7 +36,7 @@ public class Utgift {
     /**
      * @return En string med pris til utgiften.
      */
-    public String prisString() {
+    public String getPris() {
         return pris;
     }
 
@@ -44,7 +44,7 @@ public class Utgift {
      *
      * @return En double med pris til utgiften.
      */
-    public double getPris() {
+    public double fetchPrisDoubleVersion() {
         return Double.parseDouble(pris);
     }
 
