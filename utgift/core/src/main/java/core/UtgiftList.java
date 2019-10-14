@@ -28,6 +28,19 @@ public class UtgiftList {
 
     /**
      * konstruktoren fjerner foorst det som finnes it utgifter for aa ikke legge til dobbelt.
+     * deretter legger den til alle utgiftene gjennom private metoden addUtgift()
+     * @param utgift tar inn en array i form av utgift1, utgift2 ...
+     */
+    public UtgiftList(Utgift... ul){
+        utgifter.clear();
+        for(Utgift u : ul){
+            addUtgift(u);
+        }
+
+    }
+
+    /**
+     * konstruktoren fjerner foorst det som finnes it utgifter for aa ikke legge til dobbelt.
      * deretter legger den til alle utgiftene gjennom private metoden addUtgifter()
      * @param utgifter tar inn en collection av utgifter.
      */
