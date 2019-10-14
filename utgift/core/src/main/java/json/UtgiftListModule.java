@@ -37,6 +37,10 @@ public class UtgiftListModule extends Module {
         deserializers.addDeserializer(UtgiftList.class, new UtgiftListDeserializer());
     }
 
+    /**
+     * legger til ny serializer og deserialiser
+     * @param context
+     */
     @Override
     public void setupModule(final SetupContext context) {
         context.addSerializers(serializers);

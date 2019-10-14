@@ -48,13 +48,18 @@ public class UtgiftListSerializingTest {
         Assert.assertEquals("Actuall length is " + ul.length, 2, ul.length);
 
     }
-    @Test
+
+    /**
+     * Tester om den kan serialize kun ett objekt og sammenlikner med en allerede skrevet korrekt streng
+     * @throws JsonProcessingException
+     */
+    @Test //halvveis redundant pga testen over, men forblir atm:)
     public void testUtgiftSerialization() throws JsonProcessingException{
         String inputJson = objectMapper.writeValueAsString(new UtgiftList(utgift1()));
         String expectedJson = "[{\"navn\":\"ost\",\"pris\":53.0,\"kategori\":\"mat\",\"prisString\":\"53\"}]";
         Assert.assertEquals("compared:"+ inputJson + " with:" + expectedJson,inputJson,expectedJson);
     }
-    /*
+    /*q
     @Test
     public void testUtgiftDeserialization() throws IOException {
         String json = "[{\"navn\":\"ost\",\"pris\":\"53\",\"kategori\":\"mat\"}]";
