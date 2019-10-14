@@ -2,31 +2,20 @@
  
 ## Utgift
 
-Dette prosjektet er en trelagsapplikasjon med et domenelag, brukergrensesnitt (UI) og persistens (lagring). Prosjektet inneholder tester for Utgift-klassen. Prosjektet er konfigurert med gradle som byggesystem.
+Dette prosjektet er en trelagsapplikasjon med et domenelag, brukergrensesnitt (UI) og persistens (lagring). Prosjektet er konfigurert med gradle som byggesystem.
 
 **utgift/readme.md** inneholder brukerhistorie og beskrivelse av hva appen handler om og er ment å gjøre samt skjermbilder og skisser.
 
-
 ## Organisering av koden
 
-Prosjektet er organisert med 2 * 2 = 4 kildekodemapper, kode og ressurser for henholdsvis applikasjonen selv og testene:
+Prosjektet er organisert som et multi-modul-prosjekt med gradle, med følgende moduler.
 
-- **utgift/src/main/java** for koden til applikasjonen
-- **utgift/src/main/resources** for tilhørende ressurser, f.eks. data-filer og FXML-filer, som brukes av applikasjonen.
-- **utgift/src/test/java** for testkoden
-- **utgift/src/test/resources** for tilhørende ressurser, f.eks. data-filer og FXML-filer, som brukes / skal brukes av av testene.
+- **utgift/core** 
+- **utgift/fxui** 
+- **utgift/restapi** 
+- **utgift/restserver** 
 
-## Domenelaget
+Hver mappe/modul har sin egen README.md fil som inneholder informasjon om hva modulen består av, bygging med gradle, og annen relevant informasjon. 
 
-Appen handler om å samle inn alle utgifter, som har et navn, en pris og en kategori knyttet til dem. Domenelaget inneholder klasser for å representere og håndtere slike, samt for å håndtere en liste bestående av utgifts-objekter.
-
-## Brukergrensesnittlaget
-
-Brukergrensesnittlaget inneholder alle klasser og logikk knyttet til å legge til nye utgifter, og lagre de. Brukergrensesnittet til appen viser frem en liste over registrerte utgifter. Registrerte utgifter kan lagres og lastes inn på nytt.
-Brukergrensesnittet er laget med JavaFX og FXML. JavaFX koden finnes i **utgift/src/main/java/ui** og FXML finnes i **utgift/src/main/resources/ui** 
-
-## Persistentlaget
-
-Persistenslaget inneholder alle klasser og logikk for lagring (skriving og lesing) av dataene i domenelaget. Vårt persistentlag leser og lagrer til en .txt fil. 
-
-Persistentlaget finnes i **utgift/src/main/resources/json**
+## Kjøring av prosjektet 
+Kjøring av Appen gjøres enklest ved å skrive `gradlew run` i terminalen når man er inni **utgift** mappen. Dvs. `\gr1911\utgift> gradlew run`. 
