@@ -18,13 +18,13 @@ public class UtgiftTest {
     @Test
     public void checkPrice() {
         int low = 0;
-        assertTrue("Error, price is negative or zero", low <= utgift1.getPris());
-        System.out.println("Test passed, " + utgift1.getPris() + " is a positive number");
+        assertTrue("Error, price is negative or zero", low <= utgift1.fetchPrisDoubleVersion());
+        System.out.println("Test passed, " + utgift1.fetchPrisDoubleVersion() + " is a positive number");
     }
 
     @Test
     public void checkPriceLength() {
-        assertTrue("Error, no price was entered.", utgift1.prisString().length() > 0);
+        assertTrue("Error, no price was entered.", utgift1.getPris().length() > 0);
         System.out.println("Price length test passed");
     }
 /*
@@ -48,12 +48,12 @@ public class UtgiftTest {
 
     @Test
     public void getPrisString() {
-        assertEquals("200.0",utgift1.prisString());
+        assertEquals("200.0",utgift1.getPris());
     }
 
     @Test
     public void getPris() {
-        assertEquals(200.0,utgift1.getPris(),0.1);
+        assertEquals(200.0,utgift1.fetchPrisDoubleVersion(),0.1);
     }
 /*
     @Test
@@ -65,7 +65,7 @@ public class UtgiftTest {
     public void testcreateUtgiftObject(){
         Utgift temp = Utgift.createUtgiftObject("Mat;200.0;matvarer");
         assertEquals(utgift1.getNavn(), temp.getNavn());
-        assertEquals(utgift1.getPris(), temp.getPris(),0.1);
+        assertEquals(utgift1.fetchPrisDoubleVersion(), temp.fetchPrisDoubleVersion(),0.1);
         assertEquals(utgift1.getKategori(), temp.getKategori());
     }
 }

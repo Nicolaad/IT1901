@@ -12,6 +12,12 @@ allprojects {
     }
 
 }
+test {
+    // don't run UI test on server (that cannot run javafx)
+    if (project.hasProperty('ci') && "$ci" == 'gitlab') {
+        exclude 'ui/*'
+    }
+}
 
 subprojects {
     ext.depVersions = ['jackson': '2.9.8']

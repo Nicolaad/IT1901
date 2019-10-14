@@ -10,7 +10,9 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.Collection;
 
-//allows saving to json files.
+/**
+ * Tillater lagring til fil
+ */
 public class Save {
 
     /**
