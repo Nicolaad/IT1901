@@ -17,7 +17,6 @@ public class UtgiftList {
 
     private ObservableList<Utgift> utgifter = FXCollections.observableArrayList();
     private ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
-    private String mat;
 
     /**
      * Tom konstruktoor
@@ -25,9 +24,7 @@ public class UtgiftList {
     public UtgiftList() {
 
     }
-    public String getMat(){
-        return mat;
-    }
+
 
 
     /**
@@ -52,9 +49,6 @@ public class UtgiftList {
         //this.utgifter.addAll(utgifter);
         clear();
         addUtgifter(utgifter);
-    }
-    public void setMat(String mat){
-        this.mat = mat;
     }
     public Utgift getUtgift(int num){
         return utgifter.get(num);
