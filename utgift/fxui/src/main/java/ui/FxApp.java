@@ -63,8 +63,11 @@ public class FxApp extends Application {
         } else {
             final FxAppUsingRestController controller = fxmlLoader.getController();
             controller.setDataAccess(new RestUtgiftListDataAccess(baseUri + UtgiftListService.UTGIFT_LIST_SERVICE_PATH, controller.getObjectMapper()));
+            controller.load();
+            //Collection<Utgift> ut = Load.retrieve(new File("src/main/resources/json/save.json"));
 
         }
+
         final Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -75,7 +78,7 @@ public class FxApp extends Application {
         final Parent root = loader.load();
         FxAppController controller = loader.getController();
         controller.setUtgiftList(
-                new UtgiftList(
+                new UtgiftList(+
                         Arrays.asList(
                                 new Utgift("Fisk","200.0","Mat"),
                                 new Utgift("Rotter","50.0","Mat"),

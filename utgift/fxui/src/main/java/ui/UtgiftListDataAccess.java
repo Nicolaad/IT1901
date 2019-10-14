@@ -15,8 +15,6 @@ public interface UtgiftListDataAccess {
     Utgift getUtgift(int num);
 
 
-    void setUtgift(int index, Utgift utgift);
-
 
     void addUtgift(Utgift utgift);
 

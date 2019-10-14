@@ -51,17 +51,11 @@ public class UtgiftListService {
     /**
      * Fjerner en utgift fra serveren basert på index
      * @param num
-     * @return
      */
     @DELETE
-    @Path("/{num}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Utgift deleteUtgift(@PathParam("num") int num) {
-        System.out.println("vi poster naa");
-        if (num >= 0 && num <= utgiftList.toList().size()) {
-            return utgiftList.toList().remove(num);
-        }
-        throw new IllegalArgumentException("index out of bounds");
+    @Path("/{kategori}/{num}")
+    public void deleteUtgift(@PathParam("kategori") String kategori, @PathParam("num") int num) {
+        utgiftList.getKategori(kategori).remove(num);
     }
 
     /**

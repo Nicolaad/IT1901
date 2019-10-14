@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 /**
@@ -139,6 +140,7 @@ public class UtgiftList {
         utgifter.remove(utgift);
     }
 
+
     /**
      * @return liste av utgifter
      */
@@ -146,6 +148,9 @@ public class UtgiftList {
         return utgifter;
     }
 
+    public List<Utgift> getKategori(String kategori){
+        return utgifter.stream().filter(u -> u.getKategori().equals(kategori)).collect(Collectors.toList());
+    }
     /**
      * @return liste av pieChart.Data
      */

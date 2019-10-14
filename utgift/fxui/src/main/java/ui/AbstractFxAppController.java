@@ -14,9 +14,13 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import json.Load;
+import json.Save;
 import json.UtgiftListModule;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.Collection;
 
 public abstract class AbstractFxAppController {
     @FXML private ListView<Utgift> listViewUtgift;
@@ -84,12 +88,12 @@ public abstract class AbstractFxAppController {
     /**
      * Saves the data to save.json using a static method in the class Save
      */
-    /*
-    @FXML
+
+
     public void save() {
-        Save.save(utgiftList.getUtgifter(), new File("src/main/resources/json/save.json"));
+        Save.save(dataAccess.getAllUtgifter(), new File("save.json"));
     }
-*/
+
     /**
      * metoden aapner fxappleggtilutgift.fxml, altsaa faar vi en slags popup og kan ikke
      * endre paa de forrige elementene lenger.
@@ -144,20 +148,16 @@ public abstract class AbstractFxAppController {
     /**
      * loads data from save.json to the listview, piechart and sets up the labels properly.
      */
-/*
-    @FXML
-    public void load() {
 
-        ObservableList<Utgift> utgifterListView = utgiftList.getUtgifter();
-        ObservableList<PieChart.Data> utgifterPieChart = utgiftList.getPieChart();
-        utgifterListView.clear();
-        utgifterPieChart.clear();
-        Collection<Utgift> ut = Load.retrieve(new File("src/main/resources/json/save.json"));
-        utgifterListView.addAll(ut);
-        utgifterPieChart.addAll(utgiftList.setPieChartData(ut));
+    public void load() {
+        Collection<Utgift> ut = Load.retrieve(new File("../save.json"));
+        for(Utgift u:ut){
+            dataAccess.addUtgift(u);
+        }
+        init2();
         labelsSetUp();
 
     }
-    */
+
 
 }
