@@ -34,11 +34,11 @@ public class UtgiftDeserializer extends JsonDeserializer {
             final String category = objectNode.get(UtgiftSerializer.CATEGORY_FIELD_NAME).asText();
             return new Utgift(name, Double.toString(price), category); //why is price a string? temp fix
         } else if (jsonNode instanceof ArrayNode) {
-            final ArrayNode locationArray = (ArrayNode) jsonNode;
-            if (locationArray.size() == ARRAY_NODE_SIZE){
-                final String navn = locationArray.get(0).asText();
-                final String pris = locationArray.get(1).asText();
-                final String kategori = locationArray.get(2).asText();
+            final ArrayNode utgiftArray = (ArrayNode) jsonNode;
+            if (utgiftArray.size() == ARRAY_NODE_SIZE){
+                final String navn = utgiftArray.get(0).asText();
+                final String pris = utgiftArray.get(1).asText();
+                final String kategori = utgiftArray.get(2).asText();
                 return new Utgift(navn, pris, kategori);
             }
         }

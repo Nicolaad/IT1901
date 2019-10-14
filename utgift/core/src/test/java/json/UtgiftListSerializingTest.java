@@ -1,14 +1,23 @@
 package json;
 
 
+import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import core.Utgift;
 import core.UtgiftList;
 import org.junit.Assert;
 import org.junit.Test;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import javax.swing.text.html.parser.Entity;
+import java.io.DataInput;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class UtgiftListSerializingTest {
 
@@ -59,13 +68,20 @@ public class UtgiftListSerializingTest {
         String expectedJson = "[{\"navn\":\"ost\",\"pris\":53.0,\"kategori\":\"mat\"}]";
         Assert.assertEquals("compared:"+ inputJson + " with:" + expectedJson,inputJson,expectedJson);
     }
-    /*q
-    @Test
-    public void testUtgiftDeserialization() throws IOException {
-        String json = "[{\"navn\":\"ost\",\"pris\":\"53\",\"kategori\":\"mat\"}]";
-        Utgift u = objectMapper.readValue(json, Utgift.class);
-        Assert.assertEquals("compares:"+ u+ " with:"+ utgift1(),utgift1().toString(), u.toString());
 
-    }
+    /**
+     * tester om den kan produsere en utgiftliste med en objectArray
+     * @throws IOException
      */
+    @Test
+    public void testUtgiftDeserializationObjectArray() throws IOException {
+        String s1 = "[[\"ost\",\"53.0\",\"mat\"]]";
+        UtgiftList u = objectMapper.readValue(s1, UtgiftList.class);
+        Assert.assertEquals(1,u.getUtgifter().size());
+        Assert.assertEquals(utgift1().toString(),u.getUtgift(0).toString());
+        String s2 = "[\"ost\",\"53.0\",\"mat\",\"returnererNull\"]";
+        Utgift u2 = objectMapper.readValue(s2,Utgift.class);
+        Assert.assertEquals(null, u2);
+    }
+
 }

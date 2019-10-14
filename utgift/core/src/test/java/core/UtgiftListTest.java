@@ -29,13 +29,13 @@ public class UtgiftListTest {
     }
 
     /*
+
         @Test
         public void utgiftListConstructorTest(){
             UtgiftList ul = new UtgiftList();
             for(int i = 0;i<utgifter.size();i++){
                 assertEquals(utgifter.get(i),ul.getUtgifter().get(i));
             }
-
         }
 
         */

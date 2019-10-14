@@ -14,7 +14,7 @@ public class Utgift {
      * @param kategori navn paa kategori til utgiften
      */
     public Utgift(String navn, String pris, String kategori) {
-        validateUtgift(navn,pris,kategori);
+
         this.navn = navn;
         this.pris = pris;
         this.kategori = kategori;
@@ -62,9 +62,9 @@ public class Utgift {
      */
     public static Utgift createUtgiftObject(String toString) {
         String[] s = toString.split(";");
-        validateUtgift(s[0],s[1],s[2]);
         return new Utgift(s[0],s[1],s[2]);
     }
+    /*
     private static void validateUtgift(String name, String pris, String kategori){
         if (name.length() < 1 || pris.length() < 1 || kategori.length() < 1){
             throw new IllegalArgumentException("Argumentene må være lengere en 0 karakterer");
@@ -72,4 +72,5 @@ public class Utgift {
             throw new IllegalArgumentException("Prisen må være større enn 0");
         }
     }
+    */
 }
