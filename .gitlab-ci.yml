@@ -2,7 +2,7 @@ image: gradle:jdk12
 build:
   stage: build
   script:
-    - ./gradlew -Pci=gitlab check
+    - ./utgift/gradlew -Pci=gitlab build
 
 
 job:

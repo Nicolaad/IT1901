@@ -15,9 +15,9 @@ import java.util.*;
  */
 public class UtgiftList {
 
-    private static ObservableList<Utgift> utgifter = FXCollections.observableArrayList();
-    private static ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
-
+    private ObservableList<Utgift> utgifter = FXCollections.observableArrayList();
+    private ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
+    private String mat;
 
     /**
      * Tom konstruktoor
@@ -25,6 +25,10 @@ public class UtgiftList {
     public UtgiftList() {
 
     }
+    public String getMat(){
+        return mat;
+    }
+
 
     /**
      * konstruktoren fjerner foorst det som finnes it utgifter for aa ikke legge til dobbelt.
@@ -45,15 +49,20 @@ public class UtgiftList {
      * @param utgifter tar inn en collection av utgifter.
      */
     public UtgiftList(Collection<Utgift> utgifter) {
-        utgifter.clear();
+        //this.utgifter.addAll(utgifter);
+        clear();
         addUtgifter(utgifter);
-
     }
-
+    public void setMat(String mat){
+        this.mat = mat;
+    }
+    public Utgift getUtgift(int num){
+        return utgifter.get(num);
+    }
     /**
      * toommer utgifter og pieChartData.
      */
-    public static void clear() {
+    public void clear() {
         utgifter.clear();
         pieChartData.clear();
     }
@@ -66,7 +75,7 @@ public class UtgiftList {
      * utgift objekt til eksisterende pris. ellers blir kategorien lagt til og prisen blir satt.
      * @param utgift tar inn utgift element som skal legges til
      */
-    public static void add(Utgift utgift) {
+    public void add(Utgift utgift) {
         utgifter.add(utgift);
         List<String> yes = new ArrayList<>();
         //lager forst en liste av strenger av all data som ligger i piechart allerede
@@ -77,11 +86,11 @@ public class UtgiftList {
         }
         //hvis kategorien til utgift er ny så legges den til i piechart
         if (!yes.contains(utgift.getKategori())) {
-            pieChartData.add(new PieChart.Data(utgift.getKategori(),utgift.fetchPrisDoubleVersion()));
+            pieChartData.add(new PieChart.Data(utgift.getKategori(),utgift.getPris()));
         } else {  //hvis ikke travereserer vi dataen og gjor dataen storre med samme kategori.
             for (PieChart.Data t: pieChartData) {
                 if (t.getName().equals(utgift.getKategori())) {
-                    double tk = t.getPieValue() + utgift.fetchPrisDoubleVersion();
+                    double tk = t.getPieValue() + utgift.getPris();
                     t.setPieValue(tk);
                 }
             }
@@ -93,18 +102,22 @@ public class UtgiftList {
      * soorger for at begge listene fylles opp.
      * @param utgifter collection av utgifter. brukes av konstruktoren.
      */
-    private void addUtgifter(Collection<Utgift> utgifter) {
+    public int addUtgifter(Collection<Utgift> utgifter) {
+        final int pos = this.utgifter.size();
         for (Utgift u :utgifter) {
-            UtgiftList.add(u);
+            this.add(u);
         }
+        return pos;
     }
 
     /**
      * brukes for aa teste og for serializer / deserializer.
      * @param utgift tar inn et utgift objekt.
+     * @return
      */
-    public void addUtgift(Utgift utgift) {
-        utgifter.add(utgift);
+    public int addUtgift(Utgift utgift) {
+        this.add(utgift);
+        return 0;
     }
 
     /**
@@ -156,10 +169,10 @@ public class UtgiftList {
         List<PieChart.Data> pie = new ArrayList<>();
         for (Utgift utgift: ut) {
             if (!pieChartData.containsKey(utgift.getKategori())) {
-                pieChartData.put(utgift.getKategori(), utgift.fetchPrisDoubleVersion());
+                pieChartData.put(utgift.getKategori(), utgift.getPris());
             } else {
                 Double d = pieChartData.get(utgift.getKategori());
-                pieChartData.replace(utgift.getKategori(), d + utgift.fetchPrisDoubleVersion());
+                pieChartData.replace(utgift.getKategori(), d + utgift.getPris());
             }
         }
         for (Map.Entry<String,Double> k: pieChartData.entrySet()) {

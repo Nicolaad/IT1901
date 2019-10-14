@@ -1,5 +1,6 @@
 package ui;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import core.Utgift;
 import core.UtgiftList;
 import javafx.collections.ObservableList;
@@ -16,12 +17,13 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import json.Load;
 import json.Save;
+import json.UtgiftListModule;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
 
-public class FxAppController {
+public abstract class AbstractFxAppController {
     @FXML private ListView<Utgift> listViewUtgift;
     @FXML private PieChart pieChart;
     @FXML private Label labelHelse;
@@ -40,21 +42,41 @@ public class FxAppController {
 
     public void setUtgiftList(UtgiftList utgiftList){
         setDataAccess(new LocalUtgiftListDataAccess(utgiftList));
+      //  init2();
     }
     protected void setDataAccess(final UtgiftListDataAccess dataAccess) {
         this.dataAccess = dataAccess;
     }
 
-    public FxAppController(){
+    /*public AbstractFxAppController(){
         setDataAccess(new LocalUtgiftListDataAccess(new UtgiftList()));
     }
+    */
+
     /**
      * Sets up the listview and piechart to initial data.
      */
+    /*
     public void initialize() {
         listViewUtgift.setItems(dataAccess.getUtgifter());
         pieChart.setData(dataAccess.getPieChart());
     }
+
+     */
+    private ObjectMapper objectMapper;
+
+    /**
+     * Gets the ObjectMapper used by this controller.
+     * @return the ObjectMapper used by this controller
+     */
+    public ObjectMapper getObjectMapper() {
+
+            objectMapper = new ObjectMapper();
+            objectMapper.registerModule(new UtgiftListModule());
+
+        return objectMapper;
+    }
+
 
     public void init2(){
         listViewUtgift.setItems(dataAccess.getUtgifter());
@@ -65,27 +87,13 @@ public class FxAppController {
         return utgiftList;
     }
     /**
-     * Saves the data to save.json using a static method in the calss Save
+     * Saves the data to save.json using a static method in the class Save
      */
     @FXML
     public void save() {
         Save.save(utgiftList.getUtgifter(), new File("src/main/resources/json/save.json"));
     }
 
-    /**
-     * loads data from save.json to the listview, piechart and sets up the labels properly.
-     */
-    @FXML
-    public void load() {
-        ObservableList<Utgift> utgifterListView = utgiftList.getUtgifter();
-        ObservableList<PieChart.Data> utgifterPieChart = utgiftList.getPieChart();
-        utgifterListView.clear();
-        utgifterPieChart.clear();
-        Collection<Utgift> ut = Load.retrieve(new File("src/main/resources/json/save.json"));
-        utgifterListView.addAll(ut);
-        utgifterPieChart.addAll(utgiftList.setPieChartData(ut));
-        labelsSetUp();
-    }
 
 
     /**
@@ -105,9 +113,9 @@ public class FxAppController {
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle("Legg til utgift");
             stage.setScene(new Scene(confirmation));
-            stage.show();
+            stage.showAndWait();
             labelsSetUp();
-            //init2();
+            init2();
 
         } catch (IOException e) {
             System.out.println(e);
@@ -138,4 +146,23 @@ public class FxAppController {
         labelSkole.setText("" + skole);
         labelTotal.setText(mat + helse + skole + "");
     }
+
+    /**
+     * loads data from save.json to the listview, piechart and sets up the labels properly.
+     */
+    @FXML
+    public void load() {
+
+        ObservableList<Utgift> utgifterListView = utgiftList.getUtgifter();
+        ObservableList<PieChart.Data> utgifterPieChart = utgiftList.getPieChart();
+        utgifterListView.clear();
+        utgifterPieChart.clear();
+        Collection<Utgift> ut = Load.retrieve(new File("src/main/resources/json/save.json"));
+        utgifterListView.addAll(ut);
+        utgifterPieChart.addAll(utgiftList.setPieChartData(ut));
+        labelsSetUp();
+
+
+    }
+
 }

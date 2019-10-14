@@ -51,3 +51,5 @@ P
  fxui/src/main/java/ui/FxApp.java,f\9\f9b67fc71bdf088973c87f8b045cc463f5f3612c
 d
 4fxui/src/main/java/ui/FxLeggTilUtgiftController.java,a\7\a7b46e2c55ebd9a36fc474d8384b83dc069036f4
+a
+1fxui/src/test/java/ui/FxAppLeggTilUtgiftTest.java,4\5\45ca975f83fa168df8c83b133824d0ab442bbfec
