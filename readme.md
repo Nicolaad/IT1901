@@ -2,7 +2,8 @@
  
 ## Utgift
 
-Dette prosjektet er en trelagsapplikasjon med et domenelag, brukergrensesnitt (UI) og persistens (lagring). Prosjektet er konfigurert med gradle som byggesystem.
+Dette prosjektet er en trelagsapplikasjon med et domenelag, brukergrensesnitt (UI) og persistens (lagring), samt et REST-api bygget rundt kjernelogikken som tilbys av en webserver. 
+Prosjektet er konfigurert med gradle som byggesystem.
 
 **utgift/readme.md** inneholder brukerhistorie og beskrivelse av hva appen handler om og er ment å gjøre samt skjermbilder og skisser.
 
