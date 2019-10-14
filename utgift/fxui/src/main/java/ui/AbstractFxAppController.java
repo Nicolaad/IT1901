@@ -56,10 +56,13 @@ public abstract class AbstractFxAppController {
     /**
      * Sets up the listview and piechart to initial data.
      */
+    /*
     public void initialize() {
         listViewUtgift.setItems(dataAccess.getUtgifter());
         pieChart.setData(dataAccess.getPieChart());
     }
+
+     */
     private ObjectMapper objectMapper;
 
     /**

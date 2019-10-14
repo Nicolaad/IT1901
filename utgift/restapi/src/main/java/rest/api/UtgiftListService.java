@@ -10,7 +10,7 @@ import java.util.List;
 
 @Path(UtgiftListService.UTGIFT_LIST_SERVICE_PATH)
 public class UtgiftListService {
-    public static final String UTGIFT_LIST_SERVICE_PATH = "utgiftList";
+    public static final String UTGIFT_LIST_SERVICE_PATH = "utgiftlist";
 
     @Inject
     private UtgiftList utgiftList;
@@ -25,6 +25,7 @@ public class UtgiftListService {
     @Path("/{num}")
     @Produces(MediaType.APPLICATION_JSON)
     public Utgift getUtgift(@PathParam("num") int num) {
+        System.out.println("utgiftlistservice");
         if (num >= 0 && num <= utgiftList.toList().size())  {
             return utgiftList.toList().get(num);
         }
@@ -33,8 +34,10 @@ public class UtgiftListService {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
+   // @Produces(MediaType.APPLICATION_JSON)
     public void addUtgifter(final List<Utgift> utgifter) {
+        System.out.println("POSTING");
+        System.out.println(utgifter);
         utgiftList.addUtgifter(utgifter);
         //return this.latLongs.addLatLongs(latLongs.toArray(new LatLong[latLongs.size()]));
     }

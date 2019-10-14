@@ -18,7 +18,6 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -131,6 +130,7 @@ public class RestUtgiftListDataAccess implements UtgiftListDataAccess {
     @Override
     public void setUtgift(final int index, final Utgift utgift) {
         try {
+            System.out.println("fitte");
             final HttpRequest request = HttpRequest.newBuilder(getRequestUri("/" + index))
                     .header("Content-Type", "application/json")
                     .header("Accept", "application/json")
@@ -153,23 +153,41 @@ public class RestUtgiftListDataAccess implements UtgiftListDataAccess {
     @Override
     public void addUtgift(final Utgift utgift) {
         try {
-            final UtgiftList utgiftList = new UtgiftList(Arrays.asList(utgift));
+            System.out.println("fitte");
+            System.out.println("Fitte2");
+
             final HttpRequest request = HttpRequest.newBuilder(getRequestUri(""))
                     .header("Content-Type", "application/json")
                     .header("Accept", "application/json")
-                    .POST(BodyPublishers.ofString(getObjectMapper().writeValueAsString(utgiftList)))
+                    .POST(HttpRequest.BodyPublishers.ofString(getObjectMapper().writeValueAsString(utgift)))
+                   // .POST(BodyPublishers.ofString(getObjectMapper().writeValueAsString(utgiftList)))
                     .build();
             final HttpResponse<InputStream> response = HttpClient.newBuilder()
                     .build()
                     .send(request, HttpResponse.BodyHandlers.ofInputStream());
-            final int realIndex = getObjectMapper().readValue(response.body(), Integer.class);
-            if (realIndex < 0) {
+
+            String requestBody = "hei";
+
+            /*
+            String requestBody = getObjectMapper().writeValueAsString(utgift);
+            System.out.println(requestBody);
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder().uri(getRequestUri("")).POST(HttpRequest.BodyPublishers
+            .ofString(requestBody)).build();
+            System.out.println(request);
+            HttpResponse<String> response = client.send(request,HttpResponse.BodyHandlers.ofString());
+*/
+            //final int realIndex = getObjectMapper().readValue(response.body(), Integer.class);
+            System.out.println("Fitte5");
+          /*  if (realIndex < 0) {
                 throw new IndexOutOfBoundsException("realIndex");
-            }
+            }*/
         } catch (final JsonProcessingException e) {
             throw new RuntimeException(e);
-        } catch (IOException | InterruptedException e) {
-            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
     }

@@ -1,14 +1,16 @@
 package rest.server;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import core.Utgift;
 import core.UtgiftList;
 import org.glassfish.jersey.internal.inject.AbstractBinder;
 import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
-import rest.api.UtgiftObjectMapperProvider;
 import rest.api.UtgiftListService;
+import rest.api.UtgiftObjectMapperProvider;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 public class UtgiftListConfig extends ResourceConfig {
 
@@ -33,6 +35,7 @@ public class UtgiftListConfig extends ResourceConfig {
 
     public UtgiftListConfig(final UtgiftList utgiftList) {
         System.out.println("Serving " + utgiftList.toList());
+        utgiftList.addUtgifter(Arrays.asList(new Utgift("Fisk","200.0","Mat")));
         register(UtgiftListService.class);
         register(UtgiftObjectMapperProvider.class);
         register(JacksonFeature.class);

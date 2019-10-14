@@ -13,7 +13,6 @@ import rest.api.UtgiftListService;
 import rest.server.UtgiftListGrizzlyApp;
 
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -27,12 +26,13 @@ public class FxApp extends Application {
 
     @Override
     public void start(final Stage primaryStage) throws Exception {
-        URI baseUri = null;
+        URI baseUri =  URI.create("http://localhost:8080/");
         List<String> args = getParameters().getRaw();
         //args.add("https://localhost:8080");
        // args.add("[]");
        // baseUri =
         System.out.println(args);
+        /*
         if(args.size()>=1){
             final List<String> serverArgs = new ArrayList<>();
             baseUri = URI.create(args.get(0));
@@ -44,7 +44,7 @@ public class FxApp extends Application {
             System.out.println(serverArgs);
             System.out.println("Hei");
             restServer = UtgiftListGrizzlyApp.startServer(serverArgs.toArray(new String[serverArgs.size()]), 5);
-        }
+        }*/
         final String fxml = (baseUri != null ? "FxAppUsingRest.fxml" : "FxApp.fxml");
         final FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxml));
         final Parent root = fxmlLoader.load();
@@ -65,8 +65,9 @@ public class FxApp extends Application {
             controller.setDataAccess(new RestUtgiftListDataAccess(baseUri + UtgiftListService.UTGIFT_LIST_SERVICE_PATH, controller.getObjectMapper()));
 
         }
-        String[]strings = {};
+        String[]strings ={baseUri.toString()};
         UtgiftListGrizzlyApp.startServer(strings,2);
+      //  new UtgiftListService().addUtgifter(Arrays.asList(new Utgift("fisk","200.0","Mat")));
         final Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
