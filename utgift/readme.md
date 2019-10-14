@@ -2,22 +2,29 @@
 
 En Utgiftsapp som lar deg legge  til utgifter, med navn, pris og kategori.
 
+# Brukerhistorier
+
+Jeg ønsker å sortere utgifter etter kategorier.
+
+Jeg ønsker å lagre utgifter på en web-server.
+
 ## Skjermbilder for deliverable 2
 
 Skjermbilde av forsiden:
 
-![Foside](sketches/Skjermbilde DL2 forside.png)
+![Foside](sketches/Skjermbilde DL2 forside.JPG)
 
 Skjermbilde av ny utgift:
 
-![Ny utgift](sketches/Skjermbilde DL2 ny utgift.png)
+![Ny utgift](sketches/Skjermbilde DL2 ny utgift.JPG)
 
 Skjermbilde fra web-server:
 
-![web server](sketches/Skjermbilde rest1 DL2.png)
+![web server](sketches/Skjermbilde rest1 DL2.JPG)
 
 Skjermbilde fra web-server med GET metode
-![web server get](sketches/Skjermbilde rest2 DL2.png)
+
+![web server get](sketches/Skjermbilde rest2 DL2.JPG)
 
 <details>
 
