@@ -16,6 +16,10 @@ public class UtgiftListService {
     @Inject
     private UtgiftList utgiftList;
 
+    /**
+     * returnerer alle utgifter
+     * @return
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public UtgiftList getUtgiftList() {
@@ -44,6 +48,11 @@ public class UtgiftListService {
 
     }
 
+    /**
+     * Fjerner en utgift fra serveren basert på index
+     * @param num
+     * @return
+     */
     @DELETE
     @Path("/{num}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -55,7 +64,11 @@ public class UtgiftListService {
         throw new IllegalArgumentException("index out of bounds");
     }
 
-    // Sorterer utgiftlist på Kategori
+    /**
+     * henter en utgiftliste med alle utgiftene med samme kategori som parameteret
+     * @param kategori
+     * @return
+     */
     @GET
     @Path("/{kategori}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -63,7 +76,13 @@ public class UtgiftListService {
         return utgiftList.toList().stream().filter(u -> u.getKategori().equals(kategori)).collect(Collectors.toList());
     }
 
-    // Sorterer ut utgift objekt på først kategori og så på index
+
+    /**
+     * sHenter eugiftobjekt etter kategori og så index
+     * @param kategori
+     * @param num
+     * @return
+     */
     @GET
     @Path("/{kategori}/{num}")
     @Produces(MediaType.APPLICATION_JSON)

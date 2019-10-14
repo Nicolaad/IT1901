@@ -21,6 +21,7 @@ public class FxApp extends Application {
     private HttpServer restServer = null;
     /**
      * @param primaryStage takes in stage. starts the javafx and also the grizzlyserver.
+     *                    Right now our app always runs with the restapi.
      * @throws Exception
      */
 

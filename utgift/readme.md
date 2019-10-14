@@ -1,29 +1,61 @@
 # Group gr1911 utgift
- 
-En ugiftsapp som lar deg legge inn nye utgifter, og se oversikt over hva man bruker penger på, sortert i diverse kategorier.
-Initielt kan bruker velge mellom gitte kategorier, men senere er det ønske om mulighet til å legge til egne. 
-Fordelingen mellom de ulike kategoriene vil vises i et kakediagram som i første omgang bare vil våre illustrerende, 
-men som senere kan utvikles til at bruker kan trykke på kategoriene og få opp tilhørende utgifter. 
 
-Under videre utvikling finnes det også tanker om å introdusere dato som et potensielt skille mellom utgifter
-i kombinasjon med kategoriene. Mulighet til å endre og slette eksisterende utgifter er også noe som er ment å implementeres etterhvert. 
+En Utgiftsapp som lar deg legge  til utgifter, med navn, pris og kategori.
 
-Skisse av forsiden av appen:
+# Brukerhistorier
 
-![Forside](sketches/Forside skisse.png)
+Jeg Ã¸nsker Ã¥ sortere utgifter etter kategorier.
 
-Skisse av når man skal legge inn en ny utgift:
+Jeg Ã¸nsker Ã¥ lagre utgifter pÃ¥ en web-server.
 
-![Ny utgift](sketches/ny utgift skisse.png)
+## Skjermbilder for deliverable 2
 
 Skjermbilde av forsiden:
 
-![Forside](sketches/Skjermbilde forside.JPG)
+![Foside](sketches/Skjermbilde DL2 forside.JPG)
 
 Skjermbilde av ny utgift:
 
-![Ny utgift](sketches/Skjermbilde ny utgift.JPG)
- 
-Brukerhistorie:
+![Ny utgift](sketches/Skjermbilde DL2 ny utgift.JPG)
 
-Som en forbruker, ønsker jeg å kunne registrere mine utgifter, slik at jeg kan få oversikt, og se hva jeg bruker penger på.
+Skjermbilde fra web-server:
+
+![web server](sketches/Skjermbilde rest1 DL2.JPG)
+
+Skjermbilde fra web-server med GET metode
+
+![web server get](sketches/Skjermbilde rest2 DL2.JPG)
+
+<details>
+
+  <summary>Readme fra Deliverable 1</summary>
+  
+  En utgiftsapp som lar deg legge inn nye utgifter, og se oversikt over hva man bruker penger pÃ¥, sortert i diverse kategorier.
+  Initielt kan bruker velge mellom gitte kategorier, men senere er det Ã¸nske om mulighet til Ã¥ legge til egne. 
+  Fordelingen mellom de ulike kategoriene vil vises i et kakediagram som i fÃ¸rste omgang bare vil vÃ¦re illustrerende, 
+  men som senere kan utvikles til at bruker kan trykke pÃ¥ kategoriene og fÃ¥ opp tilhÃ¸rende utgifter. 
+  
+  Under videre utvikling finnes det ogsÃ¥ tanker om Ã¥ introdusere dato som et potensielt skille mellom utgifter
+  i kombinasjon med kategoriene. Mulighet til Ã¥ endre og slette eksisterende utgifter er ogsÃ¥ noe som er ment Ã¥ implementeres etterhvert. 
+  
+  Skisse av forsiden av appen:
+  
+  ![Forside](sketches/Forside skisse.png)
+  
+  Skisse av nÃ¥r man skal legge inn en ny utgift:
+  
+  ![Ny utgift](sketches/ny utgift skisse.png)
+  
+  Skjermbilde av forsiden:
+  
+  ![Forside](sketches/Skjermbilde forside.JPG)
+  
+  Skjermbilde av ny utgift:
+  
+  ![Ny utgift](sketches/Skjermbilde ny utgift.JPG)
+   
+  Brukerhistorie:
+  
+  Som en forbruker, Ã¸nsker jeg Ã¥ kunne registrere mine utgifter, slik at jeg kan fÃ¥ oversikt, og se hva jeg bruker penger pÃ¥.
+
+</details>
