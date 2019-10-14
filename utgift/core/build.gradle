@@ -3,7 +3,7 @@ plugins {
     // use javafx modules
     id 'org.openjfx.javafxplugin' version '0.0.8'
     id 'jacoco'
-    id 'de.aaschmid.cpd' version '2.0'
+   // id 'de.aaschmid.cpd' version '2.0'
     // code quality with SpotBugs
     id 'com.github.spotbugs' version '2.0.0'
     // code quality with checkstyle
@@ -35,8 +35,6 @@ tasks.withType(com.github.spotbugs.SpotBugsTask) {
     javafx {
         version = '11'
         modules = ['javafx.controls', 'javafx.fxml']
-        // run with --debug-jvm flag and
-        // launch debugger using Remote Java Application debug launch configuration
     }
 
     dependencies {

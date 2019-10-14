@@ -1,7 +1,6 @@
 package ui;
 
 import core.Utgift;
-import core.UtgiftList;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,13 +9,17 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
+import org.glassfish.grizzly.http.server.HttpServer;
+import org.junit.After;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.testfx.framework.junit.ApplicationTest;
+import rest.api.UtgiftListService;
+import rest.server.UtgiftListGrizzlyApp;
 
+import java.io.IOException;
 import java.net.URL;
-import java.util.Arrays;
 
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertNotNull;
@@ -25,27 +28,43 @@ import static junit.framework.TestCase.assertNotNull;
 public class FxAppUsingRestControllerTest extends ApplicationTest {
     private FxAppUsingRestController controller;
     private Thread thread;
-
+    private RestUtgiftListDataAccess dataAccess;
+    private HttpServer currentServer;
     @Override
     public void start(final Stage stage) throws Exception {
         URL f =getClass().getResource("FxAppUsingRest.fxml");
+        final String serverUrlString = "http://localhost:8080/";
+        final String clientUrlString = serverUrlString + UtgiftListService.UTGIFT_LIST_SERVICE_PATH;
         final FXMLLoader loader = new FXMLLoader(f);
         final Parent root = loader.load();
         this.controller = loader.getController();
-        controller.setUtgiftList(
-                new UtgiftList(
-                        Arrays.asList(
-                                new Utgift("Fisk","200.0","Mat"),
-                                new Utgift("Rotter","50.0","Mat"),
-                                new Utgift("Penn","20.0","Skole"),
-                                new Utgift("Medisin","100.0","Helse"))));
+        dataAccess = new RestUtgiftListDataAccess(clientUrlString,controller.getObjectMapper());
+        try{
+            currentServer = UtgiftListGrizzlyApp.startServer(new String[]{serverUrlString},5);
+        }
+        catch(IOException e){
+            throw new IllegalStateException("could not setup server");
+        }
+        Utgift u1 =   new Utgift("Fisk","200.0","Mat");
+        Utgift u2 =  new Utgift("Rotter","50.0","Mat");
+        Utgift u3 = new Utgift("Penn","20.0","Skole");
+        Utgift u4 =   new Utgift("Medisin","100.0","Helse");
+        dataAccess.addUtgift(u1);
+        dataAccess.addUtgift(u2);
+        dataAccess.addUtgift(u3);
+        dataAccess.addUtgift(u4);
+
+        controller.setDataAccess(dataAccess);
         controller.init2();
         controller.labelsSetUp();
         final Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
-
+    @After
+    public void stopServer(){
+        currentServer.shutdownNow();
+    }
     @Test
     public void aTestController(){
         assertNotNull(this.controller);
@@ -95,9 +114,8 @@ public class FxAppUsingRestControllerTest extends ApplicationTest {
         ObservableList<PieChart.Data> temp = pieChart.getData();
         ObservableList<PieChart.Data> temp2 = controller.getDataAccess().getPieChart();
         for (int i = 0;i<pieChart.getData().size();i++){
-            System.out.println(temp.get(i));
-            System.out.println(temp2.get(i));
-            assertEquals(temp.get(i),temp2.get(i));
+            assertEquals(temp.get(i).getPieValue(),temp2.get(i).getPieValue(),0.05);
+            assertEquals(temp.get(i).getName(),temp2.get(i).getName());
         }
     }
     @Test
@@ -106,7 +124,9 @@ public class FxAppUsingRestControllerTest extends ApplicationTest {
         ObservableList<Utgift> temp  = listView.getItems();
         ObservableList<Utgift> temp2 = controller.getDataAccess().getUtgifter();
         for(int i =0;i<temp.size();i++){
-            assertEquals(temp.get(i),temp2.get(i));
+            assertEquals(temp.get(i).getPris(),temp2.get(i).getPris(),0.05);
+            assertEquals(temp.get(i).getKategori(),temp2.get(i).getKategori());
+            assertEquals(temp.get(i).getNavn(),temp2.get(i).getNavn());
         }
     }
 
