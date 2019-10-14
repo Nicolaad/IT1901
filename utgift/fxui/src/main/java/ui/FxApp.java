@@ -28,9 +28,6 @@ public class FxApp extends Application {
     public void start(final Stage primaryStage) throws Exception {
         URI baseUri =  URI.create("http://localhost:8080/");
         List<String> args = getParameters().getRaw();
-        //args.add("https://localhost:8080");
-       // args.add("[]");
-       // baseUri =
         System.out.println(args);
         /*
         if(args.size()>=1){
@@ -67,8 +64,6 @@ public class FxApp extends Application {
             controller.setDataAccess(new RestUtgiftListDataAccess(baseUri + UtgiftListService.UTGIFT_LIST_SERVICE_PATH, controller.getObjectMapper()));
 
         }
-
-      //  new UtgiftListService().addUtgifter(Arrays.asList(new Utgift("fisk","200.0","Mat")));
         final Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();

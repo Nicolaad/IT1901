@@ -36,7 +36,7 @@ public class Utgift {
     /**
      * @return En string med pris til utgiften.
      */
-    public String getPrisString() {
+    public String prisString() {
         return pris;
     }
 

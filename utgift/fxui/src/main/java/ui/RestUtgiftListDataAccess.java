@@ -156,25 +156,25 @@ public class RestUtgiftListDataAccess implements UtgiftListDataAccess {
     @Override
     public void addUtgift(final Utgift utgift) {
         try {
-            UtgiftList ul = new UtgiftList(Arrays.asList(utgift));
-            URI url = new URI("http://localhost:8080/utgiftlist/Mat");
-            final HttpRequest request = HttpRequest.newBuilder(url)
+            final UtgiftList ul = new UtgiftList(Arrays.asList(utgift));
+            final HttpRequest request = HttpRequest.newBuilder(getRequestUri(""))
                     .header("Content-Type", "application/json")
                     .header("Accept", "application/json")
-                    .POST(BodyPublishers.ofString(getObjectMapper().writeValueAsString(utgift)))
+                   // .POST(BodyPublishers.ofString("{\"kake\":\"2.0\"}"))
+                    .POST(BodyPublishers.ofString(getObjectMapper().writeValueAsString(ul)))
                     .build();
+            System.out.println(request);
             final HttpResponse<InputStream> response = HttpClient.newBuilder()
                     .build()
                     .send(request, HttpResponse.BodyHandlers.ofInputStream());
+
             System.out.println(response.uri());
-            System.out.println(getObjectMapper().writeValueAsString(utgift));
+           // System.out.println(getObjectMapper().writeValueAsString(utgift));
         } catch (final JsonProcessingException e) {
             throw new RuntimeException(e);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
-        } catch (URISyntaxException e) {
             e.printStackTrace();
         }
 

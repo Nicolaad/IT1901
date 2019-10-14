@@ -6,6 +6,7 @@ import core.UtgiftList;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 @Path(UtgiftListService.UTGIFT_LIST_SERVICE_PATH)
 public class UtgiftListService {
@@ -34,10 +35,9 @@ public class UtgiftListService {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public int addUtgift(final Utgift utgift) {
+    public int addUtgift(final List<Utgift> utgifter) {
         System.out.println("POSTING");
-        System.out.println(utgift);
-        utgiftList.toList().add(utgift);
+        utgiftList.toList().addAll(utgifter);
         return 0;
 
     }
@@ -46,6 +46,7 @@ public class UtgiftListService {
     @Path("/{num}")
     @Produces(MediaType.APPLICATION_JSON)
     public Utgift deleteUtgift(@PathParam("num") int num) {
+        System.out.println("vi poster naa");
         if (num >= 0 && num <= utgiftList.toList().size()) {
             return utgiftList.toList().remove(num);
         }

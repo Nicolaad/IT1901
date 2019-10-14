@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.Module;
 import com.fasterxml.jackson.databind.module.SimpleDeserializers;
 import com.fasterxml.jackson.databind.module.SimpleSerializers;
+import core.Utgift;
 import core.UtgiftList;
 
 
@@ -31,9 +32,9 @@ public class UtgiftListModule extends Module {
      */
 
     public UtgiftListModule() {
+        serializers.addSerializer(Utgift.class, new UtgiftSerializer());
         serializers.addSerializer(UtgiftList.class, new UtgiftListSerializer());
-        serializers.addSerializer(UtgiftList.class, new UtgiftListSerializer());
-        deserializers.addDeserializer(UtgiftList.class, new UtgiftListDeserializer());
+        deserializers.addDeserializer(Utgift.class, new UtgiftDeserializer());
         deserializers.addDeserializer(UtgiftList.class, new UtgiftListDeserializer());
     }
 

@@ -1,6 +1,5 @@
 package core;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -25,7 +24,7 @@ public class UtgiftTest {
 
     @Test
     public void checkPriceLength() {
-        assertTrue("Error, no price was entered.", utgift1.getPrisString().length() > 0);
+        assertTrue("Error, no price was entered.", utgift1.prisString().length() > 0);
         System.out.println("Price length test passed");
     }
 /*
@@ -49,7 +48,7 @@ public class UtgiftTest {
 
     @Test
     public void getPrisString() {
-        assertEquals("200.0",utgift1.getPrisString());
+        assertEquals("200.0",utgift1.prisString());
     }
 
     @Test

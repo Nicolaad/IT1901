@@ -16,7 +16,7 @@ public class UtgiftDeserializer extends JsonDeserializer {
         final JsonNode jsonNode = jsonParser.getCodec().readTree(jsonParser);
         return deserialize(jsonNode);
     }
-
+// MULIG PROBLEm
     public Utgift deserialize(JsonNode jsonNode) {
         final ObjectNode objectNode = (ObjectNode) jsonNode;
         final String name = objectNode.get(UtgiftSerializer.NAME_FIELD_NAME).asText();
