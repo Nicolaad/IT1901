@@ -35,6 +35,10 @@ public class LocalUtgiftListDataAccess implements UtgiftListDataAccess {
         return getUtgiftList().getUtgift(num);
     }
 
+    @Override
+    public void deleteUtgift(int index, String kategori) {
+
+    }
 
 
     public void setUtgift(int index, Utgift utgift){

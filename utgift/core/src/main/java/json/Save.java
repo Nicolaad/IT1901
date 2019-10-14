@@ -24,6 +24,7 @@ public class Save {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         try {
+            System.out.println("Attempting save to file in: "+file.getCanonicalPath());
             FileWriter writer = new FileWriter(file, Charset.defaultCharset());
             gson.toJson(utgifter, writer);
             writer.close();

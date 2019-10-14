@@ -14,9 +14,7 @@ public interface UtgiftListDataAccess {
 
     Utgift getUtgift(int num);
 
-
-    void setUtgift(int index, Utgift utgift);
-
+    void deleteUtgift(int index, String kategori);
 
     void addUtgift(Utgift utgift);
 

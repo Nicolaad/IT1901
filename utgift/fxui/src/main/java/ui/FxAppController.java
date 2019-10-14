@@ -67,7 +67,6 @@ public class FxAppController {
     /**
      * Saves the data to save.json using a static method in the calss Save
      */
-    @FXML
     public void save() {
         Save.save(utgiftList.getUtgifter(), new File("src/main/resources/json/save.json"));
     }
@@ -75,7 +74,7 @@ public class FxAppController {
     /**
      * loads data from save.json to the listview, piechart and sets up the labels properly.
      */
-    @FXML
+
     public void load() {
         ObservableList<Utgift> utgifterListView = utgiftList.getUtgifter();
         ObservableList<PieChart.Data> utgifterPieChart = utgiftList.getPieChart();

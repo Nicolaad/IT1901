@@ -24,5 +24,6 @@
       <Label layoutX="18.0" layoutY="248.0" text="Skole" />
       <Label fx:id="labelTotal" layoutX="59.0" layoutY="286.0" text="0" />
       <Label layoutX="18.0" layoutY="286.0" text="Total" />
+      <Button layoutX="346.0" layoutY="37.0" mnemonicParsing="false" onAction="#deleteUtgift" text="Slett første utgift" />
    </children>
 </AnchorPane>

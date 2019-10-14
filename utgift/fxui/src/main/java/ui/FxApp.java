@@ -30,6 +30,7 @@ public class FxApp extends Application {
         URI baseUri =  URI.create("http://localhost:8080/");
         List<String> args = getParameters().getRaw();
         System.out.println(args);
+
         /*
         if(args.size()>=1){
             final List<String> serverArgs = new ArrayList<>();
@@ -43,6 +44,7 @@ public class FxApp extends Application {
             System.out.println("Hei");
             restServer = UtgiftListGrizzlyApp.startServer(serverArgs.toArray(new String[serverArgs.size()]), 5);
         }*/
+
         String[]strings ={baseUri.toString()};
         UtgiftListGrizzlyApp.startServer(strings,2);
         final String fxml = (baseUri != null ? "FxAppUsingRest.fxml" : "FxApp.fxml");
@@ -63,8 +65,12 @@ public class FxApp extends Application {
         } else {
             final FxAppUsingRestController controller = fxmlLoader.getController();
             controller.setDataAccess(new RestUtgiftListDataAccess(baseUri + UtgiftListService.UTGIFT_LIST_SERVICE_PATH, controller.getObjectMapper()));
+            controller.load();
 
+            //Collection<Utgift> ut = Load.retrieve(new File("src/main/resources/json/save.json"));
         }
+
+
         final Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -75,7 +81,7 @@ public class FxApp extends Application {
         final Parent root = loader.load();
         FxAppController controller = loader.getController();
         controller.setUtgiftList(
-                new UtgiftList(
+                new UtgiftList(+
                         Arrays.asList(
                                 new Utgift("Fisk","200.0","Mat"),
                                 new Utgift("Rotter","50.0","Mat"),

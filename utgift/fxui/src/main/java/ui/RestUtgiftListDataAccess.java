@@ -9,7 +9,9 @@ import core.UtgiftList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
+import json.Save;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
@@ -106,28 +108,19 @@ public class RestUtgiftListDataAccess implements UtgiftListDataAccess {
         }
         return null;
     }
-
-
-
-    @Override
-    public void setUtgift(final int index, final Utgift utgift) {
+    public void deleteUtgift(final int index, String kategori) {
         try {
-            System.out.println("fitte");
-            final HttpRequest request = HttpRequest.newBuilder(getRequestUri("/" + index))
-                    .header("Content-Type", "application/json")
-                    .header("Accept", "application/json")
-                    .PUT(BodyPublishers.ofString(getObjectMapper().writeValueAsString(utgift)))
+            final HttpRequest request = HttpRequest.newBuilder(getRequestUri("/" + kategori + "/" + index))
+                    .DELETE()
                     .build();
-            final HttpResponse<InputStream> response = HttpClient.newBuilder()
+            System.out.println(request.toString());
+            System.out.println(request.headers());
+            final HttpResponse<InputStream> response =
+                    HttpClient.newBuilder()
                     .build()
                     .send(request, HttpResponse.BodyHandlers.ofInputStream());
-            final int realIndex = getObjectMapper().readValue(response.body(), Integer.class);
-            if (realIndex < 0) {
-                throw new IndexOutOfBoundsException("realIndex");
-            }
-        } catch (final JsonProcessingException e) {
-            throw new RuntimeException(e);
-        } catch (IOException | InterruptedException e) {
+
+        } catch (final IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
@@ -146,9 +139,11 @@ public class RestUtgiftListDataAccess implements UtgiftListDataAccess {
             final HttpResponse<InputStream> response = HttpClient.newBuilder()
                     .build()
                     .send(request, HttpResponse.BodyHandlers.ofInputStream());
+            System.out.println("saving");
+            Save.save(getAllUtgifter(),new File("../save.json"));
 
-            System.out.println(response.uri());
-           // System.out.println(getObjectMapper().writeValueAsString(utgift));
+            //Load.retrieve(new File("save.json"));
+            System.out.println("feilen er her");
         } catch (final JsonProcessingException e) {
             throw new RuntimeException(e);
         } catch (InterruptedException e) {
