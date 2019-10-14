@@ -59,7 +59,8 @@ public class UtgiftListService {
     public Utgift deleteUtgift(@PathParam("kategori") String kategori, @PathParam("num") int num) {
         System.out.println("delete funker nå");
         try{
-            return utgiftList.getUtgifter().remove(0);
+            return utgiftList.toList().remove(0);
+
         }
        catch(Exception e){
            System.out.println(e);

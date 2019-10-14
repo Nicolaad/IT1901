@@ -1,12 +1,7 @@
 [
   {
-    "navn": "abc",
-    "pris": "123.0",
-    "kategori": "Mat"
-  },
-  {
-    "navn": "fisk",
-    "pris": "200.0",
+    "navn": "qwer",
+    "pris": "1234.0",
     "kategori": "Mat"
   }
 ]

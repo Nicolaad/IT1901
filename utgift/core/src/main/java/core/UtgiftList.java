@@ -26,8 +26,6 @@ public class UtgiftList {
 
     }
 
-
-
     /**
      * konstruktoren fjerner foorst det som finnes it utgifter for aa ikke legge til dobbelt.
      * deretter legger den til alle utgiftene gjennom private metoden addUtgift()
