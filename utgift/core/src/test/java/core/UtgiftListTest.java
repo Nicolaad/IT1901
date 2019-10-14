@@ -38,7 +38,7 @@ public class UtgiftListTest {
         ul.clear();
         ul.addUtgift(utgift1);
         List<PieChart.Data> pie = new ArrayList<>();
-        pie.add(new PieChart.Data(utgift1.getKategori(), utgift1.fetchPrisDoubleVersion()));
+        pie.add(new PieChart.Data(utgift1.getKategori(), utgift1.getPris()));
         List<PieChart.Data> op = ul.setPieChartData(Arrays.asList(utgift1));
         try {
             for (int i = 0; i < pie.size(); i++) {
@@ -49,7 +49,7 @@ public class UtgiftListTest {
         catch(Exception e){
             fail("The piechart did not work properly");
         }
-        pie.add(new PieChart.Data(utgift2.getKategori(),utgift2.fetchPrisDoubleVersion()));
+        pie.add(new PieChart.Data(utgift2.getKategori(),utgift2.getPris()));
         ul.setPieChartData(Arrays.asList(utgift2));
     }
 
@@ -57,10 +57,10 @@ public class UtgiftListTest {
     public void testSetPieChartDataSameKategori(){
         UtgiftList ul = new UtgiftList();
         ul.clear();
-        UtgiftList.add(utgift1);
-        UtgiftList.add(utgift2);
+        ul.add(utgift1);
+        ul.add(utgift2);
         List<PieChart.Data> pie = new ArrayList<>();
-        pie.add(new PieChart.Data(utgift1.getKategori(), utgift1.fetchPrisDoubleVersion()+utgift2.fetchPrisDoubleVersion()));
+        pie.add(new PieChart.Data(utgift1.getKategori(), utgift1.getPris()+utgift2.getPris()));
         List<PieChart.Data> op = ul.getPieChart();
        // assertEquals(op.size(), pie.size());
         try {
@@ -76,8 +76,9 @@ public class UtgiftListTest {
 
     @Test
     public void utgiftListAddTest(){
+        UtgiftList utgiftList = new UtgiftList();
         Utgift utgift5 = new Utgift("Paracet","100","Helse");
-        UtgiftList.add(utgift5);
+        utgiftList.add(utgift5);
         assertTrue(utgiftList.toList().contains(utgift5));
         utgiftList.removeUtgift(utgift5);
         assertFalse(utgiftList.toList().contains(utgift5));
@@ -87,11 +88,12 @@ public class UtgiftListTest {
 
     @Test
     public void testClear(){
-        System.out.println(utgiftList.getUtgifter());
-        UtgiftList.clear();
+        UtgiftList utgiftList = new UtgiftList();
+        Utgift utgift5 = new Utgift("Paracet","100","Helse");
+        utgiftList.add(utgift5);
+        utgiftList.clear();
         assertTrue(utgiftList.getUtgifter().isEmpty());
         assertTrue(utgiftList.getPieChart().isEmpty());
-
     }
 
 }
