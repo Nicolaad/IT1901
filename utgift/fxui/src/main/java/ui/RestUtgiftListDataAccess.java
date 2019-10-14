@@ -23,28 +23,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 
-/*
-@startuml
-class FxAppController
-class LatLongs
-class BorderPane
-class "ListView<LatLong>" as ListView
-class "fxmapcontrol.MapBase" as MapBase
 
-BorderPane *--> ListView: "left"
-BorderPane *--> MapBase: "center"
-
-FxAppController --> LatLongs: "latLongs"
-FxAppController --> MapBase: "mapView"
-FxAppController --> ListView: "locationListView"
-@enduml
- */
-
-/**
- * Data access object using rest.
- * @author hal
- *
- */
 public class RestUtgiftListDataAccess implements UtgiftListDataAccess {
 
     private final String baseUrlString;

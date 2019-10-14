@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import core.Utgift;
 import core.UtgiftList;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import rest.api.UtgiftListService;
@@ -22,6 +21,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.util.Arrays;
+
+import static org.junit.Assert.assertEquals;
 
 public class UtgiftListServiceTest extends UtgiftJerseyTest {
 
@@ -47,11 +48,9 @@ public class UtgiftListServiceTest extends UtgiftJerseyTest {
         .request("application/json; charset=UTF-8").post(
                 Entity.entity(objectMapper.writeValueAsString(ul),MediaType.APPLICATION_JSON));
 
-        //.post(Entity.entity(objectMapper.writeValueAsString(new UtgiftList(Arrays.asList(utgift))), MediaType.APPLICATION_JSON));
-
-    Assert.assertEquals(200, postResponse.getStatus());
+    assertEquals(200, postResponse.getStatus());
     final Integer postNum = objectMapper.readValue(postResponse.readEntity(String.class), Integer.class);
-    Assert.assertEquals(0, postNum.intValue());
+    assertEquals(0, postNum.intValue());
     // GET
     testGet(0, utgift);
 
@@ -75,16 +74,18 @@ public class UtgiftListServiceTest extends UtgiftJerseyTest {
   protected void testGet(final int num, final Utgift utgift)
       throws MalformedURLException, IOException, ProtocolException, JsonParseException, JsonMappingException {
     // GET
-    final Response response = target(UTGIFT_LIST_SERVICE_PATH).path(String.valueOf(num))
+    final Response response = target(UTGIFT_LIST_SERVICE_PATH).path("Mat")
         .request("application/json; charset=UTF-8")
         .get();
-    Assert.assertEquals(200, response.getStatus());
+
+    assertEquals(200, response.getStatus());
     testContent(response.readEntity(String.class), utgift);
   }
 
   protected void testContent(final String content, final Utgift utgift)
       throws IOException, JsonParseException, JsonMappingException {
-    final Utgift getUtgift = objectMapper.readValue(content, Utgift.class);
-    Assert.assertEquals(utgift, getUtgift);
+    final UtgiftList getUtgiftList = objectMapper.readValue(content, UtgiftList.class);
+   // Assert.assertTrue(getUtgiftList.getUtgifter().contains(utgift));
+    assertEquals(getUtgiftList.getUtgift(0).toString(),utgift.toString());
   }
 }
