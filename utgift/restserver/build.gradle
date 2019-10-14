@@ -25,7 +25,6 @@ tasks.withType(com.github.spotbugs.SpotBugsTask) {
 
 checkstyle {
     configFile = project.file("../core/config/checkstyle/google_checks.xml")
-    
 }
 
 ext {
@@ -36,19 +35,10 @@ ext {
 sourceCompatibility = 1.8
 
 repositories {
-    jcenter()
-    maven {
-        url "https://plugins.gradle.org/m2/"
-    }
     flatDir {
         dirs 'libs'
     }
 }
-//application {
-//	sourceCompatibility = JavaVersion.VERSION_1_10
-//	targetCompatibility = JavaVersion.VERSION_1_10
-//	// mainClassName = 'simpleex.restserver.LatLongGrizzlyApp'
-//}
 
 dependencies {
     implementation project(':core')
