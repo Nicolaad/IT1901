@@ -17,6 +17,11 @@ public class UtgiftDeserializer extends JsonDeserializer {
         return deserialize(jsonNode);
     }
 
+    /**
+     * Konverterer en jsonNode til et utgiftsobjekt.
+     * @param jsonNode
+     * @return
+     */
     public Utgift deserialize(JsonNode jsonNode) {
         final ObjectNode objectNode = (ObjectNode) jsonNode;
         final String name = objectNode.get(UtgiftSerializer.NAME_FIELD_NAME).asText();
