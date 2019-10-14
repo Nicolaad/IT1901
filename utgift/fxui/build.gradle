@@ -50,6 +50,12 @@ javafx {
     // run with --debug-jvm flag and
     // launch debugger using Remote Java Application debug launch configuration
 }
+test {
+    // don't run UI test on server (that cannot run javafx)
+    if (project.hasProperty('ci') && "$ci" == 'gitlab') {
+        exclude 'ui/*'
+    }
+}
 /*
 run {
     args = ["http://localhost:8080/", "[[63.1, 11.2], [63.2, 11.0]]"]
