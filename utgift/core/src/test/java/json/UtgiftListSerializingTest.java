@@ -31,7 +31,7 @@ public class UtgiftListSerializingTest {
     public void testUtgiftListSerialization() throws JsonProcessingException {
 
         String inputJson = objectMapper.writeValueAsString(new UtgiftList(utgift1(),utgift2()));
-        String expectedJson = "[{\"navn\":\"ost\",\"pris\":53.0,\"kategori\":\"mat\",\"prisString\":\"53\"},{\"navn\":\"bok\",\"pris\":1621.0,\"kategori\":\"skole\",\"prisString\":\"1621\"}]";
+        String expectedJson = "[{\"navn\":\"ost\",\"pris\":\"53\",\"kategori\":\"mat\"},{\"navn\":\"bok\",\"pris\":\"1621\",\"kategori\":\"skole\"}]";
         Assert.assertEquals("compared:"+ inputJson + " with:" + expectedJson,inputJson,expectedJson);
         }
 
@@ -45,7 +45,7 @@ public class UtgiftListSerializingTest {
         Object[] ul = objectMapper.readValue(json, UtgiftList.class).getUtgifter().toArray();
         Assert.assertEquals(ul[0].toString(), utgift1().toString(), ul[0].toString());
         Assert.assertEquals(ul[1].toString(), utgift2().toString(), ul[1].toString());
-        Assert.assertEquals("Actuall length is " + ul.length, 2, ul.length);
+        Assert.assertEquals("Actual length is " + ul.length, 2, ul.length);
 
     }
 
@@ -56,7 +56,7 @@ public class UtgiftListSerializingTest {
     @Test //halvveis redundant pga testen over, men forblir atm:)
     public void testUtgiftSerialization() throws JsonProcessingException{
         String inputJson = objectMapper.writeValueAsString(new UtgiftList(utgift1()));
-        String expectedJson = "[{\"navn\":\"ost\",\"pris\":53.0,\"kategori\":\"mat\",\"prisString\":\"53\"}]";
+        String expectedJson = "[{\"navn\":\"ost\",\"pris\":\"53\",\"kategori\":\"mat\"}]";
         Assert.assertEquals("compared:"+ inputJson + " with:" + expectedJson,inputJson,expectedJson);
     }
     /*q

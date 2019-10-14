@@ -38,7 +38,7 @@ public class UtgiftListTest {
         ul.clear();
         ul.addUtgift(utgift1);
         List<PieChart.Data> pie = new ArrayList<>();
-        pie.add(new PieChart.Data(utgift1.getKategori(), utgift1.getPris()));
+        pie.add(new PieChart.Data(utgift1.getKategori(), utgift1.fetchPrisDoubleVersion()));
         List<PieChart.Data> op = ul.setPieChartData(Arrays.asList(utgift1));
         try {
             for (int i = 0; i < pie.size(); i++) {
@@ -49,7 +49,7 @@ public class UtgiftListTest {
         catch(Exception e){
             fail("The piechart did not work properly");
         }
-        pie.add(new PieChart.Data(utgift2.getKategori(),utgift2.getPris()));
+        pie.add(new PieChart.Data(utgift2.getKategori(),utgift2.fetchPrisDoubleVersion()));
         ul.setPieChartData(Arrays.asList(utgift2));
     }
 
@@ -60,7 +60,7 @@ public class UtgiftListTest {
         UtgiftList.add(utgift1);
         UtgiftList.add(utgift2);
         List<PieChart.Data> pie = new ArrayList<>();
-        pie.add(new PieChart.Data(utgift1.getKategori(), utgift1.getPris()+utgift2.getPris()));
+        pie.add(new PieChart.Data(utgift1.getKategori(), utgift1.fetchPrisDoubleVersion()+utgift2.fetchPrisDoubleVersion()));
         List<PieChart.Data> op = ul.getPieChart();
        // assertEquals(op.size(), pie.size());
         try {
