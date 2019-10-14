@@ -69,21 +69,12 @@ dependencies {
     // persistens
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.8'
     // brukergrensesnitt
-   // testImplementation 'junit:junit:4.12'
-    //testCompile(group: "org.testfx", name: "testfx-core", version: "4.0.13-alpha")
-    //testCompile(group: "org.testfx", name: "testfx-junit", version: "4.0.13-alpha")
-    //testCompile(group: 'junit', name: 'junit', version: '4.12')
-   // testCompile(group: 'org.loadui',name:'testFx',version:'3.1.2')
     testImplementation 'org.testfx:testfx-core:4.0.16-alpha'
     testImplementation 'org.testfx:testfx-junit:4.0.16-alpha'
     testImplementation 'org.mockito:mockito-core:2.28.2'
-    //testCompile 'org.junit.jupiter:junit-jupiter-api:5.5.1'
-    // testCompile (group: 'org.assertj', name: 'assertj-core', version: '3.13.2')
     //json
     // implementation 'com.google.code.gson:gson:2.8.5'
 
-    /*implementation 'loadui:testFx:3.1.2'
-    implementation 'guava:14.0.1'*/
 }
 
 
