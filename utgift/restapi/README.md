@@ -12,6 +12,7 @@ API-et tilbyr følgende metoder:
 - lese innholdet til alle utgiftobjektene som er i utgiftlistobjektet. Oppnås ved GET til tjeneste-URL, dvs URL'en spesifisert over.
 - Lese innholdet tilalle utgiftsobjektene i èn spesifikk kategori, angitt med kategorien **kategori**. **@GET** til tjeneste-URL/kategori. f.eks http://localhost:8080/utgiftlist/Mat/.
 - Lese innholdet til et spesifikt utgiftobjekt i èn spesifikk kategori, angitt med posisjonenn **num**. **@GET** til tjeneste-URL/kategori/num. f.eks http://localhost:8080/utgiftlist/Mat/0/.
+- Legge til utgiftobjekter, **@Post** av Json-kodet UtgiftList-objekter.
 
 
 ## Bygging med Gradle 
