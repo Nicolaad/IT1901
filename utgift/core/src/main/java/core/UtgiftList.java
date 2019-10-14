@@ -61,6 +61,16 @@ public class UtgiftList {
         utgifter.clear();
         pieChartData.clear();
     }
+/*
+    public void removeKategori(String kategori){
+        for(Utgift u: utgifter){
+            if(u.getKategori().equals(kategori)){
+
+            }
+        }
+    }
+
+ */
 
     /**
      * static metode for aa legge til utgift objekt forst til listen av utgifter

@@ -1,1 +1,7 @@
-[]
+[
+  {
+    "navn": "qwer",
+    "pris": "123.0",
+    "kategori": "Mat"
+  }
+]

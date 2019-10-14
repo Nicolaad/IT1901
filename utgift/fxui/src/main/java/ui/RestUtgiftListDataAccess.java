@@ -108,6 +108,22 @@ public class RestUtgiftListDataAccess implements UtgiftListDataAccess {
         }
         return null;
     }
+    public void deleteUtgift(final int index, String kategori) {
+        try {
+            final HttpRequest request = HttpRequest.newBuilder(getRequestUri("/" + kategori + "/" + index))
+                    .DELETE()
+                    .build();
+            System.out.println(request.toString());
+            System.out.println(request.headers());
+            final HttpResponse<InputStream> response =
+                    HttpClient.newBuilder()
+                    .build()
+                    .send(request, HttpResponse.BodyHandlers.ofInputStream());
+
+        } catch (final IOException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @Override
     public void addUtgift(final Utgift utgift) {

@@ -159,5 +159,18 @@ public abstract class AbstractFxAppController {
 
     }
 
+    @FXML
+    public void deleteUtgift(){
+        try {
+            dataAccess.deleteUtgift(0, "Mat");
+            init2();
+            labelsSetUp();
+        }
+        catch(Exception e){
+            System.out.println("Kan ikke slette ");
+
+        }
+    }
+
 
 }

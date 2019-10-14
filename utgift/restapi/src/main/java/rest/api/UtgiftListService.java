@@ -52,11 +52,24 @@ public class UtgiftListService {
      * Fjerner en utgift fra serveren basert på index
      * @param num
      */
+
     @DELETE
     @Path("/{kategori}/{num}")
-    public void deleteUtgift(@PathParam("kategori") String kategori, @PathParam("num") int num) {
-        utgiftList.getKategori(kategori).remove(num);
+    @Produces(MediaType.APPLICATION_JSON)
+    public Utgift deleteUtgift(@PathParam("kategori") String kategori, @PathParam("num") int num) {
+        System.out.println("delete funker nå");
+        try{
+            return utgiftList.getUtgifter().remove(0);
+        }
+       catch(Exception e){
+           System.out.println(e);
+       }
+        return null;
     }
+
+
+
+
 
     /**
      * henter en utgiftliste med alle utgiftene med samme kategori som parameteret
