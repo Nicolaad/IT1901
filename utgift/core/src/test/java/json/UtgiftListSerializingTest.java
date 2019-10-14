@@ -31,7 +31,7 @@ public class UtgiftListSerializingTest {
     public void testUtgiftListSerialization() throws JsonProcessingException {
 
         String inputJson = objectMapper.writeValueAsString(new UtgiftList(utgift1(),utgift2()));
-        String expectedJson = "[{\"navn\":\"ost\",\"pris\":53.0,\"kategori\":\"mat\",\"prisString\":\"53\"},{\"navn\":\"bok\",\"pris\":1621.0,\"kategori\":\"skole\",\"prisString\":\"1621\"}]";
+        String expectedJson = "[{\"navn\":\"ost\",\"pris\":53.0,\"kategori\":\"mat\"},{\"navn\":\"bok\",\"pris\":1621.0,\"kategori\":\"skole\"}]";
         Assert.assertEquals("compared:"+ inputJson + " with:" + expectedJson,inputJson,expectedJson);
         }
 

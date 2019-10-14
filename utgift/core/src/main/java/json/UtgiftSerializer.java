@@ -27,7 +27,7 @@ public class UtgiftSerializer extends JsonSerializer<Utgift> {
         jsonGen.writeFieldName(NAME_FIELD_NAME);
         jsonGen.writeString(utgift.getNavn());
         jsonGen.writeFieldName(PRICE_FIELD_NAME);
-        jsonGen.writeNumber(utgift.getPris());
+        jsonGen.writeNumber(utgift.fetchPrisDoubleVersion());
         jsonGen.writeFieldName(CATEGORY_FIELD_NAME);
         jsonGen.writeString(utgift.getKategori());
         jsonGen.writeEndObject();

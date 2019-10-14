@@ -29,7 +29,7 @@ public class UtgiftList {
     /**
      * konstruktoren fjerner foorst det som finnes it utgifter for aa ikke legge til dobbelt.
      * deretter legger den til alle utgiftene gjennom private metoden addUtgift()
-     * @param utgift tar inn en array i form av utgift1, utgift2 ...
+     * @param ul tar inn en array i form av utgift1, utgift2 ...
      */
     public UtgiftList(Utgift... ul){
         utgifter.clear();
@@ -77,11 +77,11 @@ public class UtgiftList {
         }
         //hvis kategorien til utgift er ny så legges den til i piechart
         if (!yes.contains(utgift.getKategori())) {
-            pieChartData.add(new PieChart.Data(utgift.getKategori(),utgift.getPris()));
+            pieChartData.add(new PieChart.Data(utgift.getKategori(),utgift.fetchPrisDoubleVersion()));
         } else {  //hvis ikke travereserer vi dataen og gjor dataen storre med samme kategori.
             for (PieChart.Data t: pieChartData) {
                 if (t.getName().equals(utgift.getKategori())) {
-                    double tk = t.getPieValue() + utgift.getPris();
+                    double tk = t.getPieValue() + utgift.fetchPrisDoubleVersion();
                     t.setPieValue(tk);
                 }
             }
@@ -156,10 +156,10 @@ public class UtgiftList {
         List<PieChart.Data> pie = new ArrayList<>();
         for (Utgift utgift: ut) {
             if (!pieChartData.containsKey(utgift.getKategori())) {
-                pieChartData.put(utgift.getKategori(), utgift.getPris());
+                pieChartData.put(utgift.getKategori(), utgift.fetchPrisDoubleVersion());
             } else {
                 Double d = pieChartData.get(utgift.getKategori());
-                pieChartData.replace(utgift.getKategori(), d + utgift.getPris());
+                pieChartData.replace(utgift.getKategori(), d + utgift.fetchPrisDoubleVersion());
             }
         }
         for (Map.Entry<String,Double> k: pieChartData.entrySet()) {
