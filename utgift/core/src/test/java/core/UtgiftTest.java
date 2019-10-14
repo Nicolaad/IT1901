@@ -1,5 +1,7 @@
 package core;
 
+import org.junit.Before;
+
 public class UtgiftTest {
 
     Utgift utgift1;
