@@ -6,9 +6,10 @@ import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
 
 import java.util.Collection;
+import java.util.List;
 
 
-public class LocalUtgiftListDataAccess implements UtgiftListDataAccess {
+public class LocalUtgiftListDataAccess implements UtgiftListDataAccess{
     private UtgiftList utgiftList;
     public LocalUtgiftListDataAccess(UtgiftList utgiftList){
         this.utgiftList = utgiftList;
@@ -46,8 +47,9 @@ public class LocalUtgiftListDataAccess implements UtgiftListDataAccess {
     }
 
 
-    public void addUtgift(Utgift utgift){
-        getUtgiftList().addUtgift(utgift);
+    public void addUtgift(List<Utgift> utgift){
+        //getUtgiftList().addUtgift(utgift);
+
     }
 
     @Override
