@@ -20,7 +20,7 @@ import json.UtgiftListModule;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Collection;
+import java.util.List;
 
 public abstract class AbstractFxAppController {
     @FXML private ListView<Utgift> listViewUtgift;
@@ -150,10 +150,10 @@ public abstract class AbstractFxAppController {
      */
 
     public void load() {
-        Collection<Utgift> ut = Load.retrieve(new File("../save.json"));
-        for(Utgift u:ut){
-            dataAccess.addUtgift(u);
-        }
+        List<Utgift> ut = (List<Utgift>) Load.retrieve(new File("../save.json"));
+
+            dataAccess.addUtgift(ut);
+
         init2();
         labelsSetUp();
 

@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
 
 import java.util.Collection;
+import java.util.List;
 
 public interface UtgiftListDataAccess {
 
@@ -16,7 +17,7 @@ public interface UtgiftListDataAccess {
 
     void deleteUtgift(int index, String kategori);
 
-    void addUtgift(Utgift utgift);
+    void addUtgift(List<Utgift> utgifter);
 
     ObservableList<Utgift> getUtgifter();
 }

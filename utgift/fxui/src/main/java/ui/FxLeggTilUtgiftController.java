@@ -46,7 +46,7 @@ public class FxLeggTilUtgiftController {
      */
     public void leggTilUtgift() {
         if (textFieldPris.getText().matches("[0-9]+") && textFieldPris.getText().length() > 0) {
-            dataAccess.addUtgift(new Utgift(textFieldNavn.getText(), textFieldPris.getText(), comboBoxKategori.getValue()));
+            dataAccess.addUtgift(Arrays.asList(new Utgift(textFieldNavn.getText(), textFieldPris.getText(), comboBoxKategori.getValue())));
             clearText();
         } else {
             textFieldPris.setText("");
