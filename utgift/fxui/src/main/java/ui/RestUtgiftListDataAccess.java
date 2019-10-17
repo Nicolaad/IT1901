@@ -20,7 +20,6 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -126,9 +125,9 @@ public class RestUtgiftListDataAccess implements UtgiftListDataAccess {
     }
 
     @Override
-    public void addUtgift(final List<Utgift> utgift) {
+    public void addUtgift(final List<Utgift> utgifter) {
         try {
-            final UtgiftList ul = new UtgiftList(utgift);
+            final UtgiftList ul = new UtgiftList(utgifter);
             final HttpRequest request = HttpRequest.newBuilder(getRequestUri(""))
                     .header("Content-Type", "application/json")
                     .header("Accept", "application/json")

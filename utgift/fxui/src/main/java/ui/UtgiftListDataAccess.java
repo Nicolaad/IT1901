@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
 
 import java.util.Collection;
+import java.util.List;
 
 public interface UtgiftListDataAccess {
 

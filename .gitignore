@@ -18,6 +18,8 @@ local.properties
 # External tool builders
 .externalToolBuilders/
 
+save.json
+
 # Locally stored "Eclipse launch configurations"
 *.launch
 
