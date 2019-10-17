@@ -16,7 +16,7 @@ public interface UtgiftListDataAccess {
 
     void deleteUtgift(int index, String kategori);
 
-    void addUtgift(Utgift utgift);
+    void addUtgift(List<Utgift> utgifter);
 
     ObservableList<Utgift> getUtgifter();
 }
