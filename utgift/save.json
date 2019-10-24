@@ -1,12 +1,7 @@
 [
   {
-    "navn": "qwer",
-    "pris": "234.0",
-    "kategori": "Skole"
-  },
-  {
-    "navn": "reqw",
-    "pris": "234.0",
-    "kategori": "Helse"
+    "navn": "sjokolade",
+    "pris": "39.0",
+    "kategori": "Mat"
   }
 ]

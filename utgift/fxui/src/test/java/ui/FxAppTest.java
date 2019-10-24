@@ -109,5 +109,4 @@ public class FxAppTest extends ApplicationTest {
             assertEquals(temp.get(i),temp2.get(i));
         }
     }
-
 }
