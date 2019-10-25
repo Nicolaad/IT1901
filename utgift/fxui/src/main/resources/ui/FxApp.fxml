@@ -24,6 +24,6 @@
       <Label layoutX="18.0" layoutY="248.0" text="Skole" />
       <Label fx:id="labelTotal" layoutX="59.0" layoutY="286.0" text="0" />
       <Label layoutX="18.0" layoutY="286.0" text="Total" />
-
+      <Label fx:id="indexLabel" layoutX="325.0" layoutY="339.0" prefHeight="17.0" prefWidth="256.0" text="Ingen Utgift Valgt" />
    </children>
 </AnchorPane>
