@@ -1,7 +1,12 @@
 [
   {
-    "navn": "sjokolade",
-    "pris": "39.0",
+    "navn": "qwer",
+    "pris": "134.0",
+    "kategori": "Mat"
+  },
+  {
+    "navn": "qwer",
+    "pris": "432.0",
     "kategori": "Mat"
   }
 ]
