@@ -45,7 +45,6 @@ public class UtgiftListService {
         System.out.println("POSTING");
         utgiftList.toList().addAll(utgifter);
         return 0;
-
     }
 
     /**
