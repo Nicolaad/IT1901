@@ -20,6 +20,7 @@ import rest.server.UtgiftListGrizzlyApp;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
 
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertNotNull;
@@ -49,10 +50,7 @@ public class FxAppUsingRestControllerTest extends ApplicationTest {
         Utgift u2 =  new Utgift("Rotter","50.0","Mat");
         Utgift u3 = new Utgift("Penn","20.0","Skole");
         Utgift u4 =   new Utgift("Medisin","100.0","Helse");
-        dataAccess.addUtgift(u1);
-        dataAccess.addUtgift(u2);
-        dataAccess.addUtgift(u3);
-        dataAccess.addUtgift(u4);
+        dataAccess.addUtgift(Arrays.asList(u1,u2,u3,u4));
 
         controller.setDataAccess(dataAccess);
         controller.init2();
