@@ -2,6 +2,8 @@ package ui;
 
 import core.Utgift;
 import core.UtgiftList;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.scene.paint.Color;
 import json.Load;
 import json.Save;
 
@@ -28,6 +31,7 @@ public class FxAppController {
     @FXML private Label labelMat;
     @FXML private Label labelSkole;
     @FXML private Label labelTotal;
+    @FXML private Label indexLabel;
     @FXML TextField inputField;
 
     private UtgiftList utgiftList;
@@ -137,4 +141,7 @@ public class FxAppController {
         labelSkole.setText("" + skole);
         labelTotal.setText(mat + helse + skole + "");
     }
+
+
+
 }

@@ -3,6 +3,7 @@ package ui;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import core.Utgift;
 import core.UtgiftList;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -29,11 +30,16 @@ public abstract class AbstractFxAppController {
     @FXML private Label labelMat;
     @FXML private Label labelSkole;
     @FXML private Label labelTotal;
+    @FXML private Label indexLabel;
     @FXML TextField inputField;
 
     private UtgiftList utgiftList;
     private UtgiftListDataAccess dataAccess;
     private FxAppController controller;
+    private javafx.scene.input.MouseEvent mouseEvent;
+
+    protected AbstractFxAppController() {
+    }
 
     protected UtgiftListDataAccess getDataAccess() {
         return dataAccess;
@@ -162,7 +168,7 @@ public abstract class AbstractFxAppController {
     @FXML
     public void deleteUtgift(){
         try {
-            dataAccess.deleteUtgift(0, "Mat");
+            dataAccess.deleteUtgift(getSelectedUtgift(mouseEvent), "Mat");
             save();
             init2();
             labelsSetUp();
@@ -173,5 +179,11 @@ public abstract class AbstractFxAppController {
         }
     }
 
+    @FXML
+    public int getSelectedUtgift(javafx.scene.input.MouseEvent mouseEvent) {
+        Utgift selected = listViewUtgift.getSelectionModel().getSelectedItem();
+        indexLabel.setText(selected.toString() + " index: " + listViewUtgift.getItems().indexOf(selected));
+        return listViewUtgift.getItems().indexOf(selected);
+    }
 
 }

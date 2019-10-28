@@ -1,3 +1,7 @@
 [
-
+  {
+    "navn": "sjokolade",
+    "pris": "39.0",
+    "kategori": "Mat"
+  }
 ]
