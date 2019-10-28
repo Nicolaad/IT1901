@@ -19,7 +19,7 @@ local.properties
 .externalToolBuilders/
 
 save.json
-
+utgift/save.json
 # Locally stored "Eclipse launch configurations"
 *.launch
 
