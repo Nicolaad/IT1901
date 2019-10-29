@@ -181,6 +181,9 @@ public abstract class AbstractFxAppController {
 
     @FXML
     public int getSelectedUtgift(javafx.scene.input.MouseEvent mouseEvent) {
+        if(listViewUtgift.getSelectionModel().getSelectedItem() == null){
+            return -1;
+        }
         Utgift selected = listViewUtgift.getSelectionModel().getSelectedItem();
         indexLabel.setText(selected.toString() + " index: " + listViewUtgift.getItems().indexOf(selected));
         return listViewUtgift.getItems().indexOf(selected);
