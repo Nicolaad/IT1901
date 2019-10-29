@@ -139,10 +139,11 @@ public class RestUtgiftListDataAccess implements UtgiftListDataAccess {
                     .build()
                     .send(request, HttpResponse.BodyHandlers.ofInputStream());
             System.out.println("saving");
-            Save.save(getAllUtgifter(),new File("../save.json"));
+            Save.save(getAllUtgifter(),new File("../core/src/main/resources/json/save.json"));
 
             //Load.retrieve(new File("save.json"));
-            System.out.println("feilen er her");
+            //System.out.println("feilen er her");
+            // feilen er fiksa tror jeg. - mvh Nico
         } catch (final JsonProcessingException e) {
             throw new RuntimeException(e);
         } catch (InterruptedException e) {

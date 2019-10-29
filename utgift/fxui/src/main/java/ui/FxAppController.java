@@ -72,7 +72,7 @@ public class FxAppController {
      * Saves the data to save.json using a static method in the calss Save
      */
     public void save() {
-        Save.save(utgiftList.getUtgifter(), new File("src/main/resources/json/save.json"));
+        Save.save(utgiftList.getUtgifter(), new File("../core/src/main/resources/json/save.json"));
     }
 
     /**
@@ -84,7 +84,7 @@ public class FxAppController {
         ObservableList<PieChart.Data> utgifterPieChart = utgiftList.getPieChart();
         utgifterListView.clear();
         utgifterPieChart.clear();
-        Collection<Utgift> ut = Load.retrieve(new File("src/main/resources/json/save.json"));
+        Collection<Utgift> ut = Load.retrieve(new File("../core/src/main/resources/json/save.json"));
         utgifterListView.addAll(ut);
         utgifterPieChart.addAll(utgiftList.setPieChartData(ut));
         labelsSetUp();

@@ -97,7 +97,7 @@ public abstract class AbstractFxAppController {
 
 
     public void save() {
-        Save.save(dataAccess.getAllUtgifter(), new File("../save.json"));
+        Save.save(dataAccess.getAllUtgifter(), new File("../core/src/main/resources/json/save.json"));
     }
 
     /**
@@ -156,7 +156,7 @@ public abstract class AbstractFxAppController {
      */
 
     public void load() {
-        List<Utgift> ut = (List<Utgift>) Load.retrieve(new File("../save.json"));
+        List<Utgift> ut = (List<Utgift>) Load.retrieve(new File("../core/src/main/resources/json/save.json"));
 
             dataAccess.addUtgift(ut);
 
