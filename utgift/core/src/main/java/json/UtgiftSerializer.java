@@ -15,13 +15,13 @@ public class UtgiftSerializer extends JsonSerializer<Utgift> {
 
     /**
      * konverterer et utgiftobjekt til en json streng.
-     * @param utgift
-     * @param jsonGen
-     * @param provider
-     * @throws IOException
+     * @param utgift utgiften som skal skrives til json
+     * @param jsonGen json generatoren
+     * @throws IOException om den ikke greier å skrive utgiften til json
      */
     @Override
-    public void serialize(final Utgift utgift, final JsonGenerator jsonGen, final SerializerProvider provider) throws IOException {
+    public void serialize(final Utgift utgift, final JsonGenerator jsonGen,
+                          final SerializerProvider provider) throws IOException {
 
         jsonGen.writeStartObject();
         jsonGen.writeFieldName(NAME_FIELD_NAME);

@@ -1,12 +1,14 @@
 package core;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
-
-import java.util.*;
-import java.util.stream.Collectors;
-
 
 /**
  * UtgiftList inneholder to statiske observableList. Den ene inneholder Utgift, en liste av utgifter altsaa.
@@ -31,9 +33,9 @@ public class UtgiftList {
      * deretter legger den til alle utgiftene gjennom private metoden addUtgift()
      * @param ul tar inn en array i form av utgift1, utgift2 ...
      */
-    public UtgiftList(Utgift... ul){
+    public UtgiftList(Utgift... ul) {
         utgifter.clear();
-        for(Utgift u : ul){
+        for (Utgift u : ul) {
             addUtgift(u);
         }
 
@@ -49,9 +51,16 @@ public class UtgiftList {
         clear();
         addUtgifter(utgifter);
     }
-    public Utgift getUtgift(int num){
+
+    /**
+     * returnere en ugift basert på index
+     * @param num indexen til utgiften
+     * @return utgiften med indexen num
+     */
+    public Utgift getUtgift(int num) {
         return utgifter.get(num);
     }
+
     /**
      * toommer utgifter og pieChartData.
      */
@@ -59,7 +68,8 @@ public class UtgiftList {
         utgifter.clear();
         pieChartData.clear();
     }
-/*
+
+    /*
     public void removeKategori(String kategori){
         for(Utgift u: utgifter){
             if(u.getKategori().equals(kategori)){
@@ -68,7 +78,7 @@ public class UtgiftList {
         }
     }
 
- */
+    */
 
     /**
      * static metode for aa legge til utgift objekt forst til listen av utgifter
@@ -156,9 +166,15 @@ public class UtgiftList {
         return utgifter;
     }
 
-    public List<Utgift> getKategori(String kategori){
+    /**
+     *
+     * @param kategori spesifiserer hvilken utgifter basert på kategori attributen
+     * @return utgifter med kategorien kategori
+     */
+    public List<Utgift> getKategori(String kategori) {
         return utgifter.stream().filter(u -> u.getKategori().equals(kategori)).collect(Collectors.toList());
     }
+
     /**
      * @return liste av pieChart.Data
      */

@@ -1,39 +1,36 @@
 package json;
 
-import core.Utgift;
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
+import core.Utgift;
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
-
-import static junit.framework.Assert.fail;
-import static junit.framework.TestCase.assertEquals;
-import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
 
 public class LoadSaveTest {
     private Collection<Utgift> utgifter = new ArrayList<>();
     private File file;
 
-    //initialises some base cases
+    /**
+     *Initialiserer utgifter som legges til i utgifter collectionen,
+     * legger også til path for jsonen
+     */
     @Before
     public void init() {
         utgifter.add(new Utgift("Ost", "503", "Mat"));
         utgifter.add(new Utgift("Flytogbusstogfly", "200000", "Skole"));
         file = new File("test.json");
-
     }
+
     @Test
-    public void saveAndLoadIsEqual(){
+    public void saveAndLoadIsEqual() {
         //test that it can store and retrieve proper objects
         json.Save.save(utgifter,file);
         Collection<Utgift> retrievedUtgifter = json.Load.retrieve(file);
-
         assertEquals(utgifter.toString(), retrievedUtgifter.toString());
-        }
+    }
 
     //sjekker om koden greier å handle at feil fil er spesifisert
 

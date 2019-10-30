@@ -40,7 +40,7 @@ public class UtgiftListModule extends Module {
 
     /**
      * legger til ny serializer og deserialiser
-     * @param context
+     * @param context SetupContext som skal få lagt til serializers og deserializers
      */
     @Override
     public void setupModule(final SetupContext context) {
