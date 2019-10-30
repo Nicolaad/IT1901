@@ -18,13 +18,13 @@ public class UtgiftListDeserializer extends JsonDeserializer<UtgiftList> {
 
     /**
      * oppdaterer utgiftlisten med innholdet med en liste formatert som en json streng.
-     * @param jsonParser
-     * @param deserializationContext
-     * @return
-     * @throws IOException
+     * @param jsonParser brukes for å lese json
+     * @param deserializationContext beskriver hvordan oppsettet til Utgift og Utgiftlist
+     * @throws IOException om den ikke greier å lese json noden fra parseren
      */
     @Override
-    public UtgiftList deserialize(final JsonParser jsonParser, final DeserializationContext deserializationContext) throws IOException {
+    public UtgiftList deserialize(final JsonParser jsonParser,
+                                  final DeserializationContext deserializationContext) throws IOException {
         final JsonNode jsonNode = jsonParser.getCodec().readTree(jsonParser);
         if (jsonNode instanceof ArrayNode) {
             final ArrayNode utgiftArray = (ArrayNode) jsonNode;

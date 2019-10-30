@@ -20,7 +20,7 @@ public class Load {
     public static Collection<Utgift> retrieve(File file) {
         Collection utgifter = new ArrayList<Utgift>();
         try {
-            System.out.println("Attempting to read from file in: "+file.getCanonicalPath());
+            System.out.println("Attempting to read from file in: " + file.getCanonicalPath());
             Gson gson = new Gson();
             Reader reader = new FileReader(file, Charset.defaultCharset());
 
