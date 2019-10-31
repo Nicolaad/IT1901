@@ -112,8 +112,6 @@ public class RestUtgiftListDataAccess implements UtgiftListDataAccess {
             final HttpRequest request = HttpRequest.newBuilder(getRequestUri("/" + kategori + "/" + index))
                     .DELETE()
                     .build();
-            System.out.println(request.toString());
-            System.out.println(request.headers());
             final HttpResponse<InputStream> response =
                     HttpClient.newBuilder()
                     .build()

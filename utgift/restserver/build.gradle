@@ -51,6 +51,8 @@ dependencies {
     compile "org.glassfish.jersey.media:jersey-media-json-jackson:$jerseyVersion"
     compile "org.glassfish.jersey.inject:jersey-hk2:$jerseyVersion"
 
+    compile group: 'com.airhacks', name: 'jaxrs-cors', version: '0.0.2'
+
     testImplementation 'junit:junit:4.12'
     testImplementation "org.glassfish.jersey.test-framework:jersey-test-framework-util:$jerseyVersion"
 
