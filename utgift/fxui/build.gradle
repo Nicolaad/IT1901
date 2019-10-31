@@ -36,6 +36,8 @@ tasks.withType(com.github.spotbugs.SpotBugsTask) {
 }
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'com.airhacks', name: 'jaxrs-cors', version: '0.0.2'
+
 }
 application {
     mainClassName ="ui.FxApp"

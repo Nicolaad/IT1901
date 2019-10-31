@@ -20,6 +20,7 @@ public class UtgiftListGrizzlyApp {
         // used to be >=1
         final URI baseUri = BASE_URI;//(args.length >= 1 ? URI.create(args[0]) : BASE_URI);
         final ResourceConfig resourceConfig = new UtgiftListConfig();//(args.length >= 2 ? new UtgiftListConfig(args[1]) : new UtgiftListConfig());
+        resourceConfig.register(new CORSFilter());
         final HttpServer httpServer = GrizzlyHttpServerFactory.createHttpServer(baseUri, resourceConfig);
         if (waitSecondsForServer < 0) {
             return httpServer;

@@ -14,6 +14,7 @@ repositories {
 dependencies {
     implementation project(':core')
 
+    compile group: 'com.airhacks', name: 'jaxrs-cors', version: '0.0.2'
     compile "com.fasterxml.jackson.core:jackson-core:${depVersions.jackson}"
     compile "com.fasterxml.jackson.core:jackson-databind:${depVersions.jackson}"
     compile "com.fasterxml.jackson.core:jackson-annotations:${depVersions.jackson}"

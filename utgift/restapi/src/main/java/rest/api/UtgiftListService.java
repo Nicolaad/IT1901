@@ -26,6 +26,7 @@ public class UtgiftListService {
         System.out.println("getAll");
         return utgiftList;
     }
+
     /*
     @GET
     @Path("/{num}")

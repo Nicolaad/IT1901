@@ -3,20 +3,5 @@
     "navn": "Fisk",
     "pris": "200.0",
     "kategori": "Mat"
-  },
-  {
-    "navn": "Rotter",
-    "pris": "50.0",
-    "kategori": "Mat"
-  },
-  {
-    "navn": "Penn",
-    "pris": "20.0",
-    "kategori": "Skole"
-  },
-  {
-    "navn": "Medisin",
-    "pris": "100.0",
-    "kategori": "Helse"
   }
 ]
