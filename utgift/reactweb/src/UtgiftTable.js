@@ -1,30 +1,38 @@
-import React from "react";
-import { arrowFunctionExpression } from "@babel/types";
+import React from "react"
+import { arrowFunctionExpression } from "@babel/types"
 export default class UtgiftTable extends React.Component {
     constructor(props) {
-        super(props);
-        this.renderlist = this.renderlist.bind(this);
+        super(props)
+        this.renderlist = this.renderlist.bind(this)
+    }
+    delete(id) {
+        console.log(id)
+        this.props.delete(id)
+    }
+    delete(id) {
+        console.log(id)
+        this.props.delete(id)
     }
 
     renderlist() {
-        console.log(this.props.users);
+        console.log(this.props.utgifter)
         return (
             <ul id="listview">
-                {this.props.users.map(user => (
-                    <li key={user.pris}>
-                        {user.navn}
-                        {user.pris}
-                        {user.kategori}
+                {this.props.utgifter.map((utgift) => (
+                    <li key={utgift.id} onClick={this.delete.bind(this, utgift.id)}>
+                        {utgift.navn}
+                        {utgift.pris}
+                        {utgift.kategori}
                     </li>
                 ))}
             </ul>
-        );
+        )
     }
     render() {
         try {
-            return this.renderlist();
+            return this.renderlist()
         } catch {
-            return <p> heii</p>;
+            return <p> heii</p>
         }
     }
 }

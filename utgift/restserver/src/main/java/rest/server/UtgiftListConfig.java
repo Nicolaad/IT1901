@@ -10,6 +10,9 @@ import rest.api.UtgiftObjectMapperProvider;
 
 import java.io.IOException;
 
+/**
+ * Basic resourceconfig. Helt og holdent inspirert av simpleexample2.
+ */
 public class UtgiftListConfig extends ResourceConfig {
 
     public UtgiftListConfig() {

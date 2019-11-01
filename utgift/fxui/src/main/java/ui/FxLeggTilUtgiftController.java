@@ -23,7 +23,7 @@ public class FxLeggTilUtgiftController {
     private ObservableList<String> kategorier = FXCollections.observableArrayList();
     private List<String> presetKategori = new ArrayList<>(Arrays.asList("Mat","Skole","Helse"));
     private FxLeggTilUtgiftController controller;
-    private FxAppController controller2;
+
     private UtgiftListDataAccess dataAccess;
 
     public void setDataAccess(UtgiftListDataAccess dataAccess) {

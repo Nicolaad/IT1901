@@ -6,6 +6,7 @@ import core.UtgiftList;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -62,12 +63,34 @@ public class UtgiftListService {
             return utgiftList.toList().remove(num);
 
         }
-       catch(Exception e){
-           System.out.println(e);
-       }
+        catch(Exception e){
+            System.out.println(e);
+        }
         return null;
     }
 
+    @DELETE
+    @Path("/{num}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Utgift deleteUtgift(@PathParam("num") int num) {
+        System.out.println("delete funker nå");
+        Utgift u = null;
+        try{
+            Iterator<Utgift> it =utgiftList.toList().iterator();
+            while(it.hasNext()){
+                if(it.next().getId()==num) {
+                    it.remove();
+                    break;
+                }
+            }
+
+            return u;
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
 
 
 
