@@ -12,14 +12,25 @@ import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Denne klassen kjører en grizzly server på BASE_URI URI kan ikke endres og har ikke noe å si ellers.
+ * det blir baseURI +/utgiftlist
+ * legger til et corsfilter på resourceconfig.
+ * og ellers er det kode for å gjøre det mulig å teste serveren.
+ */
 public class UtgiftListGrizzlyApp {
 
     private static URI BASE_URI = URI.create("http://localhost:8080/");
 
     public static HttpServer startServer(final String[] args, int waitSecondsForServer) throws IOException {
+<<<<<<< HEAD
+        final URI baseUri = BASE_URI;
+        final ResourceConfig resourceConfig = new UtgiftListConfig();
+=======
         // used to be >=1
         final URI baseUri = BASE_URI;//(args.length >= 1 ? URI.create(args[0]) : BASE_URI);
         final ResourceConfig resourceConfig = new UtgiftListConfig();//(args.length >= 2 ? new UtgiftListConfig(args[1]) : new UtgiftListConfig());
+>>>>>>> master
         resourceConfig.register(new CORSFilter());
         final HttpServer httpServer = GrizzlyHttpServerFactory.createHttpServer(baseUri, resourceConfig);
         if (waitSecondsForServer < 0) {

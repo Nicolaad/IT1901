@@ -12,6 +12,7 @@ public class UtgiftSerializer extends JsonSerializer<Utgift> {
     public static final String NAME_FIELD_NAME = "navn";
     public static final String PRICE_FIELD_NAME = "pris";
     public static final String CATEGORY_FIELD_NAME = "kategori";
+    public static final String ID_FIELD_NAME = "id";
 
     /**
      * konverterer et utgiftobjekt til en json streng.
@@ -30,6 +31,8 @@ public class UtgiftSerializer extends JsonSerializer<Utgift> {
         jsonGen.writeNumber(utgift.getPris());
         jsonGen.writeFieldName(CATEGORY_FIELD_NAME);
         jsonGen.writeString(utgift.getKategori());
+        jsonGen.writeFieldName(ID_FIELD_NAME);
+        jsonGen.writeNumber(utgift.getId());
         jsonGen.writeEndObject();
     }
 }

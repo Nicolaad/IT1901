@@ -6,6 +6,12 @@ import javax.ws.rs.container.ContainerResponseFilter;
 import javax.ws.rs.ext.Provider;
 import java.io.IOException;
 
+<<<<<<< HEAD
+/**
+ * CORSFilter for å komme over cors problemstillinger når vi har reactweb appen. En bypass.
+ */
+=======
+>>>>>>> master
 @Provider
 public class CORSFilter implements ContainerResponseFilter {
 

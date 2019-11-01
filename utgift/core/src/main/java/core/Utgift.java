@@ -5,7 +5,8 @@ public class Utgift {
     private String navn;
     private String pris;
     private String kategori;
-
+    private static int globalId = 1;
+    private long id = 0;
 
     /**
      * Lager et Utgift objekt med navn, pris og kategori.
@@ -14,12 +15,20 @@ public class Utgift {
      * @param kategori navn paa kategori til utgiften
      */
     public Utgift(String navn, String pris, String kategori) {
-
         this.navn = navn;
         this.pris = pris;
         this.kategori = kategori;
+        this.id = globalId;
+        globalId++;
     }
 
+    public Utgift(String navn, String pris,String kategori, long id){
+        this(navn,pris,kategori);
+    }
+
+    public long getId(){
+        return id;
+    }
     /**
      * @return En string med navnet til utgiften.
      */

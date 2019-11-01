@@ -9,7 +9,6 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import core.Utgift;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class UtgiftDeserializer extends JsonDeserializer {
 
@@ -34,6 +33,7 @@ public class UtgiftDeserializer extends JsonDeserializer {
             final String name = objectNode.get(UtgiftSerializer.NAME_FIELD_NAME).asText();
             final double price = objectNode.get(UtgiftSerializer.PRICE_FIELD_NAME).asDouble();
             final String category = objectNode.get(UtgiftSerializer.CATEGORY_FIELD_NAME).asText();
+            final long id = objectNode.get(UtgiftSerializer.ID_FIELD_NAME).asLong();
             return new Utgift(name, Double.toString(price), category); //why is price a string? temp fix
         } else if (jsonNode instanceof ArrayNode) {
             final ArrayNode utgiftArray = (ArrayNode) jsonNode;
@@ -41,6 +41,7 @@ public class UtgiftDeserializer extends JsonDeserializer {
                 final String navn = utgiftArray.get(0).asText();
                 final String pris = utgiftArray.get(1).asText();
                 final String kategori = utgiftArray.get(2).asText();
+                final long id = utgiftArray.get(3).asLong();
                 return new Utgift(navn, pris, kategori);
             }
         }

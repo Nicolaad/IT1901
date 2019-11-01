@@ -1,68 +1,78 @@
-import React from "react";
-import "./App.css";
-import UtgiftTable from "./UtgiftTable";
-
-//import PieChart from "react-minimal-pie-chart";
-import {
-    ResponsiveContainer,
-    PieChart,
-    Tooltip,
-    Pie,
-    Legend,
-    Label
-} from "recharts";
+import React from "react"
+import "./App.css"
+import UtgiftTable from "./UtgiftTable"
+import Child from "./Child"
+import PieChartUtgifter from "./PieChartUtgifter"
 
 export default class App extends React.Component {
     constructor(props) {
-        super(props);
-        this.state = { users: [], loser: true };
-        this.update = this.update.bind(this);
-        this.post = this.post.bind(this);
-        this.fisk = this.fisk.bind(this);
+        super(props)
+        this.state = { utgifter: [] }
+        this.update = this.update.bind(this)
+        this.post = this.post.bind(this)
+        this.fisk = this.fisk.bind(this)
+        this.delete = this.delete.bind(this)
+        this.deleteAtServer = this.deleteAtServer.bind(this)
     }
-
+    //finn siste id.
     componentDidMount() {
-        this.update();
+        this.update()
     }
     async update() {
         const response = await fetch("/utgiftlist")
-            .then(res => res.json())
-            .then(users => this.setState({ users }));
+            .then((res) => res.json())
+            .then((utgifter) => this.setState({ utgifter }))
     }
 
     async post() {
-        let txt1 = document.getElementById("txt1").value;
-        let txt2 = document.getElementById("txt2").value;
-        let txt3 = document.getElementById("txt3").value;
+        let txt1 = document.getElementById("txt1").value
+        let txt2 = document.getElementById("txt2").value
+        let txt3 = document.getElementById("txt3").value
         await fetch("http://localhost:8080/utgiftlist", {
             method: "POST",
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json"
             },
-            mode: "cors",
-            body: JSON.stringify([{ navn: txt1, pris: txt2, kategori: txt3 }])
-        });
-        this.update();
+
+            body: JSON.stringify([
+                { navn: txt1, pris: txt2, kategori: txt3, id: 100 }
+            ])
+        })
+
+        this.update()
+    }
+
+    async deleteAtServer(id) {
+        await fetch("http://localhost:8080/utgiftlist/" + id, {
+            method: "DELETE",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            }
+            // body: JSON.stringify([{ pris: 2000 }])
+        })
+    }
+
+    delete(id) {
+        console.log(id)
+        this.setState((prevState) => ({
+            utgifter: prevState.utgifter.filter((el) => el.id != id)
+        }))
+        console.log(this.state.utgifter)
+        this.deleteAtServer(id)
     }
 
     fisk() {
-        return <label>fisk</label>;
+        return <label>fisk</label>
     }
 
     render() {
-        const data01 = [
-            { name: "Group A", value: 2400 },
-            { name: "Group B", value: 4567 },
-            { name: "Group C", value: 1398 },
-            { name: "Group D", value: 9800 },
-            { name: "Group E", value: 3908 },
-            { name: "Group F", value: 4800 }
-        ];
         return (
             <div className="App">
                 <h1> Utgifter</h1>
-                <UtgiftTable users={this.state.users} />
+                <UtgiftTable utgifter={this.state.utgifter} delete={this.delete} />
+                <PieChartUtgifter utgifter={this.state.utgifter} />
                 <label>Navn: </label>
                 <input type="text" id="txt1" />
                 <label>Pris: </label>
@@ -70,24 +80,10 @@ export default class App extends React.Component {
                 <label>Kategori: </label>
                 <input type="text" id="txt3" />
                 <button onClick={this.post}>Post</button>
-
-                <PieChart width={400} height={400}>
-                    <Pie
-                        isAnimationActive={false}
-                        data={data01}
-                        cx={200}
-                        cy={200}
-                        outerRadius={80}
-                        fill="#8884d8"
-                        label
-                    />
-                    <Tooltip />
-                </PieChart>
-
-                <Tooltip />
             </div>
-        );
+        )
     }
 }
 
 //   <button onClick={this.update}>Update</button>
+//  <Child delete={this.delete} utgifter={this.state.utgifter} />

@@ -3,7 +3,6 @@ package ui;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import core.Utgift;
 import core.UtgiftList;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -35,7 +34,6 @@ public abstract class AbstractFxAppController {
 
     private UtgiftList utgiftList;
     private UtgiftListDataAccess dataAccess;
-    private FxAppController controller;
     private javafx.scene.input.MouseEvent mouseEvent;
 
     protected AbstractFxAppController() {
@@ -45,10 +43,10 @@ public abstract class AbstractFxAppController {
         return dataAccess;
     }
 
-    public void setUtgiftList(UtgiftList utgiftList){
+   /* public void setUtgiftList(UtgiftList utgiftList){
         setDataAccess(new LocalUtgiftListDataAccess(utgiftList));
       //  init2();
-    }
+    }*/
     protected void setDataAccess(final UtgiftListDataAccess dataAccess) {
         this.dataAccess = dataAccess;
     }
