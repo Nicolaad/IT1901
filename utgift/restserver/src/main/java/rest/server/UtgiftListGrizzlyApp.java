@@ -24,9 +24,10 @@ public class UtgiftListGrizzlyApp {
 
     public static HttpServer startServer(final String[] args, int waitSecondsForServer) throws IOException {
 
-        final URI baseUri = BASE_URI;
-        final ResourceConfig resourceConfig = new UtgiftListConfig();
 
+        final URI baseUri = BASE_URI;
+
+        final ResourceConfig resourceConfig = new UtgiftListConfig();
         resourceConfig.register(new CORSFilter());
         final HttpServer httpServer = GrizzlyHttpServerFactory.createHttpServer(baseUri, resourceConfig);
         if (waitSecondsForServer < 0) {

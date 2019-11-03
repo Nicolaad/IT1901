@@ -34,7 +34,9 @@ public class UtgiftDeserializer extends JsonDeserializer {
             final double price = objectNode.get(UtgiftSerializer.PRICE_FIELD_NAME).asDouble();
             final String category = objectNode.get(UtgiftSerializer.CATEGORY_FIELD_NAME).asText();
             final long id = objectNode.get(UtgiftSerializer.ID_FIELD_NAME).asLong();
+
             return new Utgift(name, Double.toString(price), category, id); //why is price a string? temp fix
+
         } else if (jsonNode instanceof ArrayNode) {
             final ArrayNode utgiftArray = (ArrayNode) jsonNode;
             if (utgiftArray.size() == ARRAY_NODE_SIZE) {
@@ -42,7 +44,9 @@ public class UtgiftDeserializer extends JsonDeserializer {
                 final String pris = utgiftArray.get(1).asText();
                 final String kategori = utgiftArray.get(2).asText();
                 final long id = utgiftArray.get(3).asLong();
+
                 return new Utgift(navn, pris, kategori, id);
+
             }
         }
         return null;
