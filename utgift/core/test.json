@@ -3,12 +3,12 @@
     "navn": "Ost",
     "pris": "503",
     "kategori": "Mat",
-    "id": 30
+    "id": 27
   },
   {
     "navn": "Flytogbusstogfly",
     "pris": "200000",
     "kategori": "Skole",
-    "id": 31
+    "id": 28
   }
 ]
