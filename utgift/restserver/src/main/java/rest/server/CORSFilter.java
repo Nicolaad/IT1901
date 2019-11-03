@@ -7,6 +7,7 @@ import javax.ws.rs.ext.Provider;
 import java.io.IOException;
 
 
+
 /**
  * CORSFilter for å komme over cors problemstillinger når vi har reactweb appen. En bypass.
  */

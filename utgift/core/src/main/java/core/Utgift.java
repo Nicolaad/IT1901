@@ -21,7 +21,6 @@ public class Utgift {
         this.id = globalId;
         globalId++;
     }
-
     public Utgift(String navn, String pris,String kategori, long id){
         this(navn,pris,kategori);
     }

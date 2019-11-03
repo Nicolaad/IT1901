@@ -94,11 +94,7 @@ public class FxAppUsingRestControllerTest extends ApplicationTest {
         assertEquals("20.0",skole.getText());
         assertEquals("100.0",helse.getText());
         assertEquals("370.0",total.getText());
-     /*   for(Utgift u: temp){
-            controller.getDataAccess().addUtgift(u);
-        }*/
-        //controller.labelsSetUp();
-        //  Platform.runLater(() -> controller.labelsSetUp());
+
     }
 
     /**
