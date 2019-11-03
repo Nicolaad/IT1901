@@ -2,6 +2,7 @@ package core;
 
 import static junit.framework.TestCase.assertTrue;
 import static junit.framework.TestCase.fail;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ public class UtgiftListTest {
     private UtgiftList utgiftList;
     private List<Utgift> utgifter = new ArrayList<>();
     private Utgift utgift1 = new Utgift("Fisk", "200", "Mat");
+
     private Utgift utgift2 = new Utgift("Nugatti", "20", "Mat");
     private Utgift utgift3 = new Utgift("Penn", "10", "Skole");
     private Utgift utgift4 = new Utgift("Medisin", "50", "Helse");
@@ -61,8 +63,7 @@ public class UtgiftListTest {
         ul.setPieChartData(Arrays.asList(utgift2));
     }
 
-    private void assertEquals(String name, String name1) {
-    }
+
 
     @Test
     public void testSetPieChartDataSameKategori() {
