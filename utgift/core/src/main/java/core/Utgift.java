@@ -29,6 +29,10 @@ public class Utgift {
     public long getId(){
         return id;
     }
+
+    public void setId(long id){
+        this.id = id;
+    }
     /**
      * @return En string med navnet til utgiften.
      */

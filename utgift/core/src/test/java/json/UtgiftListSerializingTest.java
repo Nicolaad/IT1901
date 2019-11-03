@@ -21,11 +21,15 @@ public class UtgiftListSerializingTest {
 
     //hjelpemetoder
     private Utgift utgift1() {
-        return new Utgift("ost", "53.0", "mat");
+        Utgift u1 = new Utgift("ost", "53.0", "mat");
+        u1.setId(1);
+        return u1;
     }
 
     private Utgift utgift2() {
-        return new Utgift("bok", "1621.0", "skole");
+        Utgift u2 = new Utgift("bok", "1621.0", "skole");
+        u2.setId(2);
+        return u2;
     }
 
     /**
@@ -35,8 +39,8 @@ public class UtgiftListSerializingTest {
     @Test
     public void testUtgiftListSerialization() throws JsonProcessingException {
         String inputJson = objectMapper.writeValueAsString(new UtgiftList(utgift1(),utgift2()));
-        String expectedJson = "[{\"navn\":\"ost\",\"pris\":53.0,\"kategori\":\"mat\"}"
-                + ",{\"navn\":\"bok\",\"pris\":1621.0,\"kategori\":\"skole\"}]";
+        String expectedJson = "[{\"navn\":\"ost\",\"pris\":53.0,\"kategori\":\"mat\",\"id\":1}"
+                + ",{\"navn\":\"bok\",\"pris\":1621.0,\"kategori\":\"skole\",\"id\":2}]";
         Assert.assertEquals("compared:" + inputJson + " with:" + expectedJson,inputJson,expectedJson);
     }
 
@@ -47,8 +51,8 @@ public class UtgiftListSerializingTest {
      */
     @Test
     public void testUtgiftListDeserialization() throws IOException {
-        String json = "[{\"navn\":\"ost\",\"pris\":53.0,\"kategori\":\"mat\"}"
-                + ",{\"navn\":\"bok\",\"pris\":1621.0,\"kategori\":\"skole\"}]";
+        String json = "[{\"navn\":\"ost\",\"pris\":53.0,\"kategori\":\"mat\",\"id\":1}"
+                + ",{\"navn\":\"bok\",\"pris\":1621.0,\"kategori\":\"skole\",\"id\":2}]";
         Object[] ul = objectMapper.readValue(json, UtgiftList.class).getUtgifter().toArray();
         Assert.assertEquals(ul[0].toString(), utgift1().toString(), ul[0].toString());
         Assert.assertEquals(ul[1].toString(), utgift2().toString(), ul[1].toString());
@@ -63,7 +67,7 @@ public class UtgiftListSerializingTest {
     @Test //halvveis redundant pga testen over, men forblir atm:)
     public void testUtgiftSerialization() throws JsonProcessingException {
         String inputJson = objectMapper.writeValueAsString(new UtgiftList(utgift1()));
-        String expectedJson = "[{\"navn\":\"ost\",\"pris\":53.0,\"kategori\":\"mat\"}]";
+        String expectedJson = "[{\"navn\":\"ost\",\"pris\":53.0,\"kategori\":\"mat\",\"id\":1}]";
         Assert.assertEquals("compared:" + inputJson + " with:" + expectedJson,inputJson,expectedJson);
     }
 
@@ -73,11 +77,11 @@ public class UtgiftListSerializingTest {
      */
     @Test
     public void testUtgiftDeserializationObjectArray() throws IOException {
-        String s1 = "[[\"ost\",\"53.0\",\"mat\"]]";
+        String s1 = "[[\"ost\",\"53.0\",\"mat\",1]]";
         UtgiftList u = objectMapper.readValue(s1, UtgiftList.class);
         Assert.assertEquals(1,u.getUtgifter().size());
         Assert.assertEquals(utgift1().toString(),u.getUtgift(0).toString());
-        String s2 = "[\"ost\",\"53.0\",\"mat\",\"returnererNull\"]";
+        String s2 = "[\"ost\",\"53.0\",\"mat\",1,\"returnererNull\"]";
         Utgift u2 = objectMapper.readValue(s2,Utgift.class);
         Assert.assertEquals(null, u2);
     }

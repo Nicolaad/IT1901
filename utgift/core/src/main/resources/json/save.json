@@ -2,7 +2,6 @@
   {
     "navn": "Fisk",
     "pris": "200.0",
-<<<<<<< HEAD
     "kategori": "Mat",
     "id": 85
   },
@@ -23,8 +22,5 @@
     "pris": "100.0",
     "kategori": "Helse",
     "id": 88
-=======
-    "kategori": "Mat"
->>>>>>> master
   }
 ]
