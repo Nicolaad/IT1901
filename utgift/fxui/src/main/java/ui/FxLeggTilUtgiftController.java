@@ -1,6 +1,10 @@
 package ui;
 
 import core.Utgift;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -9,9 +13,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class FxLeggTilUtgiftController {
     @FXML TextField textFieldNavn;
@@ -22,16 +23,24 @@ public class FxLeggTilUtgiftController {
 
     private ObservableList<String> kategorier = FXCollections.observableArrayList();
     private List<String> presetKategori = new ArrayList<>(Arrays.asList("Mat","Skole","Helse"));
+
+    /* disabled as due to not being in use - spotbug warning
     private FxLeggTilUtgiftController controller;
+     */
+
 
     private UtgiftListDataAccess dataAccess;
 
+    /**
+     * setter metode for dataAccess
+     * @param dataAccess tar in en ny dataAccess
+     */
     public void setDataAccess(UtgiftListDataAccess dataAccess) {
         this.dataAccess = dataAccess;
     }
 
     /**
-     * Fyller opp combobox med presetta kategorier og setter verdien til aa starte paa Mat.
+     * Fyller opp combobox med forhåndsatte kategorier og setter verdien til aa starte paa Mat.
      */
     public void initialize() {
         kategorier.addAll(presetKategori);
@@ -41,12 +50,13 @@ public class FxLeggTilUtgiftController {
 
     /**
      * denne metoden validerer forst input. kun tall i pris.  Deretter henter den navn fra textFieldNavn, pris fra
-     * textFieldPris og kategori fra comboBoxKategori i javafx. Denne bruker statisk metode i Utgiflist til aa legge dem til saa de vises
-     * paa den forrige fxml siden.
+     * textFieldPris og kategori fra comboBoxKategori i javafx.
+     * Denne bruker statisk metode i Utgiflist til aa legge dem til saa de vises på den forrige fxml siden.
      */
     public void leggTilUtgift() {
         if (textFieldPris.getText().matches("[0-9]+") && textFieldPris.getText().length() > 0) {
-            dataAccess.addUtgift(Arrays.asList(new Utgift(textFieldNavn.getText(), textFieldPris.getText(), comboBoxKategori.getValue())));
+            dataAccess.addUtgift(Arrays.asList(new Utgift(textFieldNavn.getText(),
+                    textFieldPris.getText(), comboBoxKategori.getValue())));
             clearText();
         } else {
             textFieldPris.setText("");
@@ -54,7 +64,8 @@ public class FxLeggTilUtgiftController {
     }
 
     /**
-     * Rydder opp slik at klassen er klar til aa brukes igjen. Fjerner det som er skrevet inn i navn og pris.
+     * Rydder opp slik at klassen er klar til aa brukes igjen.
+     * Fjerner det som er skrevet inn i navn og pris.
      */
     public void clearText() {
         textFieldNavn.setText("");

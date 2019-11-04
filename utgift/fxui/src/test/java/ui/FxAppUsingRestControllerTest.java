@@ -1,6 +1,12 @@
 package ui;
 
+import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertNotNull;
+
 import core.Utgift;
+import java.io.IOException;
+import java.net.URL;
+import java.util.Arrays;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,32 +24,29 @@ import org.testfx.framework.junit.ApplicationTest;
 import rest.api.UtgiftListService;
 import rest.server.UtgiftListGrizzlyApp;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.Arrays;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNotNull;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class FxAppUsingRestControllerTest extends ApplicationTest {
     private FxAppUsingRestController controller;
+    /* disabled as it is not used - spotbug warning
     private Thread thread;
+    */
     private RestUtgiftListDataAccess dataAccess;
     private HttpServer currentServer;
+
     @Override
     public void start(final Stage stage) throws Exception {
-        URL f =getClass().getResource("FxAppUsingRest.fxml");
+        URL f = getClass().getResource("FxAppUsingRest.fxml");
         final String serverUrlString = "http://localhost:8080/";
         final String clientUrlString = serverUrlString + UtgiftListService.UTGIFT_LIST_SERVICE_PATH;
         final FXMLLoader loader = new FXMLLoader(f);
         final Parent root = loader.load();
         this.controller = loader.getController();
         dataAccess = new RestUtgiftListDataAccess(clientUrlString,controller.getObjectMapper());
-        try{
+        try {
             currentServer = UtgiftListGrizzlyApp.startServer(new String[]{serverUrlString},5);
-        }
-        catch(IOException e){
+        } catch (IOException e) {
             throw new IllegalStateException("could not setup server");
         }
         Utgift u1 =   new Utgift("Fisk","200.0","Mat");
@@ -59,33 +62,26 @@ public class FxAppUsingRestControllerTest extends ApplicationTest {
         stage.setScene(scene);
         stage.show();
     }
+
+    /**
+     * Stopper serveren etter testingen
+     */
     @After
-    public void stopServer(){
+    public void stopServer() {
         currentServer.shutdownNow();
     }
+
+    /**
+     * sjekker om det eksisterer en kontroller
+     */
     @Test
-    public void aTestController(){
+    public void aTestController() {
         assertNotNull(this.controller);
     }
 
 
-
-    /* @Test
-    public void testUtgiftListView(){
-        final ListView<Utgift> utgiftListView = lookup("#listViewUtgift").query();
-        ObservableList<Utgift> list2 = FXCollections.observableArrayList();
-        Utgift u1 = new Utgift("Fisk","200.0","Mat");
-        Utgift u2 = new Utgift("Melk","20.0","Mat");
-        list2.addAll(Arrays.asList(u1,u2));
-        ObservableList<Utgift> temp = utgiftListView.getItems();
-        temp.add(u1);
-        temp.add(u2);
-        assertEquals(list2.get(0),temp.get(0));
-        assertEquals(list2.get(0),temp.get(0));
-}*/
-
     @Test
-    public void cTestLabelsSetup22(){
+    public void cTestLabelsSetup() {
         final Label mat = lookup("#labelMat").query();
         final Label helse = lookup("#labelHelse").query();
         final Label skole = lookup("#labelSkole").query();
@@ -99,25 +95,26 @@ public class FxAppUsingRestControllerTest extends ApplicationTest {
 
     /**
      * SJekker at piechart har riktig data. Det betyr at etter at den har blitt initializert
-     * Den skal ikke ha flere data med Mat, hver kategori tilsvarer et data field og med summen av alle utgiftene sin pris.
-     * som value. og navnet på kategori som name.
+     * Den skal ikke ha flere data med Mat, hver kategori tilsvarer et data field og med summen av alle
+     * utgiftene sin pris som value. og navnet på kategori som name.
      */
     @Test
-    public void bTestPieChart(){
+    public void bTestPieChart() {
         final PieChart pieChart = lookup("#pieChart").query();
         ObservableList<PieChart.Data> temp = pieChart.getData();
         ObservableList<PieChart.Data> temp2 = controller.getDataAccess().getPieChart();
-        for (int i = 0;i<pieChart.getData().size();i++){
+        for (int i = 0;i < pieChart.getData().size();i++) {
             assertEquals(temp.get(i).getPieValue(),temp2.get(i).getPieValue(),0.05);
             assertEquals(temp.get(i).getName(),temp2.get(i).getName());
         }
     }
+
     @Test
-    public void dTestListView(){
+    public void dTestListView() {
         final ListView listView = lookup("#listViewUtgift").query();
         ObservableList<Utgift> temp  = listView.getItems();
         ObservableList<Utgift> temp2 = controller.getDataAccess().getUtgifter();
-        for(int i =0;i<temp.size();i++){
+        for (int i = 0;i < temp.size();i++) {
             assertEquals(temp.get(i).getPris(),temp2.get(i).getPris(),0.05);
             assertEquals(temp.get(i).getKategori(),temp2.get(i).getKategori());
             assertEquals(temp.get(i).getNavn(),temp2.get(i).getNavn());
