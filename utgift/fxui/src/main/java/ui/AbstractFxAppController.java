@@ -2,7 +2,9 @@ package ui;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import core.Utgift;
-import core.UtgiftList;
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,6 +13,7 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -18,9 +21,6 @@ import json.Load;
 import json.Save;
 import json.UtgiftListModule;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
 
 public abstract class AbstractFxAppController {
     @FXML private ListView<Utgift> listViewUtgift;
@@ -32,10 +32,15 @@ public abstract class AbstractFxAppController {
     @FXML private Label indexLabel;
     @FXML TextField inputField;
 
+    /* disabled as it is not in use - spotbug warning
     private UtgiftList utgiftList;
+    */
     private UtgiftListDataAccess dataAccess;
-    private javafx.scene.input.MouseEvent mouseEvent;
 
+    /* disabled and moved inside the delete function, as it is not used elsewhere - spotbug
+        (might be activated for later features)
+    private javafx.scene.input.MouseEvent mouseEvent;
+    */
     protected AbstractFxAppController() {
     }
 
@@ -43,8 +48,8 @@ public abstract class AbstractFxAppController {
         return dataAccess;
     }
 
-   /* public void setUtgiftList(UtgiftList utgiftList){
-        setDataAccess(new LocalUtgiftListDataAccess(utgiftList));
+    /*public void setUtgiftList(UtgiftList utgiftList){
+      setDataAccess(new LocalUtgiftListDataAccess(utgiftList));
       //  init2();
     }*/
     protected void setDataAccess(final UtgiftListDataAccess dataAccess) {
@@ -73,22 +78,24 @@ public abstract class AbstractFxAppController {
      * @return the ObjectMapper used by this controller
      */
     public ObjectMapper getObjectMapper() {
-
-            objectMapper = new ObjectMapper();
-            objectMapper.registerModule(new UtgiftListModule());
-
+        objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new UtgiftListModule());
         return objectMapper;
     }
 
-
-    public void init2(){
+    /**
+     * oppdaterer listviewutgift og piechart
+     */
+    public void init2() {
         listViewUtgift.setItems(dataAccess.getUtgifter());
         pieChart.setData(dataAccess.getPieChart());
     }
 
+    /* neer used, commented out due to spotbug warning
     public UtgiftList getUtgiftList(){
         return utgiftList;
     }
+*/
     /**
      * Saves the data to save.json using a static method in the class Save
      */
@@ -105,7 +112,13 @@ public abstract class AbstractFxAppController {
     @FXML
     public void leggTilUtgift() {
         try {
+            /*this line causes spotbug warning:
+            UI_INHERITANCE_UNSAFE_GETRESOURCE: Usage of GetResource may be unsafe if class is extended
+            Calling this.getClass().getResource(...) could give results other than expected
+             if this class is extended by a class in another package.
+            */
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FxAppLeggTilUtgift.fxml"));
+
             Parent confirmation;
             confirmation = fxmlLoader.load();
             FxLeggTilUtgiftController uc = fxmlLoader.getController();
@@ -148,38 +161,41 @@ public abstract class AbstractFxAppController {
         labelSkole.setText("" + skole);
         labelTotal.setText(mat + helse + skole + "");
     }
-/*
+
     /**
      * loads data from save.json to the listview, piechart and sets up the labels properly.
      */
-
     public void load() {
         List<Utgift> ut = (List<Utgift>) Load.retrieve(new File("../core/src/main/resources/json/save.json"));
-
-            dataAccess.addUtgift(ut);
-
+        dataAccess.addUtgift(ut);
         init2();
         labelsSetUp();
-
     }
 
+    /**
+     * sletter utgiften som er klikket på
+     */
     @FXML
-    public void deleteUtgift(){
+    public void deleteUtgift() {
         try {
+            javafx.scene.input.MouseEvent mouseEvent = null;
             dataAccess.deleteUtgift(getSelectedUtgift(mouseEvent), "Mat");
             save();
             init2();
             labelsSetUp();
-        }
-        catch(Exception e){
-            System.out.println("Kan ikke slette ");
-
+        } catch (Exception e) {
+            System.out.println("Kan ikke slette");
         }
     }
 
+    /**
+     * returnerer indexen til utgiften som er clicket på
+     * @param mouseEvent museventet som brukes til å hente utgiften
+     * @return
+     */
     @FXML
     public int getSelectedUtgift(javafx.scene.input.MouseEvent mouseEvent) {
-        if(listViewUtgift.getSelectionModel().getSelectedItem() == null){
+        if (listViewUtgift.getSelectionModel().getSelectedItem() == null) {
             return -1;
         }
         Utgift selected = listViewUtgift.getSelectionModel().getSelectedItem();
