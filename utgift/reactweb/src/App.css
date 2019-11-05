@@ -7,7 +7,7 @@
 }
 
 .App-header {
-    background-color: #282c34;
+    background-color: #32cd32;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -17,6 +17,88 @@
     color: white;
 }
 
+body {
+    font-family: Arial;
+}
+
 .App-link {
     color: #09d3ac;
 }
+
+h1 {
+    background-color: aquamarine;
+    height: 150px;
+    padding: 20px;
+}
+
+input {
+    border: 1px solid #e6e6e6;
+    border-radius: 0.25rem;
+    margin-right: 5px;
+    align-self: center;
+
+}
+ul {
+    list-style-type: none;
+}
+
+.listText {
+    display: inline;
+}
+
+.PostButton {
+    display: inline-block;
+    -webkit-transition: background-color .3s ease;
+    transition: background-color .3s ease;
+    padding: 0.6em;
+    border: none;
+    font-size: 1em;
+    color: white;
+    background-color: #32cd32;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 0.25rem;
+    font-weight: 600;
+}
+
+.DeleteButton {
+    display: inline-block;
+    -webkit-transition: background-color .3s ease;
+    transition: background-color .3s ease;
+    padding: 0.1em;
+    border: none;
+    font-size: 1em;
+    color: white;
+    background-color: red;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 0.25rem;
+    font-weight: 600;
+}
+
+.PostButton:hover {
+    background-color: #32cd32; opacity: 70%;
+}
+
+.DeleteButton:hover {
+    background-color: red; opacity: 70%;
+}
+
+input, label, .Oversikt {
+    display: inline-block;
+}
+
+.Oversikt {
+    border-bottom: 1px solid #009682;
+}
+
+.PieChart{
+    position: relative;
+}
+
+
+
+
+
+
+
