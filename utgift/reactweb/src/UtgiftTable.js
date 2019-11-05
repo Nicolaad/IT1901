@@ -19,15 +19,17 @@ export default class UtgiftTable extends React.Component {
         return (
             <ul id="listview">
                 {this.props.utgifter.map((utgift) => (
-                    <li key={utgift.id} onClick={this.delete.bind(this, utgift.id)}>
-                        {utgift.navn}
-                        {utgift.pris}
-                        {utgift.kategori}
+                    <li key={utgift.id} >
+                        {utgift.navn} <p className="listText">   </p>
+                        {utgift.pris} <p className="listText">   </p>
+                        {utgift.kategori} <p className="listText">   </p>
+                        <button className="DeleteButton" onClick={this.delete.bind(this, utgift.id)}>Slett</button>
                     </li>
                 ))}
             </ul>
         )
     }
+
     render() {
         try {
             return this.renderlist()

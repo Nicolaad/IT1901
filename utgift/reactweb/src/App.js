@@ -13,6 +13,8 @@ export default class App extends React.Component {
         this.fisk = this.fisk.bind(this)
         this.delete = this.delete.bind(this)
         this.deleteAtServer = this.deleteAtServer.bind(this)
+        this.hasContent = this.hasContent.bind(this)
+        this.clearTextField = this.clearTextField.bind(this)
     }
     //finn siste id.
     componentDidMount() {
@@ -28,20 +30,39 @@ export default class App extends React.Component {
         let txt1 = document.getElementById("txt1").value
         let txt2 = document.getElementById("txt2").value
         let txt3 = document.getElementById("txt3").value
-        await fetch("http://localhost:8080/utgiftlist", {
-            method: "POST",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
-            },
+        if (this.hasContent(txt1) && this.hasContent(txt3) && this.isNumeric(txt2)) {
+            await fetch("http://localhost:8080/utgiftlist", {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json"
+                },
 
-            body: JSON.stringify([
-                { navn: txt1, pris: txt2, kategori: txt3, id: 100 }
-            ])
-        })
+                body: JSON.stringify([
+                    {navn: txt1, pris: txt2, kategori: txt3, id: 100}
+                ])
+            })
 
-        this.update()
+            this.clearTextField()
+            this.update()
+        }
     }
+
+    hasContent(text) {
+        return text.length >= 1;
+    }
+
+    isNumeric(num){
+        return !isNaN(num) && num > 0;
+    }
+
+    clearTextField() {
+        document.getElementById("txt1").value = "";
+        document.getElementById("txt2").value = "";
+        document.getElementById("txt3").value = "";
+
+    }
+
 
     async deleteAtServer(id) {
         await fetch("http://localhost:8080/utgiftlist/" + id, {
@@ -71,6 +92,11 @@ export default class App extends React.Component {
         return (
             <div className="App">
                 <h1> Utgifter</h1>
+                <ul>
+                    <li className="Oversikt">Navn &ensp;</li>
+                    <li className="Oversikt"> Pris &ensp; </li>
+                    <li className="Oversikt"> Kategori &ensp; </li>
+                </ul>
                 <UtgiftTable utgifter={this.state.utgifter} delete={this.delete} />
                 <PieChartUtgifter utgifter={this.state.utgifter} />
                 <label>Navn: </label>
@@ -79,7 +105,7 @@ export default class App extends React.Component {
                 <input type="text" id="txt2" />
                 <label>Kategori: </label>
                 <input type="text" id="txt3" />
-                <button onClick={this.post}>Post</button>
+                <button className="PostButton" onClick={this.post}>Legg til Utgift</button>
             </div>
         )
     }
