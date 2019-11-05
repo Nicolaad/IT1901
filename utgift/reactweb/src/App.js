@@ -89,11 +89,7 @@ export default class App extends React.Component {
         return (
             <div className="App">
                 <h1> Utgifter</h1>
-                <ul>
-                    <li className="Oversikt">Navn &ensp;</li>
-                    <li className="Oversikt"> Pris &ensp; </li>
-                    <li className="Oversikt"> Kategori &ensp; </li>
-                </ul>
+
                 <UtgiftTable utgifter={this.state.utgifter} delete={this.delete} />
                 <PieChartUtgifter utgifter={this.state.utgifter} />
                 <label>Navn: </label>
@@ -109,6 +105,3 @@ export default class App extends React.Component {
         )
     }
 }
-
-//   <button onClick={this.update}>Update</button>
-//  <Child delete={this.delete} utgifter={this.state.utgifter} />
