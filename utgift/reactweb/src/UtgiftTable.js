@@ -1,14 +1,11 @@
 import React from "react"
-import { arrowFunctionExpression } from "@babel/types"
 export default class UtgiftTable extends React.Component {
+
     constructor(props) {
         super(props)
         this.renderlist = this.renderlist.bind(this)
     }
-    delete(id) {
-        console.log(id)
-        this.props.delete(id)
-    }
+
     delete(id) {
         console.log(id)
         this.props.delete(id)
@@ -19,11 +16,16 @@ export default class UtgiftTable extends React.Component {
         return (
             <ul id="listview">
                 {this.props.utgifter.map((utgift) => (
-                    <li key={utgift.id} >
-                        {utgift.navn} <p className="listText">   </p>
-                        {utgift.pris} <p className="listText">   </p>
-                        {utgift.kategori} <p className="listText">   </p>
-                        <button className="DeleteButton" onClick={this.delete.bind(this, utgift.id)}>Slett</button>
+                    <li key={utgift.id}>
+                        {utgift.navn} <p className="listText"> </p>
+                        {utgift.pris} <p className="listText"> </p>
+                        {utgift.kategori} <p className="listText"> </p>
+                        <button
+                            className="DeleteButton"
+                            onClick={this.delete.bind(this, utgift.id)}
+                        >
+                            Slett
+                        </button>
                     </li>
                 ))}
             </ul>

@@ -1,7 +1,6 @@
 import React from "react"
 import "./App.css"
 import UtgiftTable from "./UtgiftTable"
-import Child from "./Child"
 import PieChartUtgifter from "./PieChartUtgifter"
 
 export default class App extends React.Component {
@@ -39,7 +38,7 @@ export default class App extends React.Component {
                 },
 
                 body: JSON.stringify([
-                    {navn: txt1, pris: txt2, kategori: txt3, id: 100}
+                    { navn: txt1, pris: txt2, kategori: txt3, id: 100 }
                 ])
             })
 
@@ -49,20 +48,18 @@ export default class App extends React.Component {
     }
 
     hasContent(text) {
-        return text.length >= 1;
+        return text.length >= 1
     }
 
-    isNumeric(num){
-        return !isNaN(num) && num > 0;
+    isNumeric(num) {
+        return !isNaN(num) && num > 0
     }
 
     clearTextField() {
-        document.getElementById("txt1").value = "";
-        document.getElementById("txt2").value = "";
-        document.getElementById("txt3").value = "";
-
+        document.getElementById("txt1").value = ""
+        document.getElementById("txt2").value = ""
+        document.getElementById("txt3").value = ""
     }
-
 
     async deleteAtServer(id) {
         await fetch("http://localhost:8080/utgiftlist/" + id, {
@@ -78,7 +75,7 @@ export default class App extends React.Component {
     delete(id) {
         console.log(id)
         this.setState((prevState) => ({
-            utgifter: prevState.utgifter.filter((el) => el.id != id)
+            utgifter: prevState.utgifter.filter((el) => el.id !== id)
         }))
         console.log(this.state.utgifter)
         this.deleteAtServer(id)
@@ -105,7 +102,9 @@ export default class App extends React.Component {
                 <input type="text" id="txt2" />
                 <label>Kategori: </label>
                 <input type="text" id="txt3" />
-                <button className="PostButton" onClick={this.post}>Legg til Utgift</button>
+                <button className="PostButton" onClick={this.post}>
+                    Legg til Utgift
+                </button>
             </div>
         )
     }
