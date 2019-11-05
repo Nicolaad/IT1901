@@ -6,6 +6,9 @@
     height: 40vmin;
 }
 
+#root{
+    align-content: center;
+}
 .App-header {
     background-color: #32cd32;
     min-height: 100vh;
@@ -41,8 +44,8 @@ ul {
     list-style-type: none;
 }
 
-.listText {
-    display: inline;
+table{
+    margin:auto;
 }
 
 .PostButton {
@@ -91,8 +94,8 @@ label,
     display: inline-block;
 }
 
-.Oversikt {
-    border-bottom: 1px solid #009682;
+#listview thead{
+    color: green;
 }
 
 .PieChart {
