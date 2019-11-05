@@ -1,4 +1,3 @@
-/*<<<<<<< HEAD
 import React from "react"
 import App from "./App"
 
@@ -7,16 +6,6 @@ export default class Button extends React.Component {
         super(props)
         this.onClick = props.onClick
         this.value = props.value
-=======
-import React from "react";
-import App from "./App";
-
-export default class Button extends React.Component {
-    constructor(props) {
-        super(props);
-        this.onClick = props.onClick;
-        this.value = props.value;
->>>>>>> master
     }
 
     post() {
@@ -27,15 +16,8 @@ export default class Button extends React.Component {
                 "Content-Type": "application/json"
             },
             mode: "cors",
-<<<<<<< HEAD
             body: JSON.stringify([{ navn: "hei", pris: "200", kategori: "feis" }])
         })
-=======
-            body: JSON.stringify([
-                { navn: "hei", pris: "200", kategori: "feis" }
-            ])
-        });
->>>>>>> master
     }
 
     render() {
@@ -43,11 +25,7 @@ export default class Button extends React.Component {
             <button id="btnPost" onClick={this.onClick}>
                 {this.value}
             </button>
-<<<<<<< HEAD
         )
-=======
-        );
->>>>>>> master
     }
 }
 */

@@ -1,8 +1,24 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+##Gradle scripts
+Det er mulig å kjøre flere gradle tasks for å starte react delen av prosjektet:
 
-## Available Scripts
+
+### `gradle lint`
+Kjører ESLint på src mappen i prosjektet
+
+### `gradle prettier`
+Kjører prettier på mappen
+
+### `gradle build`
+Bygger prosjektet - etter å ha kjørt ESLint og Prettier på src mappen
+
+### `gradle start`
+åpner prosjektet i browser, etter å ha kjørt prettier og ESLint på src mappen
+
+## Available npm scripts
 
 In the project directory, you can run:
+
 
 ### `npm start`
 
