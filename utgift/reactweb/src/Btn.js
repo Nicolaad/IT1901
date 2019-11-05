@@ -16,7 +16,7 @@ export default class Button extends React.Component {
                 "Content-Type": "application/json"
             },
             mode: "cors",
-            body: JSON.stringify([{ navn: "hei", pris: "200", kategori: "feis" }])
+            body: JSON.stringify([{ navn: "Melk", pris: "20", kategori: "Mat" }])
         })
     }
 
@@ -28,4 +28,3 @@ export default class Button extends React.Component {
         )
     }
 }
-*/

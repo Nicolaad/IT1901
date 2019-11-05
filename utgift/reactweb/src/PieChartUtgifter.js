@@ -1,6 +1,5 @@
 import React from "react"
-import { arrowFunctionExpression } from "@babel/types"
-import { ResponsiveContainer, PieChart, Tooltip, Pie, Legend, Label } from "recharts"
+import {PieChart, Tooltip, Pie } from "recharts"
 
 export default class PieChartUtgifter extends React.Component {
     render() {
@@ -20,10 +19,10 @@ export default class PieChartUtgifter extends React.Component {
 
         try {
             return (
-                <div className ="PieChart">
+                <div className="PieChart">
                     <PieChart width={400} height={400}>
                         <Pie
-                            className ="PieChart"
+                            className="PieChart"
                             isAnimationActive={false}
                             data={data01}
                             cx={200}
