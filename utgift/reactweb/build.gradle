@@ -20,6 +20,9 @@ task prettier(type:NpmTask){
     args = ['run', 'format']
 }
 
+task run(type:NpmTask){
+    args =['start']
+}
 task lint(type:NpmTask){
     args = ['run', 'lint']
 }
