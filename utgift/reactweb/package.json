@@ -14,12 +14,13 @@
         "recharts": "^1.8.5",
         "request": "^2.88.0",
         "request-promise": "^4.2.4",
+        "testing-library": "0.0.2",
         "yarn": "^1.19.1"
     },
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
-        "test": "react-scripts test",
+        "test": "react-scripts test --coverage",
         "eject": "react-scripts eject",
         "lint": "eslint .",
         "lint:fix": "eslint --fix .",
@@ -48,6 +49,10 @@
     },
     "proxy": "http://localhost:8080",
     "devDependencies": {
+        "@testing-library/dom": "^6.10.1",
+        "@testing-library/react": "^9.3.2",
+        "enzyme": "^3.10.0",
+        "enzyme-adapter-react-16": "^1.15.1",
         "eslint": "^6.6.0",
         "prettier": "^1.18.2"
     }

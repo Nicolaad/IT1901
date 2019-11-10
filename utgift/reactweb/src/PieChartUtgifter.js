@@ -1,5 +1,5 @@
 import React from "react"
-import {PieChart, Tooltip, Pie } from "recharts"
+import { PieChart, Tooltip, Pie } from "recharts"
 
 export default class PieChartUtgifter extends React.Component {
     render() {
@@ -22,6 +22,7 @@ export default class PieChartUtgifter extends React.Component {
                 <div className="PieChart">
                     <PieChart width={400} height={400}>
                         <Pie
+                            dataKey="value"
                             className="PieChart"
                             isAnimationActive={false}
                             data={data01}

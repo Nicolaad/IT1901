@@ -9,7 +9,6 @@ export default class App extends React.Component {
         this.state = { utgifter: [] }
         this.update = this.update.bind(this)
         this.post = this.post.bind(this)
-        this.fisk = this.fisk.bind(this)
         this.delete = this.delete.bind(this)
         this.deleteAtServer = this.deleteAtServer.bind(this)
         this.hasContent = this.hasContent.bind(this)
@@ -79,10 +78,6 @@ export default class App extends React.Component {
         }))
         console.log(this.state.utgifter)
         this.deleteAtServer(id)
-    }
-
-    fisk() {
-        return <label>fisk</label>
     }
 
     render() {
