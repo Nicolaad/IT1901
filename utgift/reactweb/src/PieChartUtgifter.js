@@ -20,14 +20,11 @@ export default class PieChartUtgifter extends React.Component {
         try {
             return (
                 <div className="PieChart">
-                    <PieChart width={400} height={400}>
+                    <PieChart width={400} height={300}>
                         <Pie
                             dataKey="value"
                             className="PieChart"
-                            isAnimationActive={false}
                             data={data01}
-                            cx={200}
-                            cy={200}
                             outerRadius={80}
                             fill="#8884d8"
                             label

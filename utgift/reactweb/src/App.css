@@ -1,3 +1,8 @@
+html, body{
+    height:100%;
+    margin:0;
+}
+
 .App {
     text-align: center;
 }
@@ -6,8 +11,9 @@
     height: 40vmin;
 }
 
-#root {
-    align-content: center;
+#root{
+    min-height: 100%;
+    margin-bottom: -50px;
 }
 .App-header {
     background-color: #32cd32;
@@ -32,6 +38,7 @@ h1 {
     background-color: aquamarine;
     height: 150px;
     padding: 20px;
+    margin: 0;
 }
 
 input {
@@ -87,17 +94,18 @@ table {
     background-color: red;
     opacity: 70%;
 }
-
-input,
-label,
-.Oversikt {
-    display: inline-block;
-}
-
-#listview thead {
+#listview thead{
     color: green;
 }
 
 .PieChart {
-    position: relative;
+    margin-top:5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom:5%;
+}
+
+.push, .labels{
+    height:50px;
 }
