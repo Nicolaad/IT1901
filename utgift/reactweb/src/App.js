@@ -19,7 +19,7 @@ export default class App extends React.Component {
         this.update()
     }
     async update() {
-        const response = await fetch("/utgiftlist")
+        await fetch("/utgiftlist")
             .then((res) => res.json())
             .then((utgifter) => this.setState({ utgifter }))
     }
@@ -87,15 +87,18 @@ export default class App extends React.Component {
 
                 <UtgiftTable utgifter={this.state.utgifter} delete={this.delete} />
                 <PieChartUtgifter utgifter={this.state.utgifter} />
-                <label>Navn: </label>
-                <input type="text" id="txt1" />
-                <label>Pris: </label>
-                <input type="text" id="txt2" />
-                <label>Kategori: </label>
-                <input type="text" id="txt3" />
-                <button className="PostButton" onClick={this.post}>
-                    Legg til Utgift
+                <div className="push"></div>
+                <div className="labels">
+                    <label>Navn: </label>
+                    <input type="text" id="txt1" />
+                    <label>Pris: </label>
+                    <input type="text" id="txt2" />
+                    <label>Kategori: </label>
+                    <input type="text" id="txt3" />
+                    <button className="PostButton" onClick={this.post}>
+                        Legg til Utgift
                 </button>
+                </div>
             </div>
         )
     }
