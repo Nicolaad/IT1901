@@ -6,7 +6,7 @@
     height: 40vmin;
 }
 
-#root{
+#root {
     align-content: center;
 }
 .App-header {
@@ -44,8 +44,8 @@ ul {
     list-style-type: none;
 }
 
-table{
-    margin:auto;
+table {
+    margin: auto;
 }
 
 .PostButton {
@@ -94,7 +94,7 @@ label,
     display: inline-block;
 }
 
-#listview thead{
+#listview thead {
     color: green;
 }
 
