@@ -2,13 +2,18 @@ package rest.api;
 
 import core.Utgift;
 import core.UtgiftList;
-
-import javax.inject.Inject;
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.inject.Inject;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 @Path(UtgiftListService.UTGIFT_LIST_SERVICE_PATH)
 public class UtgiftListService {
@@ -19,6 +24,7 @@ public class UtgiftListService {
 
     /**
      * returnerer alle utgifter
+     *
      * @return
      */
     @GET
@@ -51,6 +57,7 @@ public class UtgiftListService {
 
     /**
      * Fjerner en utgift fra serveren basert på index
+     *
      * @param num
      */
 
@@ -59,11 +66,10 @@ public class UtgiftListService {
     @Produces(MediaType.APPLICATION_JSON)
     public Utgift deleteUtgift(@PathParam("kategori") String kategori, @PathParam("num") int num) {
         System.out.println("delete funker nå");
-        try{
+        try {
             return utgiftList.toList().remove(num);
 
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
         return null;
@@ -75,28 +81,26 @@ public class UtgiftListService {
     public Utgift deleteUtgift(@PathParam("num") int num) {
         System.out.println("delete funker nå");
         Utgift u = null;
-        try{
-            Iterator<Utgift> it =utgiftList.toList().iterator();
-            while(it.hasNext()){
-                if(it.next().getId()==num) {
+        try {
+            Iterator<Utgift> it = utgiftList.toList().iterator();
+            while (it.hasNext()) {
+                if (it.next().getId() == num) {
                     it.remove();
                     break;
                 }
             }
 
             return u;
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
         return null;
     }
 
 
-
-
     /**
      * henter en utgiftliste med alle utgiftene med samme kategori som parameteret
+     *
      * @param kategori
      * @return
      */
@@ -110,6 +114,7 @@ public class UtgiftListService {
 
     /**
      * sHenter eugiftobjekt etter kategori og så index
+     *
      * @param kategori
      * @param num
      * @return

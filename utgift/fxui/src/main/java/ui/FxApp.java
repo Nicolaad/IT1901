@@ -10,17 +10,15 @@ import rest.api.UtgiftListService;
 import rest.server.UtgiftListGrizzlyApp;
 
 
-
-
-
 public class FxApp extends Application {
     /* disabled since it isn't used, spotbugs warning
      private HttpServer restServer = null;
 
      */
+
     /**
      * @param primaryStage takes in stage. starts the javafx and also the grizzlyserver.
-     *                    Right now our app always runs with the restapi.
+     *                     Right now our app always runs with the restapi.
      * @throws Exception om den misslykkes i å starte
      */
 
@@ -32,8 +30,8 @@ public class FxApp extends Application {
         List<String> args = getParameters().getRaw();
         */
 
-        String[]strings = {baseUri.toString()};
-        UtgiftListGrizzlyApp.startServer(strings,2);
+        String[] strings = {baseUri.toString()};
+        UtgiftListGrizzlyApp.startServer(strings, 2);
         final String fxml = "FxAppUsingRest.fxml";
         final FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxml));
         final Parent root = fxmlLoader.load();
@@ -44,7 +42,6 @@ public class FxApp extends Application {
         controller.load();
 
 
-
         final Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -53,6 +50,7 @@ public class FxApp extends Application {
 
     /**
      * hovedmetode, starter lokalui delen av programmet
+     *
      * @param args argumenter som kan taes inn når man starter programmet
      */
     public static void main(final String[] args) {

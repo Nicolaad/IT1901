@@ -1,16 +1,15 @@
 package rest.server;
 
-import org.glassfish.grizzly.http.server.HttpServer;
-import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
-import org.glassfish.jersey.server.ResourceConfig;
-import rest.api.UtgiftListService;
-
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.glassfish.grizzly.http.server.HttpServer;
+import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
+import org.glassfish.jersey.server.ResourceConfig;
+import rest.api.UtgiftListService;
 
 /**
  * Denne klassen kjører en grizzly server på BASE_URI URI kan ikke endres og har ikke noe å si ellers.
@@ -43,7 +42,10 @@ public class UtgiftListGrizzlyApp {
                 if (responseCode == 200) {
                     return httpServer;
                 }
-            } catch (final Exception e) {
+            } catch (RuntimeException e) {
+                System.out.println(e);
+            } catch (Exception e) {
+                System.out.println(e);
             }
             try {
                 Thread.sleep(1000);

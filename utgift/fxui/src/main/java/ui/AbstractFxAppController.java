@@ -13,7 +13,6 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -75,6 +74,7 @@ public abstract class AbstractFxAppController {
 
     /**
      * Gets the ObjectMapper used by this controller.
+     *
      * @return the ObjectMapper used by this controller
      */
     public ObjectMapper getObjectMapper() {
@@ -96,6 +96,7 @@ public abstract class AbstractFxAppController {
         return utgiftList;
     }
 */
+
     /**
      * Saves the data to save.json using a static method in the class Save
      */
@@ -146,7 +147,7 @@ public abstract class AbstractFxAppController {
         double mat = 0.0;
         double helse = 0.0;
         double skole = 0.0;
-        for (Utgift data: dataAccess.getAllUtgifter()) {
+        for (Utgift data : dataAccess.getAllUtgifter()) {
             System.out.println(data.getKategori());
             if (data.getKategori().equals("Mat")) {
                 mat += data.getPris();
@@ -190,6 +191,7 @@ public abstract class AbstractFxAppController {
 
     /**
      * returnerer indexen til utgiften som er clicket på
+     *
      * @param mouseEvent museventet som brukes til å hente utgiften
      * @return
      */

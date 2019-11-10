@@ -1,7 +1,6 @@
 package ui;
 
 import core.Utgift;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -22,7 +21,7 @@ public class FxLeggTilUtgiftController {
     @FXML Button btnFerdigUtgift;
 
     private ObservableList<String> kategorier = FXCollections.observableArrayList();
-    private List<String> presetKategori = new ArrayList<>(Arrays.asList("Mat","Skole","Helse"));
+    private List<String> presetKategori = new ArrayList<>(Arrays.asList("Mat", "Skole", "Helse"));
 
     /* disabled as due to not being in use - spotbug warning
     private FxLeggTilUtgiftController controller;
@@ -33,6 +32,7 @@ public class FxLeggTilUtgiftController {
 
     /**
      * setter metode for dataAccess
+     *
      * @param dataAccess tar in en ny dataAccess
      */
     public void setDataAccess(UtgiftListDataAccess dataAccess) {

@@ -10,8 +10,9 @@ public class Utgift {
 
     /**
      * Lager et Utgift objekt med navn, pris og kategori.
-     * @param navn navn til utgiften
-     * @param pris prisen til utgiften
+     *
+     * @param navn     navn til utgiften
+     * @param pris     prisen til utgiften
      * @param kategori navn paa kategori til utgiften
      */
     public Utgift(String navn, String pris, String kategori) {
@@ -21,17 +22,19 @@ public class Utgift {
         this.id = globalId;
         globalId++;
     }
-    public Utgift(String navn, String pris,String kategori, long id){
-        this(navn,pris,kategori);
+
+    public Utgift(String navn, String pris, String kategori, long id) {
+        this(navn, pris, kategori);
     }
 
-    public long getId(){
+    public long getId() {
         return id;
     }
 
-    public void setId(long id){
+    public void setId(long id) {
         this.id = id;
     }
+
     /**
      * @return En string med navnet til utgiften.
      */
@@ -54,7 +57,6 @@ public class Utgift {
     }
 
     /**
-     *
      * @return En double med pris til utgiften.
      */
     public double getPris() {
@@ -69,12 +71,12 @@ public class Utgift {
     }
 
     /**
-     * @param toString  en string paa formen navn;pris;kategori
+     * @param toString en string paa formen navn;pris;kategori
      * @return returnerer et utgifts objekt av strengen.
      */
     public static Utgift createUtgiftObject(String toString) {
         String[] s = toString.split(";");
-        return new Utgift(s[0],s[1],s[2]);
+        return new Utgift(s[0], s[1], s[2]);
     }
     /*
     private static void validateUtgift(String name, String pris, String kategori){
