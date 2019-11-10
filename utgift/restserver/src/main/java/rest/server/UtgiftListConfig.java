@@ -2,13 +2,12 @@ package rest.server;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import core.UtgiftList;
+import java.io.IOException;
 import org.glassfish.jersey.internal.inject.AbstractBinder;
 import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import rest.api.UtgiftListService;
 import rest.api.UtgiftObjectMapperProvider;
-
-import java.io.IOException;
 
 /**
  * Basic resourceconfig. Helt og holdent inspirert av simpleexample2.
@@ -21,7 +20,8 @@ public class UtgiftListConfig extends ResourceConfig {
 
     private static UtgiftList readValue(final String json) {
         try {
-            final UtgiftList utgiftList = new UtgiftObjectMapperProvider().getContext(ObjectMapper.class).readValue(json, UtgiftList.class);
+            final UtgiftList utgiftList = new UtgiftObjectMapperProvider().getContext(ObjectMapper.class)
+                    .readValue(json, UtgiftList.class);
             System.out.println("Read " + json + " as " + utgiftList);
             return utgiftList;
         } catch (final Exception e) {

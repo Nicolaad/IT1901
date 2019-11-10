@@ -9,24 +9,23 @@ import org.glassfish.jersey.test.spi.TestContainerException;
 import org.glassfish.jersey.test.spi.TestContainerFactory;
 
 public abstract class UtgiftJerseyTest extends JerseyTest {
+    protected boolean shouldLog() {
+        return false;
+    }
 
-	protected boolean shouldLog() {
-		return false;
-	}
+    @Override
+    protected ResourceConfig configure() {
+        final UtgiftListConfig config = new UtgiftListConfig();
+        if (shouldLog()) {
+            enable(TestProperties.LOG_TRAFFIC);
+            enable(TestProperties.DUMP_ENTITY);
+            config.property(LoggingFeature.LOGGING_FEATURE_LOGGER_LEVEL_SERVER, "WARNING");
+        }
+        return config;
+    }
 
-	@Override
-	protected ResourceConfig configure() {
-		final UtgiftListConfig config = new UtgiftListConfig();
-		if (shouldLog()) {
-			enable(TestProperties.LOG_TRAFFIC);
-			enable(TestProperties.DUMP_ENTITY);
-			config.property(LoggingFeature.LOGGING_FEATURE_LOGGER_LEVEL_SERVER, "WARNING");
-		}
-		return config;
-	}
-
-	@Override
-	protected TestContainerFactory getTestContainerFactory() throws TestContainerException {
-		return new GrizzlyTestContainerFactory();
-	}
+    @Override
+    protected TestContainerFactory getTestContainerFactory() throws TestContainerException {
+        return new GrizzlyTestContainerFactory();
+    }
 }

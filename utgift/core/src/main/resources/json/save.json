@@ -1,2 +1,26 @@
 [
+  {
+    "navn": "Fisk",
+    "pris": "200.0",
+    "kategori": "Mat",
+    "id": 85
+  },
+  {
+    "navn": "Rotter",
+    "pris": "50.0",
+    "kategori": "Mat",
+    "id": 86
+  },
+  {
+    "navn": "Penn",
+    "pris": "20.0",
+    "kategori": "Skole",
+    "id": 87
+  },
+  {
+    "navn": "Medisin",
+    "pris": "100.0",
+    "kategori": "Helse",
+    "id": 88
+  }
 ]

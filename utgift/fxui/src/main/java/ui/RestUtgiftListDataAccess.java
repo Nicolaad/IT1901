@@ -31,8 +31,9 @@ public class RestUtgiftListDataAccess implements UtgiftListDataAccess {
 
     /**
      * konstruerer RestUtgiftListDataAccess med en baseurl og en objectmapper
+     *
      * @param baseUrlString base urlen, eg baseurl/skole/53
-     * @param objectMapper brukes til å konvertere utgifter til og fra json
+     * @param objectMapper  brukes til å konvertere utgifter til og fra json
      */
     public RestUtgiftListDataAccess(final String baseUrlString, final ObjectMapper objectMapper) {
         this.baseUrlString = baseUrlString;
@@ -119,7 +120,8 @@ public class RestUtgiftListDataAccess implements UtgiftListDataAccess {
 
     /**
      * sletter en utgift basert på kategori, og derreter indexen
-     * @param index indeksen til utgiften iht kategori
+     *
+     * @param index    indeksen til utgiften iht kategori
      * @param kategori kategorien til utgiften
      */
     public void deleteUtgift(final int index, String kategori) {
@@ -129,8 +131,8 @@ public class RestUtgiftListDataAccess implements UtgiftListDataAccess {
                     .build();
             final HttpResponse<InputStream> response =
                     HttpClient.newBuilder()
-                    .build()
-                    .send(request, HttpResponse.BodyHandlers.ofInputStream());
+                            .build()
+                            .send(request, HttpResponse.BodyHandlers.ofInputStream());
             System.out.println("RestUtgiftListDataAccess.deleteUtgift() response: " + response);
         } catch (final IOException | InterruptedException e) {
             throw new RuntimeException(e);
@@ -153,7 +155,7 @@ public class RestUtgiftListDataAccess implements UtgiftListDataAccess {
                     .send(request, HttpResponse.BodyHandlers.ofInputStream());
             System.out.println("Dataaccess.addUtgift() response: " + response);
             System.out.println("saving");
-            Save.save(getAllUtgifter(),new File("../core/src/main/resources/json/save.json"));
+            Save.save(getAllUtgifter(), new File("../core/src/main/resources/json/save.json"));
 
             //Load.retrieve(new File("save.json"));
             //System.out.println("feilen er her");
