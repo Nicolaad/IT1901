@@ -1,26 +1,38 @@
 [
   {
+    "navn": "qwer",
+    "pris": "123.0",
+    "kategori": "qwer",
+    "id": 2
+  },
+  {
+    "navn": "qwer",
+    "pris": "1234.0",
+    "kategori": "qwer",
+    "id": 3
+  },
+  {
     "navn": "Fisk",
     "pris": "200.0",
     "kategori": "Mat",
-    "id": 85
+    "id": 4
   },
   {
-    "navn": "Rotter",
-    "pris": "50.0",
+    "navn": "qwe",
+    "pris": "123.0",
+    "kategori": "qwe",
+    "id": 21
+  },
+  {
+    "navn": "Fisk",
+    "pris": "200.0",
     "kategori": "Mat",
-    "id": 86
+    "id": 22
   },
   {
-    "navn": "Penn",
+    "navn": "Fisk",
     "pris": "20.0",
-    "kategori": "Skole",
-    "id": 87
-  },
-  {
-    "navn": "Medisin",
-    "pris": "100.0",
-    "kategori": "Helse",
-    "id": 88
+    "kategori": "Mat",
+    "id": 23
   }
 ]

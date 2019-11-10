@@ -2,18 +2,15 @@ package rest.api;
 
 import core.Utgift;
 import core.UtgiftList;
+import json.Save;
+
+import javax.inject.Inject;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import java.io.File;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
-import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 
 @Path(UtgiftListService.UTGIFT_LIST_SERVICE_PATH)
 public class UtgiftListService {
@@ -52,9 +49,14 @@ public class UtgiftListService {
     public int addUtgift(final List<Utgift> utgifter) {
         System.out.println("POSTING");
         utgiftList.toList().addAll(utgifter);
+        this.save();
         return 0;
     }
 
+    private void save(){
+
+        Save.save(utgiftList.toList(), new File("../core/src/main/resources/json/save.json"));
+    }
     /**
      * Fjerner en utgift fra serveren basert på index
      *
@@ -67,7 +69,9 @@ public class UtgiftListService {
     public Utgift deleteUtgift(@PathParam("kategori") String kategori, @PathParam("num") int num) {
         System.out.println("delete funker nå");
         try {
-            return utgiftList.toList().remove(num);
+            Utgift u = utgiftList.toList().remove(num);
+            this.save();
+            return u;
 
         } catch (Exception e) {
             System.out.println(e);
@@ -89,7 +93,7 @@ public class UtgiftListService {
                     break;
                 }
             }
-
+            this.save();
             return u;
         } catch (Exception e) {
             System.out.println(e);
