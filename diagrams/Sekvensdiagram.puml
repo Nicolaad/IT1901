@@ -1,0 +1,23 @@
+@startuml
+actor User
+User -> FxAppUsingRestController: Trykker på "Legg til utgift" \nknappen
+FxAppUsingRestController -> FxLeggTilUtgiftController: leggTilUtgift
+User -> FxLeggTilUtgiftController: Trykker på \n"Bekreft Utgift" knappen
+FxLeggTilUtgiftController -> FxAppUsingRestController: ferdigUtgift
+FxLeggTilUtgiftController -> RestUtgiftListDataAccess: addUtgift
+RestUtgiftListDataAccess -> UtgiftObjectMapperProvider: writeValueAsString
+UtgiftObjectMapperProvider --> RestUtgiftListDataAccess: a JSON string
+RestUtgiftListDataAccess -> UtgiftListService: HTTP POST "/" \n -> addUtgift
+UtgiftListService --> RestUtgiftListDataAccess: en int
+
+FxAppUsingRestController -> FxAppUsingRestController: init2: liknende operasjoner av det \n under skjer også for å \n oppdatere Piechart
+FxAppUsingRestController -> RestUtgiftListDataAccess: getUtgifter
+RestUtgiftListDataAccess -> UtgiftObjectMapperProvider: readValue
+
+UtgiftObjectMapperProvider --> RestUtgiftListDataAccess: UtgiftList
+
+RestUtgiftListDataAccess --> FxAppUsingRestController: ObservalbleList<Utgift>
+
+FxAppUsingRestController --> User: Ny utgift vises i lista \nog ligger i PieChart
+
+@enduml
