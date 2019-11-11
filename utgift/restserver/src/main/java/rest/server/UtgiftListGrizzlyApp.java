@@ -21,6 +21,13 @@ public class UtgiftListGrizzlyApp {
 
     private static URI BASE_URI = URI.create("http://localhost:8080/");
 
+    /**
+     * Starter serveren, og returnerer en HttpServer
+     * @param args argumenter for serveren
+     * @param waitSecondsForServer antall sekunder den skal vente før serveren startes
+     * @return HttpServer
+     * @throws IOException om serveren ikke kan startes
+     */
     public static HttpServer startServer(final String[] args, int waitSecondsForServer) throws IOException {
 
 
@@ -57,10 +64,20 @@ public class UtgiftListGrizzlyApp {
         return null;
     }
 
+    /**
+     * stopper serveren
+     * @param server serveren som skal stoppes
+     * @throws IOException  om den ikke klarer å stoppe serveren
+     */
     public static void stopServer(final HttpServer server) throws IOException {
         server.shutdown();
     }
 
+    /**
+     * Mainmetode, starter serveren
+     * @param args argumenter for serveren
+     * @throws IOException om den mislykker å starte serveren
+     */
     public static void main(final String[] args) throws IOException {
         try {
             final HttpServer server = startServer(args, -1);

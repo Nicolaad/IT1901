@@ -2,18 +2,24 @@ package rest.api;
 
 import core.Utgift;
 import core.UtgiftList;
-import json.Save;
-
-import javax.inject.Inject;
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
 import java.io.File;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.inject.Inject;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import json.Save;
 
 @Path(UtgiftListService.UTGIFT_LIST_SERVICE_PATH)
 public class UtgiftListService {
+
     public static final String UTGIFT_LIST_SERVICE_PATH = "utgiftlist";
 
     @Inject
@@ -22,7 +28,7 @@ public class UtgiftListService {
     /**
      * returnerer alle utgifter
      *
-     * @return
+     * @return et utgiftList objekt
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -43,6 +49,12 @@ public class UtgiftListService {
         throw new IllegalArgumentException("index out of bounds");
     }
 */
+
+    /**
+     * Legger til en utgiftliste
+     * @param utgifter utgifter som skal legges til
+     * @return 0
+     */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -53,16 +65,19 @@ public class UtgiftListService {
         return 0;
     }
 
-    private void save(){
-
+    /**
+     * lagrer utgiftene til fil
+     */
+    private void save() {
         Save.save(utgiftList.toList(), new File("../core/src/main/resources/json/save.json"));
     }
-    /**
-     * Fjerner en utgift fra serveren basert på index
-     *
-     * @param num
-     */
 
+    /**
+     * Sletter en utgift basert på kategori og index
+     * @param kategori Kategorien utgiftene blir filtrert til
+     * @param num indexen på utgiften etter filtreringen
+     * @return null
+     */
     @DELETE
     @Path("/{kategori}/{num}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -79,6 +94,11 @@ public class UtgiftListService {
         return null;
     }
 
+    /**
+     * Sletter en utgift basert på index
+     * @param num indexen
+     * @return null
+     */
     @DELETE
     @Path("/{num}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -105,8 +125,8 @@ public class UtgiftListService {
     /**
      * henter en utgiftliste med alle utgiftene med samme kategori som parameteret
      *
-     * @param kategori
-     * @return
+     * @param kategori kategorien på utgiftene som skal hentes
+     * @return en liste med utgifter basert på kategorien
      */
     @GET
     @Path("/{kategori}")
@@ -117,11 +137,11 @@ public class UtgiftListService {
 
 
     /**
-     * sHenter eugiftobjekt etter kategori og så index
+     * Henter eugiftobjekt etter kategori og så index
      *
-     * @param kategori
-     * @param num
-     * @return
+     * @param kategori kategorien til utgiften
+     * @param num indexen etter den har blitt filtrert iht kategori
+     * @return utgiften som matcher parameterne
      */
     @GET
     @Path("/{kategori}/{num}")
