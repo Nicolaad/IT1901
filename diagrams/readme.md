@@ -1,17 +1,20 @@
 Core:
-![Core](pakkediagram.png)
+![core](pakkediagram.png)
 
 Fxui:
-![Fxui](Package fxui.png)
+![fxui](Package fxui.png)
 
 Json:
-![Json](Package json.png)
+![json](Package json.png)
 
 Restapi:
 ![restapi](Package restapi.png)
 
 Restserver:
 ![restserver](Package restserver.png)
+
+Reactweb:
+![reactweb](Package%20reactweb.png)
 
 SekvensDiagram, legge til ny utgift i javafx:
 ![SekvensPost](Sekvensdiagram.png)
