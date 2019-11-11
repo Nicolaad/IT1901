@@ -4,8 +4,7 @@ import App from "../App"
 import { unmountComponentAtNode, render } from "react-dom"
 import {shallow} from "enzyme";
 import { act } from "react-dom/test-utils"
-import UtgiftTable from "../UtgiftTable";
-import { configure, mount } from 'enzyme';
+import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 configure({ adapter: new Adapter() });
 
