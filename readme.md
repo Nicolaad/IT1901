@@ -19,5 +19,8 @@ Prosjektet er organisert som et multi-modul-prosjekt med gradle, med følgende m
 
 Hver mappe/modul har sin egen README.md fil som inneholder informasjon om hva modulen består av, bygging med gradle, og annen relevant informasjon. 
 
-## Kjøring av prosjektet 
-Kjøring av Appen gjøres enklest ved å skrive `gradlew run` i terminalen når man er inni **utgift** mappen. Dvs. `\gr1911\utgift> gradlew run`. 
+# Hvordan starte appen
+Først må appen bygges med **gradlew build** i **utgift** mappen (/gr1911/utgift)
+Appen startes ved å kjøre **gradlew run** i **utgift** mappen (/gr1911/utgift)
+Javafx UI, react UI og grizzly server vil da kjøres i parallell og man vil få opp to brukergrensesnitt, ett i react og ett med javafx. 
+Grunnen til dette er fordi Vi er med fornøyde med javafx uiet enn react, men react appen har all nødvendig funksjonalitet. 
