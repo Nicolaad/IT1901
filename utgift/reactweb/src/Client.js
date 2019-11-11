@@ -6,7 +6,7 @@ export default class Client {
             request.open("GET", "http://localhost:8080/utgiftlist")
             request.onreadystatechange = () => {
                 let raw = request.responseText
-                if (raw != "") {
+                if (raw !== "") {
                     console.log(raw)
                     let objectified = JSON.parse(raw)
                     resolve(objectified)

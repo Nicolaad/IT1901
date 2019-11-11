@@ -1,13 +1,9 @@
 import React from "react"
 import { unmountComponentAtNode, render} from "react-dom"
 import BtnPost from "../BtnPost.js";
-import {act, findRenderedComponentWithType} from "react-dom/test-utils"
+import {act} from "react-dom/test-utils"
 
-import { shallow, mount} from 'enzyme';
 
-import { configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import App from "../App";
 let container = null
 beforeEach(() => {
     // setup a DOM element as a render target
