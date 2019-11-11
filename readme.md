@@ -24,3 +24,11 @@ Først må appen bygges med **gradlew build** i **utgift** mappen (/gr1911/utgif
 Appen startes ved å kjøre **gradlew run** i **utgift** mappen (/gr1911/utgift)
 Javafx UI, react UI og grizzly server vil da kjøres i parallell og man vil få opp to brukergrensesnitt, ett i react og ett med javafx. 
 Grunnen til dette er fordi Vi er med fornøyde med javafx uiet enn react, men react appen har all nødvendig funksjonalitet. 
+
+Grizzly serveren åpnes på localhost:8080/utgiftlist
+
+React appen varier men den vil åpne seg selv i browser. Ellers mest sannsynlig localhost:3000 
+
+
+# NB
+Hvis man lukker appen og åpner den på nytt vil det ikke være nok å trykke ctrl c i commandline eller terminal. Man må drepe node prossessen / cmd 
