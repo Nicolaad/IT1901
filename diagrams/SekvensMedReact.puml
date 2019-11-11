@@ -1,0 +1,9 @@
+@startuml
+actor User
+User -> ReactApp: Trykker på "Slett" knappen
+ReactApp -> RestUtgiftListDataAccess: delete() \ndeleteAtServer()
+RestUtgiftListDataAccess -> UtgiftListService: HTTP DELETE "/"num (id)
+UtgiftListService --> RestUtgiftListDataAccess: save()\nlagrer ny, \noppdatert liste
+RestUtgiftListDataAccess --> ReactApp: oppdatert utgiftliste
+ReactApp --> User: Valgt utgift er fjernet fra  \nlista og piechart
+@enduml
