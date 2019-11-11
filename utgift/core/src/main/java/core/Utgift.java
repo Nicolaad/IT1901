@@ -23,19 +23,37 @@ public class Utgift {
         globalId++;
     }
 
+    /**
+     * Returnerer en utgift, men den aksepterer et id input felt for å lettere håndtere json.
+     * FOr øyeblikket vil den bli gitt en ny id, men det skal være lett å implementere ett nytt system oppå dette
+     * @param navn navnet til utgiften
+     * @param pris prisen til utgiften
+     * @param kategori kategorien til utgiften
+     * @param id id til utgiften
+     */
     public Utgift(String navn, String pris, String kategori, long id) {
         this(navn, pris, kategori);
+        //this.setId(id);
     }
 
+    /**
+     * returnerer id til objektet
+     * @return iden til objektet
+     */
     public long getId() {
         return id;
     }
 
+    /**
+     * setter en id til utgiften
+     * @param id iden som skal settes
+     */
     public void setId(long id) {
         this.id = id;
     }
 
     /**
+     * Henter navn i strengformat
      * @return En string med navnet til utgiften.
      */
     public String getNavn() {

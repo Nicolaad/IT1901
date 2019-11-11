@@ -28,8 +28,8 @@ public class UtgiftObjectMapperProvider implements ContextResolver<ObjectMapper>
     /**
      * returnerer objectmapperen.
      *
-     * @param type
-     * @return
+     * @param type klassetypen
+     * @return objektmapper
      */
     @Override
     public ObjectMapper getContext(final Class<?> type) {
