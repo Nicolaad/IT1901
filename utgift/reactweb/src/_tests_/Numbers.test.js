@@ -1,7 +1,7 @@
 import React from "react"
-import { unmountComponentAtNode, render} from "react-dom"
-import Numbers from "../Numbers.js";
-import {act} from "react-dom/test-utils"
+import { unmountComponentAtNode, render } from "react-dom"
+import Numbers from "../unused_js/Numbers.js"
+import { act } from "react-dom/test-utils"
 
 let container = null
 beforeEach(() => {
@@ -18,7 +18,7 @@ afterEach(() => {
 })
 
 describe("testing numbers.js", () => {
-    it("Numbers renders", () =>{
+    it("Numbers renders", () => {
         act(() => {
             render(<Numbers />, container)
         })

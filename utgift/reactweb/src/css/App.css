@@ -1,6 +1,7 @@
-html, body{
-    height:100%;
-    margin:0;
+html,
+body {
+    height: 100%;
+    margin: 0;
 }
 
 .App {
@@ -11,7 +12,7 @@ html, body{
     height: 40vmin;
 }
 
-#root{
+#root {
     min-height: 100%;
     margin-bottom: -50px;
 }
@@ -94,18 +95,19 @@ table {
     background-color: red;
     opacity: 70%;
 }
-#listview thead{
+#listview thead {
     color: green;
 }
 
 .PieChart {
-    margin-top:5%;
+    margin-top: 5%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom:5%;
+    margin-bottom: 5%;
 }
 
-.push, .labels{
-    height:50px;
+.push,
+.labels {
+    height: 50px;
 }

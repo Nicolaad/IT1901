@@ -1,7 +1,7 @@
 import React from "react"
-import { unmountComponentAtNode, render} from "react-dom"
-import BtnUpdate from "../BtnUpdate.js";
-import {act} from "react-dom/test-utils"
+import { unmountComponentAtNode, render } from "react-dom"
+import BtnUpdate from "../unused_js/BtnUpdate.js"
+import { act } from "react-dom/test-utils"
 
 let container = null
 beforeEach(() => {
@@ -18,7 +18,7 @@ afterEach(() => {
 })
 
 describe("testing BtnUpdate.js", () => {
-    it("BtnUpdate renders", () =>{
+    it("BtnUpdate renders", () => {
         act(() => {
             render(<BtnUpdate />, container)
         })

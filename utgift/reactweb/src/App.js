@@ -1,5 +1,5 @@
 import React from "react"
-import "./App.css"
+import "./css/App.css"
 import UtgiftTable from "./UtgiftTable"
 import PieChartUtgifter from "./PieChartUtgifter"
 
@@ -97,7 +97,7 @@ export default class App extends React.Component {
                     <input type="text" id="txt3" />
                     <button className="PostButton" onClick={this.post}>
                         Legg til Utgift
-                </button>
+                    </button>
                 </div>
             </div>
         )
