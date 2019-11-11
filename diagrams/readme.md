@@ -1,23 +1,23 @@
 Core:
-![Core](gr1911/diagrams/pakkediagram.png)
+![Core](pakkediagram.png)
 
 Fxui:
-![Fxui](gr1911/diagrams/Package fxui.png)
+![Fxui](Package fxui.png)
 
 Json:
-![Json](gr1911/diagrams/Package json.png)
+![Json](Package json.png)
 
 Restapi:
-![restapi](gr1911/diagrams/Package restapi.png)
+![restapi](Package restapi.png)
 
 Restserver:
-![restserver](gr1911/diagrams/Package restserver.png)
+![restserver](Package restserver.png)
 
 SekvensDiagram, legge til ny utgift i javafx:
-![SekvensPost](gr1911/diagrams/Sekvensdiagram.png)
+![SekvensPost](Sekvensdiagram.png)
 
-SekvensDiagram, slette en utgift via React:
-![SekvensDelete](gr1911/diagrams/SekvensMedReact.png)
+SekvensDiagram, slette en utgift via React, litt forenklet:
+![SekvensDelete](SekvensMedReact.png)
 
 Diagram for pakkeløsning:
-![PakkeDiagram](gr1911/diagrams/pakkediagram.png)
+![PakkeDiagram](pakkediagram.png)
