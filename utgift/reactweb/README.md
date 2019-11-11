@@ -15,6 +15,9 @@ Bygger prosjektet - etter å ha kjørt ESLint og Prettier på src mappen
 ### `gradle start`
 åpner prosjektet i browser, etter å ha kjørt prettier og ESLint på src mappen
 
+### `gradle run`
+Kjører reactdelen i browser, uten å kjøre prettier og ESLint
+
 ## Available npm scripts
 
 In the project directory, you can run:
