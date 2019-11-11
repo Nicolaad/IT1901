@@ -2,10 +2,10 @@ Core:
 ![core](pakkediagram.png)
 
 Fxui:
-![xui](Package fxui.png)
+![fxui](Package fxui.png)
 
 Json:
-![son](Package json.png)
+![json](Package json.png)
 
 Restapi:
 ![restapi](Package restapi.png)
