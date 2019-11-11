@@ -4,6 +4,19 @@ En Utgiftsapp som lar deg legge  til utgifter, med navn, pris og kategori.
 
 # Brukerhistorier
 
+Vi har valgt å ha våre brukerhistorier som issues, som finnes [her](https://gitlab.stud.idi.ntnu.no/it1901/gr1911/gr1911/issues?scope=all&utf8=%E2%9C%93&state=closed&label_name[]=Brukerhistorie)
+
+# Diagrammer
+Diagrammene for deliverable 3 ligger [her](https://gitlab.stud.idi.ntnu.no/it1901/gr1911/gr1911/tree/issue-73/diagrams)
+
+
+
+<details>
+
+<summary>Readme fra Deliverable 2</summary>
+
+# Brukerhistorier
+
 Jeg ønsker å sortere utgifter etter kategorier.
 
 Jeg ønsker å lagre utgifter på en web-server.
@@ -25,6 +38,9 @@ Skjermbilde fra web-server:
 Skjermbilde fra web-server med GET metode
 
 ![web server get](sketches/Skjermbilde rest2 DL2.JPG)
+
+</details>
+
 
 <details>
 
