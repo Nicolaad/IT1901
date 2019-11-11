@@ -3,7 +3,7 @@
 ## Utgift
 
 Dette prosjektet er en trelagsapplikasjon med et domenelag, brukergrensesnitt (UI) og persistens (lagring), samt et REST-api bygget rundt kjernelogikken som tilbys av en webserver. 
-Prosjektet er konfigurert med gradle som byggesystem.
+Prosjektet er konfigurert med gradle som byggesystem. Prosjektet er nå bygget ut til å ha 2 brukergrensesnitt, ett i javafx, som tidligere, samt et nytt grensesnitt laget med React.
 
 **utgift/readme.md** inneholder brukerhistorie og beskrivelse av hva appen handler om og er ment å gjøre samt skjermbilder og skisser.
 
@@ -15,6 +15,7 @@ Prosjektet er organisert som et multi-modul-prosjekt med gradle, med følgende m
 - **utgift/fxui** 
 - **utgift/restapi** 
 - **utgift/restserver** 
+- **utgift/reactweb**
 
 Hver mappe/modul har sin egen README.md fil som inneholder informasjon om hva modulen består av, bygging med gradle, og annen relevant informasjon. 
 
