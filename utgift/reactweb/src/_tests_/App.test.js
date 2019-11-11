@@ -2,11 +2,11 @@ import React from "react"
 
 import App from "../App"
 import { unmountComponentAtNode, render } from "react-dom"
-import {shallow} from "enzyme";
+import { shallow } from "enzyme"
 import { act } from "react-dom/test-utils"
-import { configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-configure({ adapter: new Adapter() });
+import { configure } from "enzyme"
+import Adapter from "enzyme-adapter-react-16"
+configure({ adapter: new Adapter() })
 
 let container = null
 beforeEach(() => {
@@ -32,7 +32,6 @@ const fakeUtgift = [
 ]
 
 describe("Application tests", () => {
-
     it("burde ikke være udefinert", () => {
         act(() => {
             render(<App />, container)
@@ -40,7 +39,6 @@ describe("Application tests", () => {
         expect(container).toBeTruthy()
     })
     it("renders utgift data ", async () => {
-
         jest.spyOn(global, "fetch").mockImplementation(() =>
             Promise.resolve({
                 json: () => Promise.resolve(fakeUtgift)
@@ -59,16 +57,16 @@ describe("Application tests", () => {
         global.fetch.mockRestore()
     })
 })
-    describe("Tester funksjonene" , () => {
+describe("Tester funksjonene", () => {
     it("tester content funksjonen", () => {
-        const wrapper = shallow(<App/>);
-        const instance = wrapper.instance();
+        const wrapper = shallow(<App />)
+        const instance = wrapper.instance()
         expect(instance.hasContent("yes")).toBe(true)
         expect(instance.hasContent("")).toBe(false)
     })
-    it("tester is numeric funksjonen", () =>{
-        const wrapper = shallow(<App/>);
-        const instance = wrapper.instance();
+    it("tester is numeric funksjonen", () => {
+        const wrapper = shallow(<App />)
+        const instance = wrapper.instance()
         expect(instance.isNumeric(1)).toBe(true)
         expect(instance.isNumeric("usant")).toBe(false)
     })
@@ -83,4 +81,3 @@ describe("Application tests", () => {
         //expect(instance.state.utgifter).toStrictEqual([])
     })*/
 })
-
