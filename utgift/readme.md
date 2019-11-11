@@ -23,6 +23,8 @@ Jeg ønsker å lagre utgifter på en web-server.
 
 ## Skjermbilder for deliverable 2
 
+Sketches ligger [her](https://gitlab.stud.idi.ntnu.no/it1901/gr1911/gr1911/tree/master/sketches)
+
 Skjermbilde av forsiden:
 
 ![Foside](sketches/Skjermbilde DL2 forside.JPG)
